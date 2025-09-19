@@ -8,21 +8,21 @@ const listCmt = [
   {
     id: 1,
     comment:
-      "“Fast application, useful and secure linking feature to look up examination history”",
+      "“Ứng dụng nhanh chóng, tính năng liên kết hữu ích và an toàn để tra cứu lịch sử thi”",
     avatar:
       imgAva1,
     fullname: "Ms. Tam Anh Le",
   },
   {
     id: 2,
-    comment: "“Easy appointment. Smart application and utility for users”",
+    comment: "“Đặt lịch hẹn dễ dàng. Ứng dụng thông minh và tiện ích cho người dùng”",
     avatar:
       imgAva2,
     fullname: "Mrs. Cam Tu Nguyen",
   },
   {
     id: 3,
-    comment: "“Very convenient. Save a lot of time. Simple but effective”",
+    comment: "“Rất tiện lợi. Tiết kiệm rất nhiều thời gian. Đơn giản nhưng hiệu quả”",
     avatar:
       imgAva3,
     fullname: "Mr. Quoc Phu Bui",
@@ -30,11 +30,12 @@ const listCmt = [
   {
     id: 4,
     comment:
-      "“Beautiful interface. Waiting for the next versions. Thanks ClinicMate”",
+      "“Giao diện đẹp. Chờ phiên bản tiếp theo. Cảm ơn ClinicMate”",
     avatar:
       imgAva4,
-    fullname: "Ms. Ha My Nguyen",
+    fullname: "Ms. Ha My Nguyen", 
   },
+  
 ];
 const FeaturedComment = () => {
   return (

@@ -6,8 +6,8 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 
 function AppointmentConfirmationContentGuest({ appointment }) {
-  const tabButtons1 = "Return to previous";
-  const tabButtons2 = "Appointment confirmation";
+  const tabButtons1 = "Quay lại";
+  const tabButtons2 = "Xác nhận lịch hẹn";
 
   const navigate = useNavigate();
 
@@ -82,49 +82,49 @@ function AppointmentConfirmationContentGuest({ appointment }) {
             <div key={data.id}>
               <div>
                 <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Sevices
+                  Dịch vụ
                 </h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Form of Service</span>
+                  <span className="w-[35%]">Hình thức dịch vụ</span>
                   <span className="w-[65%]">{data.form}</span>
                 </div>
               </div>
               <div className="pt-6">
                 <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Patient
+                  Bệnh nhân
                 </h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Customer</span>
+                  <span className="w-[35%]">Khách hàng</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.name : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Date of Birth</span>
+                  <span className="w-[35%]">Ngày sinh</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.birthday : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Gender</span>
+                  <span className="w-[35%]">Giới tính</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.gender : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Phone Number</span>
+                  <span className="w-[35%]">Số điện thoại</span>
                   <span>
                     {appointment != undefined ? appointment.phone : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Symptom</span>
+                  <span className="w-[35%]">Triệu chứng</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.symtom : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Description</span>
+                  <span className="w-[35%]">Mô tả</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.description : ""}
                   </span>
@@ -132,34 +132,34 @@ function AppointmentConfirmationContentGuest({ appointment }) {
               </div>
               <div className="pt-6">
                 <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Doctor
+                  Bác sĩ
                 </h1>
                 <div className="pt-6 flex">
-                  <span className="w-[35%]">Doctor</span>
+                  <span className="w-[35%]">Bác sĩ</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.doctorName : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Specialty</span>
+                  <span className="w-[35%]">Chuyên khoa</span>
                   <span className="">
                     {appointment != undefined ? appointment.spec : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Examination Date</span>
+                  <span className="w-[35%]">Ngày khám</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookDate : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Examination Time</span>
+                  <span className="w-[35%]">Giờ khám</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookTime : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Location</span>
+                  <span className="w-[35%]">Địa điểm</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookPlace : ""}
                   </span>

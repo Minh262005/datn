@@ -1,10 +1,9 @@
 package com.example.demo.entity;
 
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -64,14 +63,9 @@ public class MedicalRecord {
 	}
 
 	public String timeNow() {
-		LocalDateTime currentDateTime = LocalDateTime.now();
-		// Apply GMT +7 offset
-        ZoneOffset offset = ZoneOffset.ofHours(7);
-        LocalDateTime gmtPlus7DateTime = currentDateTime.plusHours(7).atOffset(offset).toLocalDateTime();
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss:SSS");
-		String formattedDateTime = gmtPlus7DateTime.format(formatter);
-		return formattedDateTime;
+		LocalDateTime nowInVietnam = LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh"));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		return nowInVietnam.format(formatter);
 	}
 
 	public int getId() {

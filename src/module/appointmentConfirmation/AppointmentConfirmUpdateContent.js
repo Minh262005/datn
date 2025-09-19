@@ -6,8 +6,8 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 
 function AppointmentConfirmUpdateContent({ appointment }) {
-  const tabButtons1 = "Return to previous";
-  const tabButtons2 = "Appointment update confirmation";
+  const tabButtons1 = "Quay lại trước";
+  const tabButtons2 = "Xác nhận cập nhật lịch hẹn";
 
   const navigate = useNavigate();
 
@@ -67,37 +67,37 @@ function AppointmentConfirmUpdateContent({ appointment }) {
             <div key={data.id}>
               <div>
                 <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Sevices
+                  Dịch vụ
                 </h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Form of Service</span>
+                  <span className="w-[35%]">Hình thức dịch vụ</span>
                   <span className="w-[65%]">{data.form}</span>
                 </div>
               </div>
               <div className="pt-6">
                 <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Patient
+                  Bệnh nhân
                 </h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Customer</span>
+                  <span className="w-[35%]">Khách hàng</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.name : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Date of Birth</span>
+                  <span className="w-[35%]">Ngày sinh</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.birthday : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Appointment ID</span>
+                  <span className="w-[35%]">Mã lịch hẹn</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.idA : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">ID Card</span>
+                  <span className="w-[35%]">CMND/CCCD</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.idC : ""}
                   </span>

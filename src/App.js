@@ -155,7 +155,8 @@ function App() {
       <Route path="/listDoctor" element={<ListDoctor />}></Route>
       <Route
         path="/listDoctorForAll"
-        element={<ListDoctorPageForAll />}
+        element={<ListDoctorPageForAll />}  
+
       ></Route>
       <Route
         path="/listPatientForAll"
@@ -228,6 +229,9 @@ function App() {
       <Route path="/listofappointment" element={<ListOfAppointment />}></Route>
       <Route path="/adminpages" element={<AdminPages />}></Route>
       <Route path="/faq" element={<FaqPage />}></Route>
+      <Route path="/listDoctorForAll" element={<ListDoctorPageForAll />}></Route> 
+      <Route path="/listPatientForAll" element={<ListPatientPageForAll />}></Route> 
+      
     </Routes>
   );
 }

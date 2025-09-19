@@ -20,9 +20,9 @@ function MenuItem({ data }) {
       <button
         className="p-[5px] w-[100%] relative hover:bg-secondary rounded-lg"
         onClick={
-          data.title === "Log out"
+          data.title === "Log out" || data.title === "Đăng xuất"
             ? handleLogout
-            : data.title == "Profile"
+            : data.title == "Profile" || data.title === "Hồ sơ"
             ? handleProfile
             : null
         }

@@ -24,31 +24,31 @@ function CheckinListContent({ email, role }) {
   const listtitle = [
     {
       id: 1,
-      title: "Ex-No",
+      title: "Mã khám",
     },
     {
       id: 2,
-      title: "Patient Name",
+      title: "Tên bệnh nhân",
     },
     {
       id: 3,
-      title: "Date",
+      title: "Ngày",
     },
     {
       id: 4,
-      title: "Checkin Time",
+      title: "Giờ điểm danh",
     },
     {
       id: 5,
-      title: "Appointment",
+      title: "Lịch hẹn",
     },
     {
       id: 6,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 7,
-      title: "View Details",
+      title: "Xem chi tiết",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -190,7 +190,7 @@ function CheckinListContent({ email, role }) {
           }
           onClick={() => handleFilter("All")}
         >
-          ALL
+          TẤT CẢ
         </span>
         <span
           className={
@@ -200,7 +200,7 @@ function CheckinListContent({ email, role }) {
           }
           onClick={() => handleFilter("0")}
         >
-          CHECKIN
+          ĐIỂM DANH
         </span>
         <span
           className={
@@ -210,7 +210,7 @@ function CheckinListContent({ email, role }) {
           }
           onClick={() => handleFilter("1")}
         >
-          EXAMINATING
+          ĐANG KHÁM
         </span>
         <span
           className={
@@ -220,7 +220,7 @@ function CheckinListContent({ email, role }) {
           }
           onClick={() => handleFilter("2")}
         >
-          COMPLETED
+          HOÀN TẤT
         </span>
         <span
           className={
@@ -230,7 +230,7 @@ function CheckinListContent({ email, role }) {
           }
           onClick={() => handleFilter("3")}
         >
-          CANCEL
+          HỦY
         </span>
       </div>
       <div className="w-[100%] h-[50px] flex justify-between mb-[5rem]">
@@ -239,7 +239,7 @@ function CheckinListContent({ email, role }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
@@ -252,7 +252,7 @@ function CheckinListContent({ email, role }) {
                 onClick={handleAddNewCheckin}
               >
                 <span className="font-medium underline text-success ">
-                  Add new check-in
+                  Thêm điểm danh mới
                 </span>
               </div>
             </div>
@@ -336,7 +336,7 @@ function CheckinListContent({ email, role }) {
                       className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white "
                       onClick={() => handleDetail(listD)}
                     >
-                      View
+                      Xem
                     </button>
                   </td>
                 </tr>

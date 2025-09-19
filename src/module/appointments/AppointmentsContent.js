@@ -16,6 +16,7 @@ function AppointmentsContent({ role, mail }) {
   const navigate = useNavigate();
   const [Email, setMail] = useState();
   const [rol, setRol] = useState();
+  const [doctorName, setDoctorName] = useState("");
   const listtitle = [
     {
       id: 1,
@@ -56,22 +57,24 @@ function AppointmentsContent({ role, mail }) {
   const currentItems = listOrigin.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
-    // console.log(mail);
-    if (mail == undefined) {
+    if (mail === undefined) {
       setMail(mail);
     }
-    let r;
-    let m;
 
     const storedName = localStorage.getItem("token");
+    let r = rol;
+    let m = Email;
     try {
-      const decoded = jwtDecode(storedName);
-      const role = decoded.roles[0].authority;
-      r = role;
-      setRol(role);
-      setMail(decoded.sub);
-      m = decoded.sub;
-      // console.log(decoded.sub);
+      if (storedName) {
+        const decoded = /** @type {any} */ (jwtDecode(storedName));
+        const role = decoded?.roles?.[0]?.authority;
+        r = role;
+        m = decoded?.sub;
+        setRol(role);
+        setMail(m);
+        const dn = decoded?.nameInternal || decoded?.nameUser || "";
+        setDoctorName(dn);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +84,7 @@ function AppointmentsContent({ role, mail }) {
         let response;
         let response1;
         let id;
-        if (r == "USER") {
+        if (r === "USER") {
           response1 = await axios.get(
             publicPort + `patient/profile?email=${m}`
           );
@@ -96,7 +99,23 @@ function AppointmentsContent({ role, mail }) {
           setListData(response.data);
         } else {
           response = await axios.get(publicPort + "appointment/list");
-          const sortedData = response.data.sort((a, b) => {
+          let data = Array.isArray(response.data) ? response.data : [];
+          if (r === "DOCTOR" && doctorName) {
+            // Lọc theo tên bác sĩ trong token, bỏ tiền tố (BS., BS ) và dấu tiếng Việt, chấp nhận contains để tránh lệch định dạng
+            const normalize = (s) =>
+              String(s || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/\p{Diacritic}/gu, "")
+                .replace(/^\s*bs\.?\s*/i, "")
+                .trim();
+            const dn = normalize(doctorName);
+            data = data.filter((item) => {
+              const name = normalize(item.doctorName);
+              return name === dn || name.includes(dn) || dn.includes(name);
+            });
+          }
+          const sortedData = data.sort((a, b) => {
             // Convert commandFlag values to numbers for comparison (assuming they are strings).
             const commandFlagA = Number(a.commandFlag);
             const commandFlagB = Number(b.commandFlag);
@@ -120,7 +139,7 @@ function AppointmentsContent({ role, mail }) {
       }
     };
     listApp();
-  }, [Email, rol]);
+  }, [Email, rol, doctorName]);
 
   useEffect(() => {
     setListData(listOrigin.slice(indexOfFirstItem, indexOfLastItem));
@@ -148,7 +167,7 @@ function AppointmentsContent({ role, mail }) {
       setListData(listOrigin.slice(indexOfFirstItem, indexOfLastItem));
     } else {
       const filteredList = listOrigin.filter(
-        (item) => item.commandFlag == status
+        (item) => String(item.commandFlag) === String(status)
       );
       setListData(filteredList.slice(indexOfFirstItem, indexOfLastItem));
     }
@@ -160,7 +179,7 @@ function AppointmentsContent({ role, mail }) {
     if (searchInput === "") {
       setListData(listOrigin);
     } else {
-      const filteredList = listOrigin.filter((item) => item.id == searchInput);
+      const filteredList = listOrigin.filter((item) => String(item.id) === String(searchInput));
       setListData(filteredList);
     }
   };
@@ -175,6 +194,66 @@ function AppointmentsContent({ role, mail }) {
   };
   const handleAddNewAppointment = () => {
     navigate("/book_appointment");
+  };
+
+  const approveAppointment = async (appointment) => {
+    try {
+      const response = await axios.put(
+        publicPort +
+          `appointment/commandFlag?appointmentId=${appointment.id}&command=approve`
+      );
+      if (response.data === "CommandFlag updated successfully.") {
+        // Cập nhật nhanh trên UI
+        const updated = listOrigin.map((it) =>
+          it.id === appointment.id ? { ...it, commandFlag: 1 } : it
+        );
+        setListOrigin(updated);
+        // áp dụng filter hiện tại
+        if (statusFilter === "All") {
+          setListData(updated.slice(indexOfFirstItem, indexOfLastItem));
+        } else {
+          const filtered = updated.filter(
+            (item) => String(item.commandFlag) === String(statusFilter)
+          );
+          setListData(filtered.slice(indexOfFirstItem, indexOfLastItem));
+        }
+      } else {
+        alert(response.data);
+      }
+    } catch (e) {
+      console.log(e);
+      alert("Approve failed. Please try again.");
+    }
+  };
+
+  const cancelAppointment = async (appointment) => {
+    try {
+      const response = await axios.put(
+        publicPort +
+          `appointment/commandFlag?appointmentId=${appointment.id}&command=cancel`
+      );
+      if (response.data === "CommandFlag updated successfully.") {
+        // Cập nhật nhanh trên UI
+        const updated = listOrigin.map((it) =>
+          it.id === appointment.id ? { ...it, commandFlag: 2 } : it
+        );
+        setListOrigin(updated);
+        // áp dụng filter hiện tại
+        if (statusFilter === "All") {
+          setListData(updated.slice(indexOfFirstItem, indexOfLastItem));
+        } else {
+          const filtered = updated.filter(
+            (item) => String(item.commandFlag) === String(statusFilter)
+          );
+          setListData(filtered.slice(indexOfFirstItem, indexOfLastItem));
+        }
+      } else {
+        alert(response.data);
+      }
+    } catch (e) {
+      console.log(e);
+      alert("Cancel failed. Please try again.");
+    }
   };
   return (
     <div className="bg-white p-5 rounded-2xl shadow-2xl w-[100%] min-h-[500px]">
@@ -278,22 +357,37 @@ function AppointmentsContent({ role, mail }) {
                   <td className="w-[12%]">
                     <p
                       className={`w-[70%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${
-                        listD.commandFlag == "0"
+                        String(listD.commandFlag) === "0"
                           ? "bg-warning"
-                          : listD.commandFlag == "2"
+                          : String(listD.commandFlag) === "2"
                           ? "bg-error"
                           : "bg-success"
                       }`}
                     >
-                      {listD.commandFlag == 0
+                      {Number(listD.commandFlag) === 0
                         ? "Pending"
-                        : listD.commandFlag == 1
+                        : Number(listD.commandFlag) === 1
                         ? "Approved"
                         : "Cancel"}
                     </p>
                   </td>
                   <td className="pb-[10px] pt-[10px]  w-[13%]">
-                    {role == "NURSE" && listD.commandFlag == 1 ? (
+                    {Number(listD.commandFlag) === 0 && (role === "DOCTOR" || role === "NURSE") ? (
+                      <div className="flex gap-2 justify-center">
+                        <button
+                          className="px-4 h-[40px] bg-success rounded-3xl text-white "
+                          onClick={() => approveAppointment(listD)}
+                        >
+                          Approve
+                        </button>
+                        <button
+                          className="px-4 h-[40px] bg-error rounded-3xl text-white "
+                          onClick={() => cancelAppointment(listD)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : role === "NURSE" && Number(listD.commandFlag) === 1 ? (
                       <button
                         className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white "
                         onClick={() => handleCheckin(listD)}

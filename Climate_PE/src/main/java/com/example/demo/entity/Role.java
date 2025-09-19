@@ -31,7 +31,7 @@ public class Role implements Serializable {
 	private String name;
 
 	@Column(name = "COMMAND_FLAG")
-	private int commandFlag;
+	private Integer commandFlag;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "role")
@@ -53,7 +53,7 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 
-	public int getCommandFlag() {
+	public Integer getCommandFlag() {
 		return commandFlag;
 	}
 
@@ -65,7 +65,7 @@ public class Role implements Serializable {
 		this.inaccounts = inaccounts;
 	}
 
-	public void setCommandFlag(int commandFlag) {
+	public void setCommandFlag(Integer commandFlag) {
 		this.commandFlag = commandFlag;
 	}
 

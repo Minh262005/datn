@@ -14,7 +14,7 @@ const PatientsPage = () => {
 
   useEffect(() => {
     const storedName = localStorage.getItem("token");
-    if (storedName == null) {
+    if (storedName === null) {
       navigate("/login");
     } else {
       try {
@@ -22,7 +22,7 @@ const PatientsPage = () => {
         const role = decoded.roles[0].authority;
         setRole(role);
         setmail(decoded.sub);
-        if (role == "USER") {
+        if (role === "USER") {
           navigate("/service");
         }
       } catch (error) {
@@ -34,11 +34,11 @@ const PatientsPage = () => {
   return (
     <>
       <div className="bg-white">
-        {role == "DOCTOR" ? (
+        {role === "DOCTOR" ? (
           <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>
-        ) : role == "NURSE" ? (
+        ) : role === "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
-        ) : role == "ADMIN" ? (
+        ) : role === "ADMIN" ? (
           <HomeHeaderServiceAdmin></HomeHeaderServiceAdmin>
         ) : (
           <></>

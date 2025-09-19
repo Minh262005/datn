@@ -11,7 +11,7 @@ function SolutionContentNurse() {
     setHoverItem(item);
   };
   const handleListDoctorForAll = () => {
-    navigate("/listDoctorForAll");
+    navigate("/listDoctor");
   };
   const handleAppointments = () => {
     navigate("/appointments");

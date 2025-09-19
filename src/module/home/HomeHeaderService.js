@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../components/Logo/Logo";
 import { NavLink, useNavigate } from "react-router-dom";
 import EnsignAnh from "../../Images/anh.png";
+import AvatarFallback from "../../Images/avatar.png";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AccountMenu from "../../Popper/menu/AccountMenu";
 import { CiLogin } from "react-icons/ci";
@@ -12,37 +13,37 @@ const HomeNav = [
   {
     id: 1,
     to: "/service",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 2,
     to: "/book_appointment",
-    title: "Book Appointment",
+    title: "Đặt lịch hẹn",
   },
   {
     id: 3,
     to: "",
-    title: "Records",
+    title: "Hồ sơ",
   },
   {
     id: 4,
     to: "",
-    title: "Lookup",
+    title: "Tra cứu",
   },
 ];
 
 const MENU_ITEMS = [
   {
-    title: "Profile",
+    title: "Hồ sơ",
   },
   {
-    title: "Private session",
+    title: "Phiên riêng tư",
   },
   {
-    title: "Setting",
+    title: "Cài đặt",
   },
   {
-    title: "Log out",
+    title: "Đăng xuất",
     icon: <CiLogin />,
   },
 ];
@@ -56,8 +57,9 @@ const HomeHeaderService = () => {
   const [nameuser, setNameUser] = useState("");
   useEffect(() => {
     try {
+      if (!storedName) return;
       const decoded = jwtDecode(storedName);
-      const role = decoded.roles[0].authority;
+      const role = decoded.roles?.[0]?.authority;
       const mal = decoded.sub;
       setRole(role);
       const nameuser = decoded.nameUser;
@@ -66,7 +68,7 @@ const HomeHeaderService = () => {
       const listApp = async () => {
         try {
           let response;
-          if (role == "USER") {
+          if (role === "USER") {
             response = await axios.get(
               publicPort + `patient/profile?email=${mal}`
             );
@@ -75,7 +77,6 @@ const HomeHeaderService = () => {
               publicPort + `api/internal-accounts/search-email?email=${mal}`
             );
           }
-          // console.log(response.data);
           setViewer(response.data);
         } catch (error) {
           console.log(error);
@@ -85,8 +86,9 @@ const HomeHeaderService = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [storedName]);
 
+  const [imageData, setImageData] = useState(null);
   useEffect(() => {
     const fetchImage = async () => {
       if (viewer?.avatar) {
@@ -94,11 +96,9 @@ const HomeHeaderService = () => {
           const response = await axios.get(
             publicPort + `images/${viewer.avatar}`,
             {
-              responseType: "blob", // set thành kiểu blob
+              responseType: "blob",
             }
           );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
           const reader = new FileReader();
           reader.onloadend = () => {
             setImageData(reader.result);
@@ -106,7 +106,10 @@ const HomeHeaderService = () => {
           reader.readAsDataURL(response.data);
         } catch (error) {
           console.error("Error fetching image:", error);
+          setImageData(null);
         }
+      } else {
+        setImageData(null);
       }
     };
 
@@ -129,7 +132,7 @@ const HomeHeaderService = () => {
   };
   const handleDoctors = () => {
     // navigate("/login-user");
-    window.location.href = "/listDoctorForAll";
+    window.location.href = "/listDoctor";
   };
   const handleNews = () => {
     window.location.href = "/newspage";
@@ -156,35 +159,10 @@ const HomeHeaderService = () => {
       setVisibleItem1(index);
     }
   };
-  const [imageData, setImageData] = useState(null);
-  useEffect(() => {
-    const fetchImage = async () => {
-      if (viewer?.avatar) {
-        try {
-          const response = await axios.get(
-            publicPort + `images/${viewer.avatar}`,
-            {
-              responseType: "blob", // set thành kiểu blob
-            }
-          );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setImageData(reader.result);
-          };
-          reader.readAsDataURL(response.data);
-        } catch (error) {
-          console.error("Error fetching image:", error);
-        }
-      }
-    };
-
-    fetchImage();
-  }, [viewer]);
+  // removed duplicate image effect
 
   return (
-    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px]">
+    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px] relative z-50">
       <div>
         <Logo></Logo>
       </div>
@@ -200,10 +178,10 @@ const HomeHeaderService = () => {
                       to={item.to}
                       onClick={() => {
                         switch (item.title) {
-                          case "Records":
+                          case "Hồ sơ":
                             handleShow(index);
                             break;
-                          case "Lookup":
+                          case "Tra cứu":
                             handleShow1(index);
                             break;
 
@@ -212,9 +190,18 @@ const HomeHeaderService = () => {
                         }
                       }}
                     >
-                      {item.title == "Lookup" || item.title == "Records"
-                        ? item.title + " ▽"
-                        : item.title}
+                      {(() => {
+                        const displayMap = {
+                          "Trang chủ": "Trang chủ",
+                          "Đặt lịch hẹn": "Đặt lịch hẹn",
+                          "Danh sách bác sĩ": "Danh sách bác sĩ",
+                          "Hồ sơ": "Hồ sơ", 
+                          "Tra cứu": "Tra cứu",
+                        };
+                        const base = displayMap[item.title] || item.title;
+                        const needsCaret = item.title === "Tra cứu" || item.title === "Hồ sơ";
+                        return needsCaret ? base + " ▽" : base;
+                      })()}
 
                       {visibleItem === index && (
                         <div
@@ -239,7 +226,7 @@ const HomeHeaderService = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>List of Appointment</p>
+                            <p>Danh sách lịch hẹn</p>
                           </span>
                           <span
                             onClick={handleCheckins}
@@ -250,7 +237,7 @@ const HomeHeaderService = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>List of Examinations</p>
+                            <p>Danh sách lượt khám</p>
                           </span>
                           <span
                             onClick={handleMedicalHistory}
@@ -261,7 +248,7 @@ const HomeHeaderService = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Medical Record</p>
+                            <p>Hồ sơ bệnh án</p>
                           </span>
                         </div>
                       )}
@@ -289,7 +276,7 @@ const HomeHeaderService = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Doctor</p>
+                            <p>Bác sĩ</p>
                           </span>
                           <span
                             onClick={handleNews}
@@ -300,7 +287,7 @@ const HomeHeaderService = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>News</p>
+                            <p>Tin tức</p>
                           </span>
                         </div>
                       )}
@@ -317,7 +304,8 @@ const HomeHeaderService = () => {
           >
             <img
               className=" absolute rounded-full w-[24px] h-[24px] top-[6px] left-[4px]"
-              src={imageData}
+              src={imageData || AvatarFallback}
+              alt="avatar"
             ></img>
             <div className="font-bold">{nameuser} </div>
             <div className="absolute top-[3px] left-[83%]">

@@ -10,7 +10,7 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { storage } from "../url/firebase";
+import { storage } from "../../../firebase-config";
 import { v4 } from "uuid";
 
 export default function DoctorList({

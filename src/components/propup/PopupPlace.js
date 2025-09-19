@@ -25,7 +25,7 @@ const PopupPlace = ({
             style={{ width: "90%" }}
             onChange={handleSearchInputChange}
             className="ml-[5rem] "
-            placeholder="Search place"
+            placeholder="Tìm cơ sở"
             type="search"
           />
           <div className="absolute top-2/4 left-[2.4rem] -translate-y-2/4">

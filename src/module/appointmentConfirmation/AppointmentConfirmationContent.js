@@ -6,8 +6,8 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 
 function AppointmentConfirmationContent({ appointment }) {
-  const tabButtons1 = "Return to previous";
-  const tabButtons2 = "Appointment confirmation";
+  const tabButtons1 = "Quay lại";
+  const tabButtons2 = "Xác nhận lịch hẹn";
 
   const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ function AppointmentConfirmationContent({ appointment }) {
 
     if (response.data === "success") {
       alert(
-        "Thank you for your appointment, please wait for a call to confirm this appointment."
+        "Cảm ơn bạn đã đặt lịch, vui lòng chờ cuộc gọi để xác nhận lịch hẹn."
       );
       navigate("/appointments");
     } else {
@@ -73,91 +73,85 @@ function AppointmentConfirmationContent({ appointment }) {
           {datas.map((data) => (
             <div key={data.id}>
               <div>
-                <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Sevices
-                </h1>
+                <h1 className="text-[#4976f7] text-3xl font-semibold">Dịch vụ</h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Form of Service</span>
+                  <span className="w-[35%]">Hình thức dịch vụ</span>
                   <span className="w-[65%]">{data.form}</span>
                 </div>
               </div>
               <div className="pt-6">
-                <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Patient
-                </h1>
+                <h1 className="text-[#4976f7] text-3xl font-semibold">Bệnh nhân</h1>
                 <div className="pt-8 flex">
-                  <span className="w-[35%]">Customer</span>
+                  <span className="w-[35%]">Khách hàng</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.name : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Date of Birth</span>
+                  <span className="w-[35%]">Ngày sinh</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.birthday : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">ID Card</span>
+                  <span className="w-[35%]">CMND/CCCD</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.idC : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Gender</span>
+                  <span className="w-[35%]">Giới tính</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.gender : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Phone Number</span>
+                  <span className="w-[35%]">Số điện thoại</span>
                   <span>
                     {appointment != undefined ? appointment.phone : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Symptom</span>
+                  <span className="w-[35%]">Triệu chứng</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.symtom : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Description</span>
+                  <span className="w-[35%]">Mô tả</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.description : ""}
                   </span>
                 </div>
               </div>
               <div className="pt-6">
-                <h1 className="text-[#4976f7] text-3xl font-semibold">
-                  Doctor
-                </h1>
+                <h1 className="text-[#4976f7] text-3xl font-semibold">Bác sĩ</h1>
                 <div className="pt-6 flex">
-                  <span className="w-[35%]">Doctor</span>
+                  <span className="w-[35%]">Bác sĩ</span>
                   <span className="w-[65%]">
                     {appointment != undefined ? appointment.doctorName : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Specialty</span>
+                  <span className="w-[35%]">Chuyên khoa</span>
                   <span className="">
                     {appointment != undefined ? appointment.spec : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Examination Date</span>
+                  <span className="w-[35%]">Ngày khám</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookDate : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Examination Time</span>
+                  <span className="w-[35%]">Giờ khám</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookTime : ""}
                   </span>
                 </div>
                 <div className="pt-3 flex">
-                  <span className="w-[35%]">Location</span>
+                  <span className="w-[35%]">Địa điểm</span>
                   <span className="">
                     {appointment != undefined ? appointment.bookPlace : ""}
                   </span>

@@ -19,7 +19,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="italic font-light mt-[16px] w-[330px] whitespace-pre-line">
-              FPT University, Hoa Hai, Ngu Hanh Son Da Nang, Viet Nam
+              FPT Polytechnic Viet Nam
             </p>
             <div className="mt-[32px] flex items-center gap-[32px]">
               <IconYoutb />
@@ -29,13 +29,13 @@ const Footer = () => {
           </div>
           <div className="flex justify-between flex-1">
             <div>
-              <h3 className="font-semibold text-[20px]">Company Info</h3>
+              <h3 className="font-semibold text-[20px]">Thông tin công ty</h3>
               <ul className="flex flex-col gap-[16px] mt-[24px]">
                 <li>
                   <Link href="#">ClinicMate</Link>
                 </li>
                 <li>
-                  <Link href="#">Fpt University</Link>{" "}
+                  <Link href="#">Fpt Polytechnic</Link>{" "}
                 </li>
                 <li>
                   <Link href="#">Blog</Link>
@@ -46,7 +46,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-[20px]">Contact Us</h3>
+              <h3 className="font-semibold text-[20px]">Liên hệ</h3>
               <ul className="flex flex-col gap-[16px] mt-[24px]">
                 <li>
                   <Link href="#">Hello@clinicmate</Link>
@@ -63,7 +63,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-[20px]">Hotline</h3>
+              <h3 className="font-semibold text-[20px]">Đường dây nóng</h3>
               <ul className="flex flex-col gap-[16px] mt-[24px]">
                 <li>+8412345678</li>
                 <li>+8412345678 </li>
@@ -75,7 +75,7 @@ const Footer = () => {
         <div>
           <div className="h-[1px] w-full bg-white my-[40px]"></div>
           <span className="block text-center">
-            © 2023 ClinicMate Healthcare System. All rights reserved
+            © 2023 Hệ thống y tế ClinicMate. Bảo lưu mọi quyền
           </span>
         </div>
       </div>

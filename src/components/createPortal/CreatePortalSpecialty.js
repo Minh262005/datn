@@ -109,8 +109,8 @@ const CreatePortalSpecialty = ({
                 changeSpecList={changeSpecList}
                 listData={specList}
                 handleClose={onClose}
-                header="Specialty list"
-                describe="Select a Specialty"
+                header="Danh sách chuyên khoa"
+                describe="Chọn chuyên khoa"
               ></PopupSpec>
             </div>
           </div>,

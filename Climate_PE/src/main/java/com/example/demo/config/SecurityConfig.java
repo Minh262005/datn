@@ -40,10 +40,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/api/v1/login", "/patient/logins", "/api/login", "/patient/logingoogle")
-				.permitAll().antMatchers("/api/v1/doctors/**").authenticated().and().csrf().disable().formLogin()
-				.disable().httpBasic().disable().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().oauth2Login().defaultSuccessUrl("/user");
+		http.authorizeRequests()
+			.antMatchers("/api/v1/login", "/patient/logins", "/api/login", "/patient/logingoogle")
+				.permitAll()
+			.antMatchers("/api/v1/doctors/**")
+				.permitAll() // ← THAY ĐỔI TỪ .authenticated() THÀNH .permitAll()
+			.and()
+			.csrf().disable()
+			.formLogin().disable()
+			.httpBasic().disable()
+			.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.oauth2Login()
+				.defaultSuccessUrl("/user");
 	}
 
 	@Bean

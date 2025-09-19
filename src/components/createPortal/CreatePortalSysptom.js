@@ -90,8 +90,8 @@ const CreatePortalSysptom = ({
                 changeSymtomList={changeSymtomList}
                 listData={symptomList}
                 handleClose={onClose}
-                header="Symptom list"
-                describe="Choose a symptom"
+                header="Danh sách triệu chứng"
+                describe="Chọn triệu chứng"
               ></PopupSymptom>
             </div>
           </div>,

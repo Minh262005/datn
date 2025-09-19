@@ -33,14 +33,14 @@ function NewsPage() {
           <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>
         ) : role == "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
-        ) : role == "USER" ? (
+        ) : role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
         ) : (
           <HomeHeaderServiceGuest></HomeHeaderServiceGuest>
         )}
       </div>
       <div className="w-[100%] h-[130px] bg-white flex items-center">
-        <h1 className="ml-[11%] text-[20px] font-bold">News</h1>
+        <h1 className="ml-[11%] text-[20px] font-bold">Tin tức</h1>
       </div>
       <div className="bg-white">
         <NewsPageContent />

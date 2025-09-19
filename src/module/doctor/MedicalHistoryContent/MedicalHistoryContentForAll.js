@@ -57,7 +57,7 @@ function MedicalHistoryContent({ email, role }) {
             publicPort + `medicalrecord/listByDoctorId?id=${response.data.id}`
           );
           console.log(response1.data);
-        } else if (role == "USER") {
+        } else if (role === "USER") {
           response = await axios.get(
             publicPort + `patient/profile?email=${email}`
           );

@@ -15,7 +15,7 @@ const ServicePage = () => {
   const navigate = useNavigate();
   const storedName = localStorage.getItem("token");
   useEffect(() => {
-    if (storedName == null) {
+    if (storedName === null) {
       navigate("/login-user");
     } else {
       try {
@@ -31,18 +31,18 @@ const ServicePage = () => {
     <>
       <div className="bg-white">
         {/* <HomeHeaderService></HomeHeaderService> */}
-        {role == "USER" ? (
+        {role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
-        ) : role == "NURSE" ? (
+        ) : role === "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
-        ) : role == "ADMIN" ? (
+        ) : role === "ADMIN" ? (
           <HomeHeaderServiceAdmin></HomeHeaderServiceAdmin>
         ) : (
           <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>
         )}
       </div>
       <div>
-        {role == "USER" ? (
+        {role === "USER" ? (
           <HomeContentService></HomeContentService>
         ) : (
           <HomeContentServiceStaff></HomeContentServiceStaff>

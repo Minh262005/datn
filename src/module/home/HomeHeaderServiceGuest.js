@@ -13,45 +13,45 @@ const HomeNav = [
   {
     id: 1,
     to: "/",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 3,
     to: "/About",
-    title: "About",
+    title: "Giới thiệu",
   },
   {
     id: 4,
     to: "/faq",
-    title: "FAQ",
+    title: "Hỏi đáp",
   },
   {
     id: 5,
     to: "/newspage",
-    title: "News",
+    title: "Tin tức",
   },
   {
     id: 6,
     to: "/book_appointment_guest",
-    title: "Book Visist",
+    title: "Đặt lịch khám",
   },
 ];
 
 const MENU_ITEMS = [
   {
-    title: "Account",
+    title: "Tài khoản",
   },
   {
-    title: "Profile",
+    title: "Hồ sơ",
   },
   {
-    title: "Private session",
+    title: "Phiên riêng tư",
   },
   {
-    title: "Setting",
+    title: "Cài đặt",
   },
   {
-    title: "Log out",
+    title: "Đăng xuất",
     icon: <CiLogin />,
     to: "/register",
   },
@@ -60,7 +60,7 @@ const MENU_ITEMS = [
 const HomeHeaderServiceGuest = () => {
   const navigate = useNavigate();
   return (
-    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px]">
+    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px] relative z-50">
       <div>
         <Logo></Logo>
       </div>
@@ -90,7 +90,7 @@ const HomeHeaderServiceGuest = () => {
           }}
           className="!p-[10px_40px] rounded-lg text-[18px]"
         >
-          Login
+          Đăng nhập
         </Button>
       </div>
     </header>

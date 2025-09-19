@@ -9,10 +9,9 @@ import InputUsername from "../components/input/InputUsername";
 import InputPassword from "../components/input/InputPassword";
 import { publicPort } from "../components/url/link";
 import AiFillGoogleCircle from "../Images/gggogle.png";
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { collection, addDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase-config';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { collection } from 'firebase/firestore';
 
 const LoginPageUser = () => {
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ const LoginPageUser = () => {
 
     if (!isValidEmail) {
       // do something
-      alert("Incorrect Email format");
+      alert("Định dạng email không đúng");
       return;
     }
     const response = await axios.post(publicPort + `patient/login`, {
@@ -55,7 +54,7 @@ const LoginPageUser = () => {
     // console.log(response);
 
     if (response.data.token === undefined) {
-      alert("Incorrect email or password.");
+      alert("Email hoặc mật khẩu không đúng.");
     }
 
     if (response.data.token.length > 0) {
@@ -65,21 +64,7 @@ const LoginPageUser = () => {
       navigate("/service", { state: { tokenn } });
     }
   };
-  const firebaseConfig = {
-    apiKey: "AIzaSyAHTSCNqDml61V3OGWWMB7gJJe5Xpg6MaU",
-    authDomain: "climates-48696.firebaseapp.com",
-    projectId: "climates-48696",
-    storageBucket: "climates-48696.appspot.com",
-    messagingSenderId: "13463981194",
-    appId: "1:13463981194:web:0185cfdc1d64c283d6b173",
-    measurementId: "G-8NG47L0MBF"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
-  const db = getFirestore(app);
 
   const handleGoogleLogin = async () => {
     try {
@@ -121,7 +106,7 @@ const LoginPageUser = () => {
 
   return (
     <LayoutSign
-      header="Login"
+      header="Đăng nhập"
       childrenStyle="!max-w-[500px] rounded-3xl overflow-hidden"
     >
       <div className="bg-white p-[40px_42px]">
@@ -135,14 +120,23 @@ const LoginPageUser = () => {
               to="/login-user"
               className="  text-textColor flex items-center"
             >
-              <input className="w-[20px] h-[20px]" type="radio" checked />
-              <p className="text-[20px] ml-[10px]">For user!</p>
+              <input 
+                className="w-[20px] h-[20px]" 
+                type="radio" 
+                checked 
+                onChange={() => {}} 
+              />
+              <p className="text-[20px] ml-[10px]">Dành cho người dùng!</p>
             </Link>
           </div>
           <div className=" flex items-center justify-center gap-1 w-[45%] h-[70px] rounded-2xl border-[#d8d7da] border-[1px]">
             <Link to="/login" className="  text-[#a2a7af] flex items-center">
-              <input className="w-[20px] h-[20px]" type="radio" />
-              <p className="text-[20px] ml-[10px]">For staff!</p>
+              <input 
+                className="w-[20px] h-[20px]" 
+                type="radio"
+                onChange={() => {}}
+              />
+              <p className="text-[20px] ml-[10px]">Dành cho nhân viên!</p>
             </Link>
           </div>
         </div>
@@ -150,10 +144,11 @@ const LoginPageUser = () => {
           <InputUsername
             handleChangeUsername={handleChangeUsername}
             type="text"
-            placeholder="Username or Email"
+            placeholder="Tên đăng nhập hoặc Email"
             control={control}
             name="email"
             username={username}
+            className=""
           ></InputUsername>
           <InputPassword
             handleChangePassword={handleChangePassword}
@@ -161,8 +156,9 @@ const LoginPageUser = () => {
             name="password"
             type="password"
             className="mt-8"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             control={control}
+            value={password}
           ></InputPassword>
           <div className="flex justify-between mt-[10px]">
             <div className="flex items-center gap-1 text-textColor">
@@ -170,11 +166,11 @@ const LoginPageUser = () => {
                 type="checkbox"
                 className="w-[16px] h-[16px] border border-textColor"
               />
-              <label htmlFor="">Remember me</label>
+              <label htmlFor="">Ghi nhớ tôi</label>
             </div>
             <div>
               <Link to="/registerenteremail" className="text-gradientLeft">
-                Forgot Password?
+                Quên mật khẩu?
               </Link>
             </div>
           </div>
@@ -183,21 +179,18 @@ const LoginPageUser = () => {
               <hr className="text-[#c5bfbf]" />
             </div>
             <div className="w-[20%] flex justify-center text-[#c5bfbf]">
-              <p>Or</p>
+              <p>Hoặc</p>
             </div>
             <div className="w-[40%] text-[#c5bfbf]">
               <hr />
             </div>
           </div>
           <Button
-            // onClick={() => {
-            //   navigate("/");
-            // }}
-
+            onClick={() => {}}
             className="mt-8"
             type="submit"
           >
-            Login
+            Đăng nhập
           </Button>
         </form>
         <div className="w-[100%] h-[40px] bg-[#e2edff]  mt-3 rounded-full flex items-center cursor-pointer"
@@ -207,21 +200,19 @@ const LoginPageUser = () => {
 
             className="w-[30%] h-[40px] ml-1"
           >
-            <img src={AiFillGoogleCircle} className="w-[30%] h-[100%]" />
+            <img src={AiFillGoogleCircle} className="w-[30%] h-[100%]" alt="Google Sign In" />
           </div>
           <div className="w-[70%] flex justify-start">
-            <p>
-              Login with Google
-            </p>
+            <p>Đăng nhập với Google</p>
           </div>
         </div>
         <div
           className="mt-[32px] flex items-center justify-center gap-1 "
           style={{ marginTop: "1rem", marginBottom: "-2rem" }}
         >
-          <span className="text-gray2">New User?</span>
+          <span className="text-gray2">Người dùng mới?</span>
           <Link to="/register" className="text-textColor">
-            Sign up here!
+            Đăng ký tại đây!
           </Link>
         </div>
       </div>

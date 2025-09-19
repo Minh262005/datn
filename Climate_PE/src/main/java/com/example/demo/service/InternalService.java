@@ -19,9 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.DTO.CreateAccountDTO;
-import com.example.demo.DTO.PatientDTO;
 import com.example.demo.entity.InternalAccount;
-import com.example.demo.entity.Patient;
 import com.example.demo.entity.Role;
 import com.example.demo.repository.InternalRepository;
 
@@ -65,6 +63,20 @@ public class InternalService implements UserDetailsService {
 
 	public List<InternalAccount> findAllDoctorWithLocation(int id) {
 		return internalRepository.findAllDoctorByLocation(id);
+	}
+
+	// Safe fallback: filter in memory to avoid JPQL issues
+	public List<InternalAccount> findAllDoctorWithLocationSafe(int id) {
+		List<InternalAccount> all = internalRepository.findAll();
+		java.util.List<InternalAccount> result = new java.util.ArrayList<>();
+		for (InternalAccount acc : all) {
+			if (acc.getRole() != null && "DOCTOR".equals(acc.getRole().getName())
+					&& acc.getWorkingPlace() != null && acc.getWorkingPlace().getId() == id
+					&& acc.getCommandFlag() == 0) {
+				result.add(acc);
+			}
+		}
+		return result;
 	}
 
 	public InternalAccount save(InternalAccount account) {

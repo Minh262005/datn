@@ -60,7 +60,7 @@ function ProfileContent({ mail, role }) {
     const listApp = async () => {
       try {
         let response;
-        if (role == "USER") {
+        if (role === "USER") {
           response = await axios.get(
             publicPort + `patient/profile?email=${mail}`
           );
@@ -151,7 +151,7 @@ function ProfileContent({ mail, role }) {
                   <h1 className="w-[100%] h-[30px] font-bold text-[20px] ">
                     {infor != undefined ? infor.name : ""}
                   </h1>
-                  {role == "USER" ? (
+                  {role === "USER" ? (
                     <p className="w-[100%] h-[30px] text-[#9f9c9c] text-[15px] ">
                       {infor != undefined ? infor.address : ""}
                     </p>
@@ -173,7 +173,7 @@ function ProfileContent({ mail, role }) {
                 </div>
               </div>
               {mail == viewer ? (
-                role == "USER" ?
+                role === "USER" ?
                   <div className="w-[20%] flex justify-end">
                     <span>
                       <BsPencilSquare

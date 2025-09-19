@@ -65,7 +65,7 @@ function ChooseNewPasswordContent({ email }) {
       }
     } else {
       alert(
-        "Please fill all fields or check if password and confirm password is same"
+        "Vui lòng điền đầy đủ thông tin hoặc kiểm tra mật khẩu và xác nhận mật khẩu trùng khớp"
       );
     }
   };
@@ -75,15 +75,12 @@ function ChooseNewPasswordContent({ email }) {
       <div className="min-h-[500px] w-[50%] mb-[100px] bg-white mt-[50px] rounded-[20px]">
         <div className="pt-[5%] pl-[8%] pr-[7%]">
           <div className="w-[100%] h-[80px]">
-            <h1 className="text-[30px] font-bold w-[75%]">
-              Enter security code
-            </h1>
+            <h1 className="text-[30px] font-bold w-[75%]">Nhập mã bảo mật</h1>
           </div>
           <div className=" w-[100%]">
             <span className="text-grayborder2">
-              Create a new password that is at least 6 characters long. A strong
-              password has a combination of letters, digits and punctuation
-              marks.
+              Tạo mật khẩu mới dài tối thiểu 6 ký tự. Mật khẩu mạnh nên gồm
+              chữ, số và ký tự đặc biệt.
             </span>
           </div>
           <div className="w-[100%] h-[70px] flex items-center">
@@ -93,7 +90,7 @@ function ChooseNewPasswordContent({ email }) {
                 name="newp"
                 className="w-[90%] h-[40px]"
                 onChange={handleChangePass}
-                placeholder="New Password *"
+                placeholder="Mật khẩu mới *"
               />
             </div>
           </div>
@@ -104,24 +101,24 @@ function ChooseNewPasswordContent({ email }) {
                 name="newrep"
                 className="w-[90%] h-[40px]"
                 onChange={handleChangePass}
-                placeholder="Confirm New Password *"
+                placeholder="Xác nhận mật khẩu mới *"
               />
             </div>
           </div>
           <div>
-            <span className="text-success font-bold text-2xl">Strong</span>
+            <span className="text-success font-bold text-2xl">Mạnh</span>
           </div>
           <hr className="w-[100%] text-grayborder2 font-normal mt-[5%] mb-[5%]" />
           <div className=" w-[100%] h-[45px] flex justify-end">
             <span className="w-[30%] bg-[#b9b4b4] h-[50px] mr-[30px] rounded-2xl flex items-center justify-center">
-              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={handleCancel}>Hủy</button>
             </span>
             <span className="w-[30%] bg-[#516af8] h-[50px] rounded-2xl">
               <button
                 onClick={handleClickSave}
                 className="w-[100%] h-[40px] text-white mt-[5px] font-bold"
               >
-                Save
+                Lưu
               </button>
             </span>
           </div>

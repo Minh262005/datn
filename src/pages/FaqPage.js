@@ -37,7 +37,7 @@ function FaqPage() {
               <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>
             ) : role == "NURSE" ? (
               <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
-            ) : role == "USER" ? (
+            ) : role === "USER" ? (
               <HomeHeaderService></HomeHeaderService>
             ) : (
               <HomeHeaderServiceGuest></HomeHeaderServiceGuest>
@@ -45,7 +45,7 @@ function FaqPage() {
           </div>
           <div className="w-[100%] h-[200px] flex items-center">
             <h1 className="text-[40px] font-bold">
-              Frequently Asked Questions
+              Câu hỏi thường gặp
             </h1>
           </div>
           <div className="bg-white">

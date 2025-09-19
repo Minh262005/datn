@@ -12,7 +12,7 @@ function SolutionContentDoctor() {
   };
 
   const handleListDoctorForAll = () => {
-    navigate("/listDoctorForAll");
+    navigate("/listDoctor");
   };
   const handleSchedules = () => {
     navigate("/schedules");

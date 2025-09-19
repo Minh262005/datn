@@ -105,9 +105,11 @@ const BAContentGuest = () => {
   const navigate = useNavigate();
   const [value, onChange] = useState();
   const [selectedCheckbox, setSelectedCheckbox] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleCheckboxChange = (event) => {
     setSelectedCheckbox(event.target.value);
+    setErrors((e) => ({ ...e, gender: "" }));
   };
 
   const [numberOfSym, setNumberOfSym] = useState(0);
@@ -228,6 +230,7 @@ const BAContentGuest = () => {
       };
       // console.log("set birth day");
       setBirthDay(newBday);
+      setErrors((e) => ({ ...e, bday: "" }));
     }
 
     if (name === "idC") {
@@ -263,6 +266,7 @@ const BAContentGuest = () => {
     setPlace(item);
 
     setShowPlace(false);
+    setErrors((e) => ({ ...e, place: "" }));
   };
 
   const deletePlaceItem = () => {
@@ -326,6 +330,7 @@ const BAContentGuest = () => {
     setSpec(item);
     setShowSpec(false);
     setShowDoctor(true);
+    setErrors((e) => ({ ...e, spec: "" }));
   };
 
   const deleteSpecItem = () => {
@@ -345,6 +350,7 @@ const BAContentGuest = () => {
     // console.log(item);
     setDoctor(item);
     setShowDoctor(false);
+    setErrors((e) => ({ ...e, doctor: "" }));
   };
 
   const deleteDoctorItem = () => {
@@ -364,26 +370,24 @@ const BAContentGuest = () => {
     let h = item.from + " - " + item.to;
     // console.log(h);
     setHour(h);
+    setErrors((e) => ({ ...e, time: "" }));
   };
 
   const bookAppointment = async () => {
-    if (
-      fullName.fname === undefined ||
-      phone.pnum === undefined ||
-      birthday.bday === undefined ||
-      selectedCheckbox === "" ||
-      place === undefined ||
-      spec === undefined ||
-      doctor === undefined ||
-      value === undefined ||
-      hour === ""
-    ) {
-      alert("Please fill all field");
-      return;
-    }
+    const newErrors = {};
+    if (!fullName.fname) newErrors.fname = "Vui lòng nhập họ tên";
+    if (!phone.pnum) newErrors.pnum = "Vui lòng nhập số điện thoại";
+    else if (!/^\d{10}$/.test(phone.pnum)) newErrors.pnum = "Số điện thoại phải gồm 10 chữ số";
+    if (!birthday.bday) newErrors.bday = "Vui lòng chọn ngày sinh";
+    if (!selectedCheckbox) newErrors.gender = "Vui lòng chọn giới tính";
+    if (!place) newErrors.place = "Vui lòng chọn cơ sở";
+    if (!spec) newErrors.spec = "Vui lòng chọn chuyên khoa";
+    if (!doctor) newErrors.doctor = "Vui lòng chọn bác sĩ";
+    if (!value) newErrors.date = "Vui lòng chọn ngày khám";
+    if (!hour) newErrors.time = "Vui lòng chọn giờ khám";
 
-    if (phone.pnum == undefined || phone.pnum.length != 10) {
-      alert("Phone number must be 10 numbers");
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
     registers.name = fullName.fname;
@@ -412,15 +416,18 @@ const BAContentGuest = () => {
     registers.description = description.ds;
 
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Reset time to start of day
+    const selectedDate = new Date(value);
+    selectedDate.setHours(0, 0, 0, 0);
 
     const bdatee = new Date(registers.birthday);
     if (bdatee > currentDate) {
-      alert("Birthdate is not valid");
+      setErrors((e) => ({ ...e, bday: "Ngày sinh không hợp lệ" }));
       return;
     }
 
-    if (currentDate > value) {
-      alert("book date must be later than today");
+    if (selectedDate < currentDate) {
+      setErrors((e) => ({ ...e, date: "Không thể đặt lịch cho ngày đã qua" }));
       return;
     }
     navigate("/appointmentConfirmationGuest", { state: { registers } });
@@ -465,10 +472,10 @@ const BAContentGuest = () => {
           visible={showDoctor}
           handleClose={() => setShowDoctor(false)}
         ></CreatePortalDoctor>
-        <h3 className="text-[32px] font-semibold text-gradient">Appointment</h3>
+        <h3 className="text-[32px] font-semibold text-gradient">Đặt lịch khám</h3>
         <div className="mt-[10rem]">
           <Header number={1} children={undefined} className={undefined}>
-            Booking person information
+            Thông tin người đặt lịch
           </Header>
           <div className="mt-[4.4rem]">
             <div className="grid grid-cols-2 gap-x-[12.2rem] gap-y-[3rem]">
@@ -476,23 +483,32 @@ const BAContentGuest = () => {
                 handleChangeName={handleChangeName}
                 icon={<IconPen />}
                 name={"fname"}
-                placeholder="Your name"
+                placeholder="Họ và tên"
                 type={undefined}
               ></InputInfo>
+              {errors.fname && (
+                <span className="text-error text-[1.4rem]">{errors.fname}</span>
+              )}
               <InputInfo
                 handleChangeName={handleChangeName}
                 name={"pnum"}
                 icon={<IconPhone />}
-                placeholder="Your phone"
+                placeholder="Số điện thoại"
                 type={undefined}
               ></InputInfo>
+              {errors.pnum && (
+                <span className="text-error text-[1.4rem]">{errors.pnum}</span>
+              )}
               <InputInfo
                 handleChangeName={handleChangeName}
                 type={"date"}
                 name={"bday"}
                 icon={<IconBirthday />}
-                placeholder="Your Birthday"
+                placeholder="Ngày sinh"
               ></InputInfo>
+              {errors.bday && (
+                <span className="text-error text-[1.4rem]">{errors.bday}</span>
+              )}
               <div className="relative flex gap-[2.4rem] py-[1.6rem] items-center border-b border-grayborder">
                 <span>
                   <IconGender />
@@ -510,7 +526,7 @@ const BAContentGuest = () => {
                     />
                     <label htmlFor="male" className="font-semibold">
                       {" "}
-                      Male
+                      Nam
                     </label>
                   </div>
                   <div className="flex items-center gap-[0.8rem]">
@@ -524,17 +540,20 @@ const BAContentGuest = () => {
                       value="female"
                     />
                     <label htmlFor="female" className="font-semibold">
-                      Female
+                      Nữ
                     </label>
                   </div>
                 </div>
               </div>
+              {errors.gender && (
+                <span className="text-error text-[1.4rem]">{errors.gender}</span>
+              )}
               <div className="flex items-center gap-[0.8rem]"></div>
             </div>
           </div>
         </div>
         <Header number={2} className="mt-[6.4rem]">
-          Appointment information
+          Thông tin lịch hẹn
         </Header>
 
         <div className="mt-[4.4rem]" onClick={() => setShowPlace(true)}>
@@ -545,7 +564,7 @@ const BAContentGuest = () => {
               </span>
               <span className="text-gradient font-bold text-[1.8rem]">
                 {!place ? (
-                  <> choose place</>
+                  <> chọn cơ sở</>
                 ) : (
                   <>
                     {place.description} - {place.name}
@@ -558,18 +577,21 @@ const BAContentGuest = () => {
             </span>
           </div>
         </div>
+        {errors.place && (
+          <div className="text-error text-[1.4rem] mt-2">{errors.place}</div>
+        )}
         {showMore ? (
           <>
             <h4 className="text-[1.8rem] my-[3.2rem]">
-              Preferred method booking <span className="text-error">*</span>
+              Phương thức đặt lịch ưu tiên <span className="text-error">*</span>
             </h4>
             <div className="flex items-center gap-[59px] justify-between">
               <SelectCardSymtom
                 numberOfSym={numberOfSym}
                 styleIcon="text-[#27AE60] bg-[#27AE60]"
                 icon={<IconSysptom />}
-                title="Sysptom"
-                describe="Select a Sysptom"
+                title="Triệu chứng"
+                describe="Chọn triệu chứng"
                 onClick={() => setShowSysptom(true)}
               ></SelectCardSymtom>
               <SelectCardSpec
@@ -577,8 +599,8 @@ const BAContentGuest = () => {
                 onClick={() => setShowSpec(true)}
                 styleIcon="text-[#855FCE] bg-[#855FCE]"
                 icon={<IconSpecialty />}
-                title="Specialty"
-                describe="Select a Specialty"
+                title="Chuyên khoa"
+                describe="Chọn chuyên khoa"
               ></SelectCardSpec>
 
               <SelectCardDoctor
@@ -586,8 +608,8 @@ const BAContentGuest = () => {
                 onClick={() => setShowDoctor(true)}
                 styleIcon="text-[#2F80ED] bg-[#2F80ED]"
                 icon={<IconDoctor />}
-                title="Doctor"
-                describe="Select a doctor"
+                title="Bác sĩ"
+                describe="Chọn bác sĩ"
               ></SelectCardDoctor>
             </div>
 
@@ -634,8 +656,14 @@ const BAContentGuest = () => {
                   ></Booking>
                 )}
               </div>
+              {errors.spec && (
+                <div className="text-error text-[1.4rem] mt-2">{errors.spec}</div>
+              )}
+              {errors.doctor && (
+                <div className="text-error text-[1.4rem] mt-2">{errors.doctor}</div>
+              )}
               <div className="mt-[2.4rem] text-[1.8rem] gap-[10.4rem] flex justify-end font-bold">
-                <span className="text-gradient">Estimated examination fee</span>
+                <span className="text-gradient">Ước tính phí khám</span>
                 {spec == null || doctor == null ? (
                   <>0đ</>
                 ) : (
@@ -650,51 +678,73 @@ const BAContentGuest = () => {
         <div className="mt-[6.4rem] gap-[80px] flex justify-between">
           <div className="flex-1">
             <Header number={3} children={undefined} className={undefined}>
-              Select a date
+              Chọn ngày
             </Header>
             <div className="p-[3.8rem_4.3rem] shadow-lg date_picker rounded-[24px] mt-[3.8rem]">
-              <Calendar onChange={onChange} value={value} />
+              <Calendar 
+                onChange={onChange} 
+                value={value}
+                minDate={new Date()} // Disable past dates
+                tileDisabled={({ date }) => {
+                  const today = new Date();
+                  today.setHours(0, 0, 0, 0);
+                  return date < today;
+                }}
+              />
             </div>
+            {errors.date && (
+              <div className="text-error text-[1.4rem] mt-2">{errors.date}</div>
+            )}
           </div>
           <div className="flex-1">
             <Header number={4} children={undefined} className={undefined}>
-              Select a time
+              Chọn giờ
             </Header>
             <div className="p-[3.8rem_4.3rem] shadow-lg flex flex-wrap gap-x-[1rem] gap-y-[0.17rem] rounded-[24px] mt-[3.8rem]">
               {hoursList.length > 0 &&
-                hoursList.map((item) =>
-                  scheOfDoc != undefined &&
-                  scheOfDoc.includes(item.from + " - " + item.to) ? (
-                    <div
-                      style={{ width: "22rem", color: "red" }}
-                      className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 
-                       `}
-                      key={item.id}
-                    >
-                      <span>{item.from}</span> - <span>{item.to}</span>
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => addHour(item)}
-                      style={{ width: "22rem" }}
-                      className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 
-                        ${
-                          hour.includes(item.from + " - " + item.to)
+                hoursList
+                  .filter((item) => {
+                    // Ẩn các giờ đã được đặt
+                    const timeSlot = item.from + " - " + item.to;
+                    const isBooked = scheOfDoc && scheOfDoc.length > 0 && 
+                      scheOfDoc.includes(timeSlot);
+                    
+                    // Debug log để kiểm tra
+                    if (scheOfDoc && scheOfDoc.length > 0) {
+                      console.log("scheOfDoc:", scheOfDoc);
+                      console.log("timeSlot:", timeSlot);
+                      console.log("isBooked:", isBooked);
+                    }
+                    
+                    return !isBooked;
+                  })
+                  .map((item) => {
+                    const isSelected = hour.includes(item.from + " - " + item.to);
+                    
+                    return (
+                      <div
+                        onClick={() => addHour(item)}
+                        style={{ width: "22rem" }}
+                        className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 hover:bg-gray-50
+                          ${isSelected
                             ? "bg-gradient-to-tr from-gradientLeft to-gradientRight text-white"
                             : ""
-                        }`}
-                      key={item.id}
-                    >
-                      <span>{item.from}</span> - <span>{item.to}</span>
-                    </div>
-                  )
-                )}
+                          }`}
+                        key={item.id}
+                      >
+                        <span>{item.from}</span> - <span>{item.to}</span>
+                      </div>
+                    );
+                  })}
             </div>
+            {errors.time && (
+              <div className="text-error text-[1.4rem] mt-2">{errors.time}</div>
+            )}
           </div>
         </div>
         <div className="mt-[6.4rem] ">
           <Header number={5} children={undefined} className={undefined}>
-            Reasons for medical examination
+            Lý do khám bệnh
           </Header>
           <div className="flex gap-[3rem] mt-[4.4rem] shadow-md rounded-[2.4rem] p-[2.8rem_3.2rem]">
             <span>
@@ -716,7 +766,7 @@ const BAContentGuest = () => {
               className="w-full h-[24rem]"
               name="ds"
               id=""
-              placeholder="Detailed description your symptoms or your needs "
+              placeholder="Mô tả chi tiết triệu chứng hoặc nhu cầu của bạn"
             ></textarea>
           </div>
         </div>
@@ -728,7 +778,7 @@ const BAContentGuest = () => {
             children={undefined}
             iconRight={undefined}
           >
-            Book appointment
+            Đặt lịch khám
           </ButtonIcon>
         </div>
       </div>

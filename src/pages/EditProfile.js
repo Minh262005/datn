@@ -14,7 +14,7 @@ function EditProfile() {
 
   useEffect(() => {
     const storedName = localStorage.getItem("token");
-    if (storedName == null) {
+    if (storedName === null) {
       navigate("/login-user");
     } else {
       try {
@@ -37,9 +37,9 @@ function EditProfile() {
       <div className="w-[100%] flex justify-center">
         <div className="w-[80%] min-h-[1000px] bg-white">
           <div className="bg-white">
-            {role == "USER" ? (
+            {role === "USER" ? (
               <HomeHeaderService></HomeHeaderService>
-            ) : role == "NURSE" ? (
+            ) : role === "NURSE" ? (
               <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
             ) : (
               <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>

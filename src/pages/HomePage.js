@@ -36,7 +36,7 @@ const HomePage = () => {
     <div className="bg-white">
       {role == "" ? (
         <HomeHeaderServiceGuest></HomeHeaderServiceGuest>
-      ) : role == "USER" ? (
+      ) : role === "USER" ? (
         <HomeHeaderService></HomeHeaderService>
       ) : role == "NURSE" ? (
         <HomeHeaderServiceNurse></HomeHeaderServiceNurse>

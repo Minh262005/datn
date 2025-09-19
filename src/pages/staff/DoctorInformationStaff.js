@@ -46,7 +46,7 @@ function DoctorInformationStaff() {
   return (
     <div className="bg-white">
       <div className="bg-white">
-        {role == "USER" ? (
+        {role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
         ) : role == "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>

@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Location;
 import com.example.demo.entity.Specialty;
 import com.example.demo.repository.SpeciatlyRepository;
 import com.example.demo.service.SpeciatlyService;
 
 @RestController
 @RequestMapping("/spec")
-@CrossOrigin(origins = { "http://clinicmates.io.vn/", "http://localhost:3000/" })
+@CrossOrigin(origins = { "http://clinicmates.io.vn", "http://localhost:3000" })
 public class SpeciatlyController {
 
 	@Autowired

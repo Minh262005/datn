@@ -30,11 +30,9 @@ import com.example.demo.DTO.CheckinDataDto;
 import com.example.demo.DTO.CheckinDataDtoSpeAndDocTor;
 import com.example.demo.DTO.InternalAccountDTO;
 import com.example.demo.DTO.LoginRequest;
-import com.example.demo.DTO.PatientDTO;
 import com.example.demo.entity.InternalAccount;
 import com.example.demo.entity.Specialty;
 import com.example.demo.repository.InternalRepository;
-import com.example.demo.service.AppointmentService;
 import com.example.demo.service.CheckinService;
 import com.example.demo.service.InternalService;
 import com.example.demo.service.JwtResponse;
@@ -46,7 +44,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = { "http://clinicmates.io.vn/", "http://localhost:3000/" })
+@CrossOrigin(origins = { "http://clinicmates.io.vn", "http://localhost:3000" })
 public class InternalController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -215,13 +213,17 @@ public class InternalController {
 
 	@GetMapping("/list_lo/{location}")
 	public List<InternalAccount> getAllByLocation(@PathVariable int location) {
-		return internalService.findAllDoctorWithLocation(location);
+		List<InternalAccount> result = internalService.findAllDoctorWithLocation(location);
+		if (result == null || result.isEmpty()) {
+			return internalService.findAllDoctorWithLocationSafe(location);
+		}
+		return result;
 	}
 
 	@GetMapping("/internal-accounts/search")
 	public ResponseEntity<?> searchInternalAccounts(@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "specialty", required = false) String specialty) {
-		String role = "DOCTOR";
+		// role filter not used here; repository limits to doctor where needed
 		Optional<List<InternalAccount>> accounts = internalService.searchInternalAccounts(name, specialty);
 		if (accounts.isPresent() && !accounts.get().isEmpty()) {
 			return ResponseEntity.ok(accounts);

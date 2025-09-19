@@ -1,13 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.f5eae884.css",
-    "main.js": "/static/js/main.e0db7017.js",
-    "static/media/Doctor2.png": "/static/media/Doctor2.16f42132c5cc0f147f2e.png",
+    "main.css": "/static/css/main.9ad629f4.css",
+    "main.js": "/static/js/main.c17870a8.js",
+    "static/media/Rectangle 1123.png": "/static/media/Rectangle 1123.99b1032038ba180f6ade.png",
+    "static/media/Saly-44.png": "/static/media/Saly-44.337d5d1fafca803f7304.png",
+    "static/media/imgDoctor.png": "/static/media/imgDoctor.ae0a94a2078701171c93.png",
+    "static/media/imgNurseStaff.png": "/static/media/imgNurseStaff.0e0a46095577cd7f9931.png",
+    "static/media/Doctor2.png": "/static/media/Doctor2.03fd72cda9f8fc502187.png",
+    "static/media/imgAdmin.png": "/static/media/imgAdmin.a3805844872e95bf3779.png",
+    "static/media/Group8.png": "/static/media/Group8.c321d4f2dc613196f88d.png",
+    "static/media/Rectangle 1124.png": "/static/media/Rectangle 1124.3d2d7636011d7e11e1ad.png",
+    "static/media/Rectangle 1127.png": "/static/media/Rectangle 1127.565cc535864704b9539b.png",
+    "static/media/Rectangle 1128.png": "/static/media/Rectangle 1128.5169c99bdce4addee889.png",
+    "static/media/Group2.png": "/static/media/Group2.cd2c15c43712b441918e.png",
+    "static/media/Rectangle 1129.png": "/static/media/Rectangle 1129.69c08dc5cdfce66634a4.png",
     "static/media/Rectangle1135.png": "/static/media/Rectangle1135.021feebdb59491d2e9ac.png",
+    "static/media/tpbank.png": "/static/media/tpbank.075882df49d4b61c3a33.png",
+    "static/media/momo.png": "/static/media/momo.bdd835ac2799844f2f4e.png",
+    "static/media/bidv.png": "/static/media/bidv.15b8cce69c7c440889a5.png",
     "static/media/doctor.png": "/static/media/doctor.3f7e2b792b86707226bf.png",
     "static/media/img2.png": "/static/media/img2.f4938d73bfcbe74519bc.png",
+    "static/media/clip.png": "/static/media/clip.2446df470dce443feb94.png",
+    "static/media/Ellipse 18.png": "/static/media/Ellipse 18.9c41e229fbec54810b29.png",
     "static/media/Group 9547.png": "/static/media/Group 9547.0150643ace324f32da3f.png",
     "static/media/ava1134.png": "/static/media/ava1134.288df08b6b6274f3f292.png",
+    "static/media/Ellipse 20.png": "/static/media/Ellipse 20.4eff50fbe3422f627a29.png",
+    "static/media/Ellipse 19.png": "/static/media/Ellipse 19.5e27adbf877470e82439.png",
+    "static/media/Ellipse 17.png": "/static/media/Ellipse 17.58d8c1b7e2dd132ed8c7.png",
     "static/media/Vectorneurology.png": "/static/media/Vectorneurology.b6125c266b7585674a07.png",
     "static/media/Laboratory.png": "/static/media/Laboratory.4dfcd3dadb32bb31c4d2.png",
     "static/media/GroupXray.png": "/static/media/GroupXray.57a4c09654b7c32eb9c7.png",
@@ -19,11 +38,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.f5eae884.css.map": "/static/css/main.f5eae884.css.map",
-    "main.e0db7017.js.map": "/static/js/main.e0db7017.js.map"
+    "main.9ad629f4.css.map": "/static/css/main.9ad629f4.css.map",
+    "main.c17870a8.js.map": "/static/js/main.c17870a8.js.map"
   },
   "entrypoints": [
-    "static/css/main.f5eae884.css",
-    "static/js/main.e0db7017.js"
+    "static/css/main.9ad629f4.css",
+    "static/js/main.c17870a8.js"
   ]
 }

@@ -35,14 +35,14 @@ const About = () => {
           <HomeHeaderServiceDoctor></HomeHeaderServiceDoctor>
         ) : role == "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>
-        ) : role == "USER" ? (
+        ) : role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
         ) : (
           <HomeHeaderServiceGuest></HomeHeaderServiceGuest>
         )}
       </div>
       <div className="pt-[80px] pl-[190px] text-7xl font-bold py-[20px]">
-        <h1>Clinicmate Private Clinic</h1>
+        <h1>Phòng khám Tư nhân Clinicmate</h1>
       </div>
       <div style={{ padding: "5% 12%" }}>
         <AboutContent></AboutContent>

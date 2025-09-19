@@ -41,7 +41,7 @@ const PopupSymptom = ({
             onChange={handleSearchInputChange}
             className="ml-[5rem] "
             style={{ width: "90%" }}
-            placeholder="Search symptom"
+            placeholder="Tìm triệu chứng"
             type="search"
           />
           <div className="absolute top-2/4 left-[2.4rem] -translate-y-2/4">
@@ -73,7 +73,7 @@ const PopupSymptom = ({
             })}
         </div>
         {numberOfSym > 0 ? (
-          <Button onClick={() => nextSpec()}>Next</Button>
+          <Button onClick={() => nextSpec()}>Tiếp tục</Button>
         ) : (
           <></>
         )}

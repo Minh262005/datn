@@ -8,59 +8,59 @@ const listCmt = [
   {
     id: 1,
     comment:
-      "As the first member to enter into operation and mark the presence of the Clinicmate Healthcare brand, Clinicmate plays a uniquely important role in the system's development. Each...",
+      "Là thành viên đầu tiên đi vào hoạt động và đánh dấu sự hiện diện của thương hiệu Chăm sóc Sức khỏe Clinicmate, Clinicmate đóng vai trò quan trọng đặc biệt trong sự phát triển của hệ thống. Mỗi...",
     photo:
       "https://retailinsider.b-cdn.net/wp-content/uploads/2020/08/the-health-clinic-shoppers-exterior.jpg",
     fullname:
-      "Clinicmate's Birthday: Breakthroughs with Special Professional Milestones",
-    title: "read more",
+      "Sinh nhật Clinicmate: Những bước đột phá với các cột mốc chuyên môn đặc biệt",
+    title: "đọc thêm",
   },
   {
     id: 2,
     comment:
-      "Clinicmate collaborates with the International Liver Cancer Epidemiology Consortium (ILCEC) and the Asian Coordinating Council for Epidemiology (ACC) to organize the annual conference...",
+      "Clinicmate hợp tác với Hiệp hội Dịch tễ học Ung thư Gan Quốc tế (ILCEC) và Hội đồng Điều phối Dịch tễ học Châu Á (ACC) để tổ chức hội nghị thường niên...",
     photo:
       "https://sahyadrihospital.com/wp-content/uploads/2021/05/speciality-clinic.jpg",
     fullname:
-      "Clinicmate shares numerous scientific studies at the ACC & ILCEC Conference",
-    title: "read more",
+      "Clinicmate chia sẻ nhiều nghiên cứu khoa học tại Hội nghị ACC & ILCEC",
+    title: "đọc thêm",
   },
   {
     id: 3,
     comment:
-      "Each year, over 9.6 million people die from cancer worldwide, surpassing the number of deaths from HIV/AIDS, malaria, and tuberculosis combined. It is estimated that by 2030, the number of deaths from cancer...",
+      "Mỗi năm, hơn 9,6 triệu người tử vong do ung thư trên toàn thế giới, vượt quá số ca tử vong do HIV/AIDS, sốt rét và lao phổi cộng lại. Ước tính đến năm 2030, số ca tử vong do ung thư...",
     photo:
       "https://img.freepik.com/free-photo/pediatrician-doctor-nurse-sitting-desk-medical-office-talking-with-child-healthcare-practitioner-specialist-medicine-providing-professional-radiographic-treatment-hospital-clinic_482257-6769.jpg",
     fullname:
-      "World Cancer Day on February 4th: Clinicmate commits to providing differentiated and effective care for cancer patients in Vietnam",
-    title: "read more",
+      "Ngày Ung thư Thế giới 4/2: Clinicmate cam kết cung cấp dịch vụ chăm sóc khác biệt và hiệu quả cho bệnh nhân ung thư tại Việt Nam",
+    title: "đọc thêm",
   },
 ];
 
 const listnew = [
   {
     id: 1,
-    name: "Neurology",
+    name: "Thần kinh học",
   },
   {
     id: 2,
-    name: "Paediatric",
+    name: "Nhi khoa",
   },
   {
     id: 3,
-    name: "Dental Care",
+    name: "Chăm sóc răng miệng",
   },
   {
     id: 4,
-    name: "X-ray",
+    name: "Chụp X-quang",
   },
   {
     id: 5,
-    name: "Laboratory",
+    name: "Phòng xét nghiệm",
   },
   {
     id: 6,
-    name: "Eye Care",
+    name: "Chăm sóc mắt",
   },
 ];
 
@@ -76,7 +76,7 @@ function NewsPageContent() {
         <div className="w-[20%] min-h-[100px] ">
           <div className="flex w-[100%] items-center justify-center ">
             <h1 className="text-[20px] font-bold w-[80%] text-gradientLeft cursor-pointer">
-              Health News
+              Tin tức sức khỏe
             </h1>
             <button
               type="button"
@@ -102,12 +102,12 @@ function NewsPageContent() {
           )}
           <div className="w-[100%] pb-[20px] pt-[20px]">
             <h1 className="text-[18px] font-bold  text-gradientLeft cursor-pointer">
-              Hot Announcement
+              Thông báo nóng
             </h1>
           </div>
           <div className="w-[100%]">
             <h1 className="text-[20px] font-bold w-[100%] text-gradientLeft cursor-pointer">
-              Testimonials
+              Lời chứng thực
             </h1>
           </div>
         </div>
@@ -115,7 +115,7 @@ function NewsPageContent() {
           <div className="w-[100%] min-h-[300px">
             <div>
               <div className="w-[100%] h-[40px] font-semibold">
-                <h1 className="text-[22px]">Health news</h1>
+                <h1 className="text-[22px]">Tin tức sức khỏe</h1>
               </div>
               <div className="flex">
                 <div className="w-[50%] min-h-[300px]">
@@ -125,7 +125,7 @@ function NewsPageContent() {
                   <div className="w-[80%] min-h-[30px]">
                     <div>
                       <h1 className="text-[20px] font-semibold">
-                        Important notes before a general health check
+                        Những lưu ý quan trọng trước khi khám sức khỏe tổng quát
                       </h1>
                     </div>
                     <div>

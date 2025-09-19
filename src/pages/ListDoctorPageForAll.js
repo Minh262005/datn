@@ -33,7 +33,7 @@ const ListDoctorPageForAll = () => {
   return (
     <div className="bg-white w-[100%]">
       <div className="bg-white">
-        {role == "USER" ? (
+        {role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
         ) : role == "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>

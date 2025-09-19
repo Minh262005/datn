@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 
 function AppointmentDetailsContent({ appointment }) {
-  const tabButtons1 = "Return to previous";
-  const tabButtons2 = "Completion of Examination";
+  const tabButtons1 = "Quay lại";
+  const tabButtons2 = "Hoàn tất khám";
   var result = {
     appointment: {
       id: "",
@@ -43,7 +43,7 @@ function AppointmentDetailsContent({ appointment }) {
     })
     .replace(",", "");
   //
-  const [type, setType] = useState("Appointment confirmation");
+  const [type, setType] = useState("Xác nhận lịch hẹn");
   const navigate = useNavigate();
   const [showMedicalSummary, setShowMedicalSummary] = useState(false);
   const [showConfirm, setshowConfirm] = useState(false);
@@ -99,7 +99,7 @@ function AppointmentDetailsContent({ appointment }) {
     result.releaseDate = formattedDateTime;
 
     if (result.process == "" || result.sumary == "" || result.treatment == "") {
-      alert("Please fill all field");
+      alert("Vui lòng điền đầy đủ thông tin");
     } else {
       console.log(result);
       const response = await axios.post(
@@ -109,7 +109,7 @@ function AppointmentDetailsContent({ appointment }) {
 
       console.log(response);
       if (response.data === "cannot find patient") {
-        window.alert("Cannot find patient");
+        window.alert("Không tìm thấy bệnh nhân");
       }
 
       if (response.data === "Medical record created successfully.") {
@@ -150,25 +150,25 @@ function AppointmentDetailsContent({ appointment }) {
     <div>
       <div className="flex w-[100%] items-center pb-[30px]">
         <div className=" w-[50%]  text-6xl font-bold">
-          <h1>Appointment Details</h1>
+          <h1>Chi tiết cuộc hẹn</h1>
         </div>
       </div>
       <div className="bg-white p-5 rounded-3xl shadow-lg ">
         <div className="pl-[64px] pt-5 pb-10">
           <div key={appointment != undefined ? appointment.id : ""}>
             <div>
-              <h1 className="text-[#4976f7] text-3xl font-semibold">Sevices</h1>
+              <h1 className="text-[#4976f7] text-3xl font-semibold">Dịch vụ</h1>
               <div className="pt-8 flex">
-                <span className="w-[35%]">Form of Service</span>
+                <span className="w-[35%]">Hình thức dịch vụ</span>
                 <span className="w-[65%]">
-                  Specialty examination at the hospital
+                  Khám chuyên khoa tại bệnh viện
                 </span>
               </div>
             </div>
             <div className="pt-6">
-              <h1 className="text-[#4976f7] text-3xl font-semibold">Patient</h1>
+              <h1 className="text-[#4976f7] text-3xl font-semibold">Bệnh nhân</h1>
               <div className="pt-8 flex">
-                <span className="w-[35%]">Customer</span>
+                <span className="w-[35%]">Khách hàng</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.patientName
@@ -176,7 +176,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Date of Birth</span>
+                <span className="w-[35%]">Ngày sinh</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.birthday
@@ -184,7 +184,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">ID Card</span>
+                <span className="w-[35%]">CMND/CCCD</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.patient != null
@@ -194,7 +194,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Gender</span>
+                <span className="w-[35%]">Giới tính</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.gender
@@ -202,7 +202,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Phone Number</span>
+                <span className="w-[35%]">Số điện thoại</span>
                 <span>
                   {appointment != undefined
                     ? appointment.appointment.phone
@@ -210,7 +210,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Symptom</span>
+                <span className="w-[35%]">Triệu chứng</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.symptom
@@ -218,7 +218,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Description</span>
+                <span className="w-[35%]">Mô tả</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.description
@@ -227,9 +227,9 @@ function AppointmentDetailsContent({ appointment }) {
               </div>
             </div>
             <div className="pt-6">
-              <h1 className="text-[#4976f7] text-3xl font-semibold">Doctor</h1>
+              <h1 className="text-[#4976f7] text-3xl font-semibold">Bác sĩ</h1>
               <div className="pt-6 flex">
-                <span className="w-[35%]">Doctor</span>
+                <span className="w-[35%]">Bác sĩ</span>
                 <span className="w-[65%]">
                   {appointment != undefined
                     ? appointment.appointment.doctorName
@@ -237,7 +237,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Specialty</span>
+                <span className="w-[35%]">Chuyên khoa</span>
                 <span className="">
                   {appointment != undefined
                     ? appointment.appointment.speciatly
@@ -245,7 +245,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Examination Date</span>
+                <span className="w-[35%]">Ngày khám</span>
                 <span className="">
                   {appointment != undefined
                     ? appointment.appointment.examDate
@@ -253,7 +253,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Examination Time</span>
+                <span className="w-[35%]">Giờ khám</span>
                 <span className="">
                   {appointment != undefined
                     ? appointment.appointment.examTime
@@ -261,7 +261,7 @@ function AppointmentDetailsContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Location</span>
+                <span className="w-[35%]">Địa điểm</span>
                 <span className="">
                   {appointment != undefined
                     ? appointment.appointment.bookPlace

@@ -9,7 +9,8 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { storage } from "../url/firebase";
+import { storage } from "../../firebase-config";
+import avatarDefault from "../../Images/avatar.png";
 import { v4 } from "uuid";
 
 
@@ -27,9 +28,10 @@ const PopupDoctor = ({
   // Hàm lấy URL của avatar
   const getAvatarUrl = async (imageName) => {
     try {
-      const storageRef = ref(storage, `${imageName}`); // No need to concatenate the image name with v4() here
-    const url = await getDownloadURL(storageRef);
-    return url;
+      if (!imageName) return null;
+      const storageRef = ref(storage, `${imageName}`);
+      const url = await getDownloadURL(storageRef);
+      return url;
     } catch (error) {
       console.error('Error getting avatar URL: ', error);
       return null;
@@ -40,13 +42,19 @@ const PopupDoctor = ({
     if (listData?.length > 0) {
       listData.forEach((items) => {
         const avatarName = items.avatar;
-        getAvatarUrl(avatarName).then((url) => {
-          // Sử dụng cập nhật state để lưu trữ avatarUrl dựa trên data.id
+        if (avatarName) {
+          getAvatarUrl(avatarName).then((url) => {
+            setAvatarUrls((prevUrls) => ({
+              ...prevUrls,
+              [items.id]: url || avatarDefault,
+            }));
+          });
+        } else {
           setAvatarUrls((prevUrls) => ({
             ...prevUrls,
-            [items.id]: url,
+            [items.id]: avatarDefault,
           }));
-        });
+        }
       });
     }
   }, [listData]);
@@ -65,7 +73,7 @@ const PopupDoctor = ({
             onChange={handleSearchInputChange}
             style={{ width: "90%" }}
             className="ml-[5rem] "
-            placeholder="Search doctor"
+            placeholder="Tìm bác sĩ"
             type="search"
           />
           <div className="absolute top-2/4 left-[2.4rem] -translate-y-2/4">
@@ -73,7 +81,7 @@ const PopupDoctor = ({
           </div>
         </div>
         <div className="overflow-auto gap-[0.8rem] max-h-[40rem] mt-[2.4rem]">
-          {listData.length > 0 &&
+          {Array.isArray(listData) && listData.length > 0 ? (
             listData.map((item) => {
               return doctor === item ? (
                 <div
@@ -83,13 +91,13 @@ const PopupDoctor = ({
               >               
                     <div className="flex items-center gap-[3.2rem]">
                     <div className="w-[5.7rem] h-[5.7rem] overflow-hidden rounded-full">
-                      <img src={avatarUrls[item?.id]} alt="" />
+                      <img src={avatarUrls[item?.id] || avatarDefault} alt="" />
                     </div>
                     <span className="font-semibold text-[2rem]">
                       {item.name}
                     </span>
                   </div>
-                  <Link className="text-gradient">info</Link>
+                  <Link className="text-gradient">thông tin</Link>
                 </div>
               ) : (
                 <div
@@ -100,16 +108,19 @@ const PopupDoctor = ({
                 >
                   <div className="flex items-center gap-[3.2rem]">
                     <div className="w-[5.7rem] h-[5.7rem] overflow-hidden rounded-full">
-                      <img src={avatarUrls[item?.id]}  alt="" />
+                      <img src={avatarUrls[item?.id] || avatarDefault}  alt="" />
                     </div>
                     <span className="font-semibold text-[2rem]">
                       {item.name}
                     </span>
                   </div>
-                  <Link className="text-gradient">info</Link>
+                  <Link className="text-gradient">thông tin</Link>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="text-center text-[#8D8B8B] p-6">Không có bác sĩ khả dụng</div>
+          )}
         </div>
       </div>
     </div>

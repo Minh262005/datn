@@ -118,7 +118,7 @@ const BAContent = () => {
     }
     // console.log(role);
     const listApp = async () => {
-      if (role == "USER") {
+      if (role === "USER") {
         const response = await axios.get(
           publicPort + `patient/profile?email=${m}`
         );
@@ -263,6 +263,7 @@ const BAContent = () => {
     symtom: "",
     spec: "",
     doctorName: "",
+    doctorId: "",
     bookDate: "",
     bookTime: "",
     description: "",
@@ -278,6 +279,7 @@ const BAContent = () => {
     symtom: "",
     spec: "",
     doctorName: "",
+    doctorId: "",
     bookDate: "",
     bookTime: "",
     description: "",
@@ -488,6 +490,17 @@ const BAContent = () => {
       return;
     }
 
+    // Validate date - không cho chọn ngày quá khứ
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Reset time to start of day
+    const selectedDate = new Date(value);
+    selectedDate.setHours(0, 0, 0, 0);
+    
+    if (selectedDate < currentDate) {
+      alert("Không thể đặt lịch cho ngày đã qua");
+      return;
+    }
+
     // console.log("Enter book");
     registers.name = fullName.fname;
     registers.phone = phone.pnum;
@@ -500,6 +513,7 @@ const BAContent = () => {
     }
     registers.spec = spec.name;
     registers.doctorName = doctor.name;
+    registers.doctorId = doctor.id;
     // Get the offset between UTC and your local time zone in minutes
     const offsetMinutes = value.getTimezoneOffset();
 
@@ -515,7 +529,6 @@ const BAContent = () => {
     registers.bookTime = hour;
     registers.description = description.ds;
 
-    const currentDate = new Date();
     // console.log(registers);
 
     const bdatee = new Date(registers.birthday);
@@ -546,6 +559,7 @@ const BAContent = () => {
     }
     registersUpdate.spec = spec.name;
     registersUpdate.doctorName = doctor.name;
+    registersUpdate.doctorId = doctor.id;
 
     const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
     let formattedDate;
@@ -565,7 +579,8 @@ const BAContent = () => {
     registersUpdate.bookTime = hour;
     registersUpdate.description = description.ds;
 
-    const currentDate = new Date();
+    const currentDateForUpdate = new Date();
+    currentDateForUpdate.setHours(0, 0, 0, 0);
 
     if (
       registersUpdate.name === undefined ||
@@ -580,14 +595,19 @@ const BAContent = () => {
       alert("Please fill all field");
       return;
     }
+    
     const bdatee = new Date(registersUpdate.birthday);
-    if (bdatee > currentDate) {
+    if (bdatee > currentDateForUpdate) {
       alert("Birthdate is not valid");
       return;
     }
 
-    if (currentDate > value) {
-      alert("book date must be later than today");
+    // Validate date - không cho chọn ngày quá khứ
+    const selectedDateForUpdate = new Date(value);
+    selectedDateForUpdate.setHours(0, 0, 0, 0);
+    
+    if (selectedDateForUpdate < currentDateForUpdate) {
+      alert("Không thể đặt lịch cho ngày đã qua");
       return;
     }
     console.log(registersUpdate);
@@ -638,7 +658,7 @@ const BAContent = () => {
           handleClose={() => setShowDoctor(false)}
         ></CreatePortalDoctor>
         <h3 className="text-[32px] font-semibold text-gradient">
-          Appointment
+          Đặt lịch khám
         </h3>
         <div className="mt-[10rem]">
           <Header number={1}>Booking person information</Header>
@@ -663,7 +683,7 @@ const BAContent = () => {
               ) : (
                 <></>
               )}
-              {role == "USER" ? (
+              {role === "USER" ? (
                 <>
                   <InputInfo
                     handleChangeName={handleChangeName}
@@ -862,40 +882,63 @@ const BAContent = () => {
           <div className="flex-1">
             <Header number={3}>Select a date</Header>
             <div className="p-[3.8rem_4.3rem] shadow-lg date_picker rounded-[24px] mt-[3.8rem]">
-              <Calendar onChange={onChange} value={value} />
+              <Calendar 
+                onChange={onChange} 
+                value={value}
+                minDate={new Date()} // Disable past dates
+                tileDisabled={({ date }) => {
+                  const today = new Date();
+                  today.setHours(0, 0, 0, 0);
+                  return date < today;
+                }}
+              />
             </div>
           </div>
           <div className="flex-1">
             <Header number={4}>Select a time</Header>
             <div className="p-[3.8rem_4.3rem] shadow-lg flex flex-wrap gap-x-[1rem] gap-y-[0.17rem] rounded-[24px] mt-[3.8rem]">
+              {/* Debug info */}
+              {scheOfDoc && scheOfDoc.length > 0 && (
+                <div className="w-full mb-4 p-2 bg-yellow-100 text-xs">
+                  <strong>Debug:</strong> scheOfDoc = {JSON.stringify(scheOfDoc)}
+                </div>
+              )}
+              
               {hoursList.length > 0 &&
-                hoursList.map((item) =>
-                  scheOfDoc != undefined &&
-                  scheOfDoc.includes(item.from + " - " + item.to) ? (
-                    <div
-                      style={{ width: "22rem", color: "red" }}
-                      className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 
-                       `}
-                      key={item.id}
-                    >
-                      <span>{item.from}</span> - <span>{item.to}</span>
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => addHour(item)}
-                      style={{ width: "22rem" }}
-                      className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 
-                        ${
-                          hour.includes(item.from + " - " + item.to)
+                hoursList
+                  .filter((item) => {
+                    // Ẩn các giờ đã được đặt
+                    const timeSlot = item.from + " - " + item.to;
+                    const isBooked = scheOfDoc && scheOfDoc.length > 0 && 
+                      scheOfDoc.includes(timeSlot);
+                    
+                    // Debug log để kiểm tra
+                    if (scheOfDoc && scheOfDoc.length > 0) {
+                      console.log("scheOfDoc:", scheOfDoc);
+                      console.log("timeSlot:", timeSlot);
+                      console.log("isBooked:", isBooked);
+                    }
+                    
+                    return !isBooked;
+                  })
+                  .map((item) => {
+                    const isSelected = hour.includes(item.from + " - " + item.to);
+                    
+                    return (
+                      <div
+                        onClick={() => addHour(item)}
+                        style={{ width: "22rem" }}
+                        className={`p-[1.4rem_1.6rem] cursor-pointer border rounded-[0.8rem] border-textColor2 hover:bg-gray-50
+                          ${isSelected
                             ? "bg-gradient-to-tr from-gradientLeft to-gradientRight text-white"
                             : ""
-                        }`}
-                      key={item.id}
-                    >
-                      <span>{item.from}</span> - <span>{item.to}</span>
-                    </div>
-                  )
-                )}
+                          }`}
+                        key={item.id}
+                      >
+                        <span>{item.from}</span> - <span>{item.to}</span>
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
@@ -933,7 +976,7 @@ const BAContent = () => {
               className="!rounded-[1.6rem] p-[1.6rem_4rem] w-max mt-[6.4rem] "
               onClick={UpdateAppointment}
             >
-              Save appointment
+              Lưu lịch hẹn
             </ButtonIcon>
           ) : (
             <ButtonIcon
@@ -941,7 +984,7 @@ const BAContent = () => {
               className="!rounded-[1.6rem] p-[1.6rem_4rem] w-max mt-[6.4rem] "
               onClick={bookAppointment}
             >
-              Book appointment
+              Đặt lịch khám
             </ButtonIcon>
           )}
         </div>

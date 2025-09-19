@@ -51,7 +51,7 @@ const AppointmentConfirmationPage = () => {
         )}
       </div>
       <div className="pt-[80px] pl-[190px] text-6xl font-bold py-[20px]">
-        <h1>Appointment Confirmation</h1>
+        <h1>Xác nhận lịch hẹn</h1>
       </div>
       <div style={{ padding: "3% 12%" }}>
         <AppointmentConfirmationContent

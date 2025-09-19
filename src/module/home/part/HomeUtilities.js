@@ -10,12 +10,11 @@ const HomeUtilities = () => {
     <div className="flex justify-between items-center mt-[240px] pb-[143px]">
       <div className="w-[505px] ">
         <h2 className="font-semibold text-[32px] text-black2">
-          ClinicMate - We take care of your health while you pursue happiness
+          ClinicMate - Chúng tôi chăm sóc sức khỏe của bạn trong khi bạn theo đuổi hạnh phúc 
         </h2>
         <p className="text-textColor2 mt-[16px]">
-          Experience ClinicMate today. Join ClinicMate on the journey toward
-          creating a more advanced, more convenient and more practical
-          healthcare system for millions of people
+          Trải nghiệm ClinicMate ngay hôm nay. Tham gia ClinicMate trên con đường hướng tới
+          tạo ra một hệ thống y tế tiên tiến, tiện lợi và thực tế hơn cho hàng triệu người
         </p>
         <ButtonIcon
           onClick={() => {
@@ -24,7 +23,7 @@ const HomeUtilities = () => {
           className="rounded-full w-max p-[16px_28px] mt-[32px]"
           iconLeft={<IconCall />}
         >
-          Register Now
+          Đăng ký ngay
         </ButtonIcon>
       </div>
       <div className="w-[540px]  relative">

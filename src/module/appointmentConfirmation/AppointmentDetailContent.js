@@ -29,21 +29,18 @@ function AppointmentDetailContent({ appointment }) {
     setshowConfirmApprove(false);
   };
 
-  const [role, setrole] = useState();
+  const [role, setrole] = useState("");
   useEffect(() => {
-    let r;
-    let m;
-
     const storedName = localStorage.getItem("token");
+    if (!storedName) return;
     try {
-      const decoded = jwtDecode(storedName);
-      const role = decoded.roles[0].authority;
-      r = role;
-      setrole(role);
+      const decoded = /** @type {any} */ (jwtDecode(storedName));
+      const r = decoded?.roles?.[0]?.authority || "";
+      setrole(r);
     } catch (error) {
       console.log(error);
     }
-  }, [role]);
+  }, []);
 
   const Approve = async () => {
     // console.log(appointment);
@@ -87,8 +84,8 @@ function AppointmentDetailContent({ appointment }) {
         <div className=" w-[50%]  text-6xl font-bold">
           <p style={{ fontSize: "3rem" }}>Appointment Details</p>
         </div>
-        {role == "NURSE" ? (
-          appointment != undefined && appointment.commandFlag == "0" ? (
+        {role === "NURSE" || role === "DOCTOR" ? (
+          appointment !== undefined && appointment.commandFlag === "0" ? (
             <div className="h-[50px] w-[50%] flex justify-end items-center">
               <div
                 className="border-[1px] border-[#dddddd]  w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
@@ -117,15 +114,15 @@ function AppointmentDetailContent({ appointment }) {
               <div className="pt-8 flex">
                 <span className="w-[35%]">Status of Appointment</span>
                 <span className="w-[65%]">
-                  {appointment != undefined &&
-                  appointment.commandFlag == "0" ? (
+                  {appointment !== undefined &&
+                  appointment.commandFlag === "0" ? (
                     <p
                       className={`w-[10%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-warning"}`}
                     >
                       Pending
                     </p>
-                  ) : appointment != undefined &&
-                    appointment.commandFlag == "1" ? (
+                  ) : appointment !== undefined &&
+                    appointment.commandFlag === "1" ? (
                     <p
                       className={`w-[13.5%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-success"}`}
                     >
@@ -155,19 +152,19 @@ function AppointmentDetailContent({ appointment }) {
               <div className="pt-8 flex">
                 <span className="w-[35%]">Customer</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.patientName : ""}
+                  {appointment !== undefined ? appointment.patientName : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Date of Birth</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.birthday : ""}
+                  {appointment !== undefined ? appointment.birthday : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">ID Card</span>
                 <span className="w-[65%]">
-                  {appointment != undefined
+                  {appointment !== undefined
                     ? appointment.patient != null
                       ? appointment.patient.id
                       : ""
@@ -177,23 +174,23 @@ function AppointmentDetailContent({ appointment }) {
               <div className="pt-3 flex">
                 <span className="w-[35%]">Gender</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.gender : ""}
+                  {appointment !== undefined ? appointment.gender : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Phone Number</span>
-                <span>{appointment != undefined ? appointment.phone : ""}</span>
+                <span>{appointment !== undefined ? appointment.phone : ""}</span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Symptom</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.symptom : ""}
+                  {appointment !== undefined ? appointment.symptom : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Description</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.note : ""}
+                  {appointment !== undefined ? appointment.note : ""}
                 </span>
               </div>
             </div>
@@ -202,31 +199,31 @@ function AppointmentDetailContent({ appointment }) {
               <div className="pt-6 flex">
                 <span className="w-[35%]">Doctor</span>
                 <span className="w-[65%]">
-                  {appointment != undefined ? appointment.doctorName : ""}
+                  {appointment !== undefined ? appointment.doctorName : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Specialty</span>
                 <span className="">
-                  {appointment != undefined ? appointment.speciatly : ""}
+                  {appointment !== undefined ? appointment.speciatly : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Examination Date</span>
                 <span className="">
-                  {appointment != undefined ? appointment.examDate : ""}
+                  {appointment !== undefined ? appointment.examDate : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Examination Time</span>
                 <span className="">
-                  {appointment != undefined ? appointment.examTime : ""}
+                  {appointment !== undefined ? appointment.examTime : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
                 <span className="w-[35%]">Location</span>
                 <span className="">
-                  {appointment != undefined ? appointment.bookPlace : ""}
+                  {appointment !== undefined ? appointment.bookPlace : ""}
                 </span>
               </div>
             </div>
@@ -252,8 +249,8 @@ function AppointmentDetailContent({ appointment }) {
           >
             {tabButtons1}
           </button>
-          {role == "NURSE" ? (
-            appointment != undefined && appointment.commandFlag == "0" ? (
+          {role === "NURSE" || role === "DOCTOR" ? (
+            appointment !== undefined && appointment.commandFlag === "0" ? (
               <>
                 <button
                   className=" rounded-2xl h-[50px] pl-[30px] pr-[30px] w-[30%] mr-[35px] bg-error"

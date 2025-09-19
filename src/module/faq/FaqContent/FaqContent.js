@@ -28,7 +28,7 @@ function FaqContent() {
                                 <div className="w-[100%] flex">
                                     <div className="w-[50%]">
                                         <h1 className="text-[25px] text-gradientLeft" >
-                                            About ClinicMate
+                                            Về ClinicMate
                                         </h1>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@ function FaqContent() {
                                 <div className="w-[100%] flex">
                                     <div className="w-[50%]">
                                         <h1 className="text-[25px]   text-gradientLeft" >
-                                            About ClinicMate
+                                            Về ClinicMate
                                         </h1>
                                     </div>
                                 </div>
@@ -60,42 +60,42 @@ function FaqContent() {
                         <div className="w-[100%] min-h-[700px] ">
                             <div className="w-[100%] h-[180px] ">
                                 <div className="w-[100%] h-[40px] ">
-                                    <h1 className="font-semibold text-[21px]">1. What is Clinicmate?</h1>
+                                    <h1 className="font-semibold text-[21px]">1. Clinicmate là gì?</h1>
                                 </div>
                                 <div className="w-[100%] min-h-[100px]  flex justify-center">
                                     <p className="text-[21px] font-light w-[95%] ml-[15px]">
-                                        Clinicmate is an application developed by the Clinicmate Healthcare System that helps individuals and families manage their health with a focus on proactive care, prevention, and personalization. It enables customers to actively participate in their treatment journey as well as their own and their loved ones' health care journey.
+                                        Clinicmate là một ứng dụng được phát triển bởi Hệ thống Chăm sóc Sức khỏe Clinicmate giúp các cá nhân và gia đình quản lý sức khỏe của họ với trọng tâm là chăm sóc chủ động, phòng ngừa và cá nhân hóa. Nó cho phép khách hàng tích cực tham gia vào hành trình điều trị của họ cũng như hành trình chăm sóc sức khỏe của chính họ và những người thân yêu.
                                     </p>
                                 </div>
                             </div>
                             <div className="w-[100%] min-h-[210px] ">
                                 <div className="w-[100%] h-[40px] ">
-                                    <h1 className="font-semibold text-[21px]">2. Who should use Clinicmate?</h1>
+                                    <h1 className="font-semibold text-[21px]">2. Ai nên sử dụng Clinicmate?</h1>
                                 </div>
                                 <div className="w-[100%] min-h-[100px]  flex justify-center">
                                     <p className="text-[21px] font-light w-[95%] ml-[15px]">
-                                        If you are someone who is concerned about your health, the Clinicmate app can assist you in your health care journey. The utilities and content of Clinicmate are developed to support various needs of different user groups, from those with special care needs such as pregnant women or families with young children, to ordinary users with health care needs such as adolescents. At Clinicmate, all user groups can find the necessary health care information for themselves.
+                                        Nếu bạn là người quan tâm đến sức khỏe của mình, ứng dụng Clinicmate có thể hỗ trợ bạn trong hành trình chăm sóc sức khỏe. Các tiện ích và nội dung của Clinicmate được phát triển để hỗ trợ các nhu cầu khác nhau của các nhóm người dùng khác nhau, từ những người có nhu cầu chăm sóc đặc biệt như phụ nữ mang thai hoặc gia đình có con nhỏ, đến những người dùng thông thường có nhu cầu chăm sóc sức khỏe như thanh thiếu niên. Tại Clinicmate, tất cả các nhóm người dùng đều có thể tìm thấy thông tin chăm sóc sức khỏe cần thiết cho bản thân.
 
                                     </p>
                                 </div>
                             </div>
                             <div className="w-[100%] h-[180px]">
                                 <div className="w-[100%] h-[40px] ">
-                                    <h1 className="font-semibold text-[21px]">3. What does Clinicmate version 1.0 include?</h1>
+                                    <h1 className="font-semibold text-[21px]">3. Phiên bản Clinicmate 1.0 bao gồm những gì?</h1>
                                 </div>
                                 <div className="w-[100%] min-h-[100px]  flex justify-center">
                                     <p className="text-[21px] font-light w-[95%] ml-[15px]">
-                                        In version 1.0, Clinicmate has 9 basic features: registration and login, news reading, calling Clinicmate hospitals, appointment booking and reminders, viewing examination results and medical history at Vinmec, Clinicmate customer health code, and viewing general health examination results. In subsequent versions, Clinicmate will have many other notable features.
+                                        Trong phiên bản 1.0, Clinicmate có 9 tính năng cơ bản: đăng ký và đăng nhập, đọc tin tức, gọi điện đến các bệnh viện Clinicmate, đặt lịch hẹn và nhắc nhở, xem kết quả khám và lịch sử bệnh án tại Clinicmate, mã sức khỏe khách hàng Clinicmate, và xem kết quả khám sức khỏe tổng quát. Trong các phiên bản tiếp theo, Clinicmate sẽ có nhiều tính năng đáng chú ý khác.
                                     </p>
                                 </div>
                             </div>
                             <div className="w-[100%]h-[180px] ">
                                 <div className="w-[100%] h-[40px] ">
-                                    <h1 className="font-semibold text-[21px]">4. What devices can Clinicmate be used on?</h1>
+                                    <h1 className="font-semibold text-[21px]">4. Clinicmate có thể được sử dụng trên những thiết bị nào?</h1>
                                 </div>
                                 <div className="w-[100%] min-h-[100px]  flex justify-center">
                                     <p className="text-[21px] font-light w-[95%] ml-[15px]">
-                                        Clinicmate is used on the Clinicmate.io.vn website, where users can log in to their Clinicmate accounts to access various features.
+                                        Clinicmate được sử dụng trên trang web Clinicmate.io.vn, nơi người dùng có thể đăng nhập vào tài khoản Clinicmate của họ để truy cập các tính năng khác nhau.
                                     </p>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@ function FaqContent() {
             </div>
             <div className='w-[100%] min-h-[200px] '>
                 <p className="text-[18px] w-[95%]">
-                    In case you cannot find the information you need, please contact us via the email address hello@clinicmate.io.vn or any hotline number of the Clinicmate private clinic system. We are always ready to serve and listen to your feedback and suggestions.
+                    Trong trường hợp bạn không thể tìm thấy thông tin cần thiết, vui lòng liên hệ với chúng tôi qua địa chỉ email hello@clinicmate.io.vn hoặc bất kỳ số hotline nào của hệ thống phòng khám tư nhân Clinicmate. Chúng tôi luôn sẵn sàng phục vụ và lắng nghe phản hồi và góp ý của bạn.
                 </p>
             </div>
         </div>

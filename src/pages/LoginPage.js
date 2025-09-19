@@ -41,7 +41,7 @@ const LoginPage = () => {
 
     if (!isValidEmail) {
       // do something
-      alert("Incorrect Email format");
+      alert("Định dạng email không đúng");
       return;
     }
     const response = await axios.post(publicPort + `api/login`, {
@@ -50,11 +50,11 @@ const LoginPage = () => {
     });
     // console.log(response);
     if (response.data == "You have no permission to login.") {
-      alert("You have no permission to login.");
+      alert("Bạn không có quyền đăng nhập.");
       return;
     }
     if (response.data.token === undefined) {
-      alert("Incorrect email or password.");
+      alert("Email hoặc mật khẩu không chính xác.");
     }
 
     if (response.data.token.length > 0) {
@@ -67,7 +67,7 @@ const LoginPage = () => {
 
   return (
     <LayoutSign
-      header="Login"
+      header="Đăng nhập"
       childrenStyle="!max-w-[500px] rounded-3xl overflow-hidden"
     >
       <div className="bg-white p-[40px_42px]">
@@ -82,7 +82,7 @@ const LoginPage = () => {
               className="   text-[#a2a7af] flex items-center"
             >
               <input className="w-[20px] h-[20px]" type="radio" />
-              <p className="text-[20px] ml-[10px]">For user!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho người dùng!</p>
             </Link>
           </div>
           <div className=" flex items-center justify-center gap-1 w-[45%] h-[70px] rounded-2xl border-[#d8d7da] border-[1px]">
@@ -91,7 +91,7 @@ const LoginPage = () => {
               className="   text-textColor    flex items-center"
             >
               <input className="w-[20px] h-[20px]" type="radio" checked />
-              <p className="text-[20px] ml-[10px]">For staff!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho nhân viên!</p>
             </Link>
           </div>
         </div>
@@ -99,7 +99,7 @@ const LoginPage = () => {
           <InputUsername
             handleChangeUsername={handleChangeUsername}
             type="text"
-            placeholder="Username or Email"
+            placeholder="Tên đăng nhập hoặc Email"
             control={control}
             name="email"
             username={username}
@@ -110,12 +110,12 @@ const LoginPage = () => {
             name="password"
             type="password"
             className="mt-8"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             control={control}
           ></InputPassword>
           <div className="flex justify-between mt-[10px]"></div>
           <Button className="mt-8" type="submit">
-            Login
+            Đăng nhập
           </Button>
         </form>
       </div>

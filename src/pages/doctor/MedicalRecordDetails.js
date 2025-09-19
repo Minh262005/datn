@@ -42,7 +42,7 @@ function MedicalRecordDetails() {
   return (
     <div>
       <div className="bg-white">
-        {role == "USER" ? (
+        {role === "USER" ? (
           <HomeHeaderService></HomeHeaderService>
         ) : role == "NURSE" ? (
           <HomeHeaderServiceNurse></HomeHeaderServiceNurse>

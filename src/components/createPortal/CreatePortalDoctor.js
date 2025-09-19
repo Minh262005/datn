@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { CSSTransition } from "react-transition-group";
@@ -16,18 +17,48 @@ const CreatePortalDoctor = ({
 }) => {
   const [doctorList, setDoctorList] = useState([]);
   const [listOrigin, setListOrigin] = useState([]);
-  const [doctorListSearch, setDoctorListSearch] = useState();
+  const [doctorListSearch, setDoctorListSearch] = useState([]);
 
   useEffect(() => {
     const doctos = async () => {
       try {
-        const response = await axios.get(
-          publicPort + `api/list_lo/${place.id}`
-        );
-        setDoctorList(response.data);
-        setListOrigin(response.data);
+        let data = [];
+        if (place && place.id) {
+          const resByPlace = await axios.get(publicPort + `api/list_lo/${place.id}`);
+          if (Array.isArray(resByPlace.data) && resByPlace.data.length > 0) {
+            data = resByPlace.data;
+          }
+        }
+        if (data.length === 0) {
+          try {
+            const resDoctors = await axios.get(publicPort + `api/doctors`);
+            if (Array.isArray(resDoctors.data) && resDoctors.data.length > 0) {
+              data = resDoctors.data;
+            }
+          } catch (e) {}
+        }
+        if (data.length === 0) {
+          try {
+            const resDoctorsAdmin = await axios.get(publicPort + `api/doctorsForAdmin`);
+            if (Array.isArray(resDoctorsAdmin.data) && resDoctorsAdmin.data.length > 0) {
+              data = resDoctorsAdmin.data;
+            }
+          } catch (e) {}
+        }
+        if (data.length === 0) {
+          try {
+            const resAll = await axios.get(publicPort + `api/list`);
+            if (Array.isArray(resAll.data) && resAll.data.length > 0) {
+              // lọc chỉ bác sĩ
+              data = resAll.data.filter((item) => item?.role && (item.role.name === 'DOCTOR' || item.role.id === 2));
+            }
+          } catch (e) {}
+        }
+        setDoctorList(Array.isArray(data) ? data : []);
+        setListOrigin(Array.isArray(data) ? data : []);
       } catch (error) {
-        // console.log(error);
+        setDoctorList([]);
+        setListOrigin([]);
       }
     };
     doctos();
@@ -47,29 +78,28 @@ const CreatePortalDoctor = ({
     }
   }, [checkinDoctor]);
 
-  useEffect(() => {
-    setDoctorList([]);
-    setDoctorListSearch([]);
-  }, [spec]);
 
   useEffect(() => {
-    setDoctorList(listOrigin);
-    setDoctorListSearch(listOrigin);
+    // Luôn dựa trên listOrigin mới nhất, sau khi fetch xong
+    const baseList = Array.isArray(listOrigin) ? listOrigin : [];
     if (spec !== undefined) {
-      const filteredItems = doctorList.filter((item) => {
-        return (
-          item.role.id === 3 &&
-          null !== item.specialty &&
-          spec.id == item.specialty.id
-        );
+      const filteredItems = baseList.filter((item) => {
+        const isDoctor = item?.role && (item.role.name === 'DOCTOR' || item.role.id === 2);
+        const matchSpec = item?.specialty != null && spec?.id == item.specialty.id;
+        return isDoctor && matchSpec;
       });
-      setDoctorList(filteredItems);
-      setDoctorListSearch(filteredItems);
+      if (filteredItems.length === 0) {
+        setDoctorList(baseList);
+        setDoctorListSearch(baseList);
+      } else {
+        setDoctorList(filteredItems);
+        setDoctorListSearch(filteredItems);
+      }
     } else {
-      setDoctorList(listOrigin);
-      setDoctorListSearch(listOrigin);
+      setDoctorList(baseList);
+      setDoctorListSearch(baseList);
     }
-  }, [spec]);
+  }, [spec, listOrigin]);
 
   const handleSearchInputChange = (event) => {
     let searchInput = event.target.value;
@@ -109,8 +139,8 @@ const CreatePortalDoctor = ({
                 changeDoctorList={changeDoctorList}
                 listData={doctorList}
                 handleClose={onClose}
-                header="Doctor list"
-                describe="Select a Doctor"
+                header="Danh sách bác sĩ"
+                describe="Chọn bác sĩ"
               ></PopupDoctor>
             </div>
           </div>,

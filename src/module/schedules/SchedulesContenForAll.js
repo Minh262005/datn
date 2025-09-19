@@ -22,19 +22,19 @@ function SchedulesContenForAll({ email, role }) {
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Patient Name",
+      title: "Tên bệnh nhân",
     },
     {
       id: 3,
-      title: "Date",
+      title: "Ngày",
     },
     {
       id: 4,
-      title: "Time",
+      title: "Giờ",
     },
     // {
     //   id: 5,
@@ -42,7 +42,7 @@ function SchedulesContenForAll({ email, role }) {
     // },
     {
       id: 6,
-      title: "View Details",
+      title: "Xem chi tiết",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -131,7 +131,7 @@ function SchedulesContenForAll({ email, role }) {
 
   const handleDetail = (appointment) => {
     console.log(appointment);
-    navigate("/AppointmentDetails", { state: { appointment } });
+    navigate("/appointmentdetails", { state: { appointment } });
   };
   return (
     <div className="bg-white p-5 rounded-2xl shadow-2xl w-[100%] min-h-[500px]">
@@ -173,7 +173,7 @@ function SchedulesContenForAll({ email, role }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
@@ -241,7 +241,7 @@ function SchedulesContenForAll({ email, role }) {
                       className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white "
                       onClick={() => handleDetail(listD)}
                     >
-                      View
+                      Xem
                     </button>
                   </td>
                 </tr>
@@ -272,9 +272,9 @@ function SchedulesContenForAll({ email, role }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mỗi trang</option>
+            <option value="7">7 mỗi trang</option>
+            <option value="10">10 mỗi trang</option>
           </select>
         </div>
       </div>

@@ -15,7 +15,7 @@ const SchedulesPage = () => {
   useEffect(() => {
     const storedName = localStorage.getItem("token");
     if (storedName == null) {
-      navigate("/login");
+      navigate("/login-user");
     } else {
       try {
         const decoded = jwtDecode(storedName);

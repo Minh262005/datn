@@ -10,11 +10,16 @@ const bookappointment = [
   },
   {
     id: 2,
+    to: "/book_appointment_guest",
+    title: "Book Appointment",
+  },
+  {
+    id: 3,
     to: "/about",
     title: "About",
   },
   {
-    id: 3,
+    id: 4,
     to: "/faq",
     title: "FAQ",
   },

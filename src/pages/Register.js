@@ -14,8 +14,8 @@ import { localPort, publicPort } from "../components/url/link";
 import React from "react";
 
 const RegisterStep = [
-  { id: 1, title: "Your Profile", step: <RegisterStep1 /> },
-  { id: 2, title: "Consent To Trest", step: <RegisterStep2 /> },
+  { id: 1, title: "Thông tin của bạn", step: <RegisterStep1 /> },
+  { id: 2, title: "Đồng ý điều khoản", step: <RegisterStep2 /> },
 ];
 const schame = yup.object({});
 const Register = () => {
@@ -47,17 +47,17 @@ const Register = () => {
       const currentDate = new Date();
       const birthdate = new Date(Date.parse(values.bdate));
       if (currentDate <= birthdate) {
-        alert("Birthdate must be lower or equal than today");
+        alert("Ngày sinh phải nhỏ hơn hoặc bằng ngày hôm nay");
         return;
       }
       console.log(values.socialsecurity);
       if (values.socialsecurity.length !== 12) {
-        alert("Your ID card number must have 12 characters");
+        alert("Số căn cước công dân của bạn phải có 12 ký tự");
         return;
       }
 
       if (values.password != values.cpassword) {
-        alert("Your confirm password must be same as password");
+        alert("Mật khẩu xác nhận phải giống với mật khẩu");
         return;
       }
       const partient = {
@@ -86,7 +86,7 @@ const Register = () => {
   };
   return (
     <LayoutSign
-      header="Create New Account"
+      header="Tạo tài khoản mới"
       childrenStyle="max-w-[1200px]"
       // nextStep={<NextStep />}
     >
@@ -139,10 +139,10 @@ function NextStep() {
   let contentBack = "";
   switch (step) {
     case 0:
-      contentBack = "Back To Login";
+      contentBack = "Quay lại Đăng nhập";
       break;
     case 1:
-      contentBack = "Your Profile";
+      contentBack = "Thông tin của bạn";
       break;
     default:
       break;
@@ -170,7 +170,7 @@ function NextStep() {
         className="flex items-center cursor-pointer text-2xl bg-white p-[5px_52px] rounded-3xl text-[#6F3AFA]"
       >
         <span className="text-2xl font-semibold">
-          {step === 1 ? "Register" : "Next"}
+          {step === 1 ? "Đăng ký" : "Tiếp theo"}
         </span>
         <div className="flex items-center justify-center w-[42px] h-[42px]">
           <ArrowRight />

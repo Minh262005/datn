@@ -14,18 +14,18 @@ const HomeContent = () => {
       <div className="flex items-center gap-[141px] justify-between max-w-[1156px] mx-auto mt-[6px]">
         <div className="flex flex-col w-[590px]">
           <span className="text-[20px] text-textColor2">
-            Clinic management application
+            Ứng dụng quản lý phòng khám
           </span>
           <span className="text-[56px] mt-6 text-[#fff0] font-bold bg-clip-text w-max bg-gradient-to-tr from-gradientLeft to-gradientRight">
             ClinicMate
           </span>
           <span className="mt-2 text-textColor2">
-            Top healthcare application for your family
+            Ứng dụng chăm sóc sức khỏe hàng đầu cho gia đình bạn
           </span>
           <p className="mt-8 text-textColor2">
-            As a busy day passes by, we have grown neglectful of our most
-            valuable possession: Health. Let ClinicMate become the trusted
-            keeper of that asset for you and your family.
+            Khi những ngày bận rộn trôi qua, chúng ta đã trở nên lơ là với tài sản 
+            quý giá nhất của mình: Sức khỏe. Hãy để ClinicMate trở thành người 
+            giữ gìn đáng tin cậy cho tài sản đó của bạn và gia đình.
           </p>
           <ButtonIcon
             onClick={() => {
@@ -35,7 +35,7 @@ const HomeContent = () => {
             type="button"
             className="mt-8 rounded-full gap-[40px] px-[27px] w-max"
           >
-            Register Now
+            Đăng ký ngay
           </ButtonIcon>
         </div>
         <div className="w-[500px]">

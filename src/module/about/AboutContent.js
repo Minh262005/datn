@@ -10,7 +10,7 @@ function AboutContent() {
   return (
     <div style={{ lineHeight: "30px" }}>
       <div className="w-[100%] h-[40px] flex items-center">
-        <span className="mr-[8px] text-4xl">Share: </span>
+        <span className="mr-[8px] text-4xl">Chia sẻ: </span>
         <button>
           <img
             className="rounded-full w-[24px] h-[24px] mr-[8px]"
@@ -24,57 +24,57 @@ function AboutContent() {
       <div>
         <div className="pt-[10px]">
           <h1 className=" font-semibold pt-[15px] text-4xl">
-            Clinicmate Private Clinic
+            Phòng khám Tư nhân Clinicmate
           </h1>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            Clinicmate is a healthcare system developed by students from FPT
-            University, a multi-disciplinary private university in Vietnam.
+            Clinicmate là hệ thống chăm sóc sức khỏe được phát triển bởi các sinh viên từ 
+            Đại học FPT, một trường đại học tư thục đa ngành tại Việt Nam.
           </p>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            With state-of-the-art facilities, a team of experienced experts and
-            doctors, continuous adoption of the latest global treatment methods,
-            and excellent service quality, Clinicmate has become a trusted
-            international standard healthcare provider in Vietnam.
+            Với cơ sở vật chất hiện đại, đội ngũ chuyên gia và bác sĩ giàu kinh nghiệm, 
+            việc áp dụng liên tục các phương pháp điều trị tiên tiến nhất trên thế giới, 
+            và chất lượng dịch vụ xuất sắc, Clinicmate đã trở thành nhà cung cấp dịch vụ 
+            chăm sóc sức khỏe đạt tiêu chuẩn quốc tế đáng tin cậy tại Việt Nam.
           </p>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            Over the years, Clinicmate has been striving to fulfill its noble
-            mission of becoming a private healthcare system in Vietnam, with the
-            following achievements:
+            Trong những năm qua, Clinicmate đã không ngừng nỗ lực để hoàn thành sứ mệnh 
+            cao cả của mình là trở thành hệ thống chăm sóc sức khỏe tư nhân tại Việt Nam, 
+            với những thành tựu sau:
           </p>
         </div>
         <div className="pt-[5px] pl-[3%]">
           <ul className="font-light" style={{ listStyle: "disc" }}>
-            <li>Operating not for profit-oriented goals.</li>
+            <li>Hoạt động không vì mục tiêu lợi nhuận.</li>
             <li className="pt-[5px]">
-              Having two private hospitals that meet the strictest safety
-              standards of JCI (Joint Commission International).
+              Có hai bệnh viện tư nhân đáp ứng các tiêu chuẩn an toàn nghiêm ngặt nhất 
+              của JCI (Joint Commission International).
             </li>
             <li className="pt-[5px]">
-              Investing significantly in research and technology to enhance the
-              quality of healthcare services.
+              Đầu tư đáng kể vào nghiên cứu và công nghệ để nâng cao chất lượng 
+              dịch vụ chăm sóc sức khỏe.
             </li>
           </ul>
         </div>
         <div className="pt-[10px]">
           <p className="font-light text-3xl">
-            Structured into three closely connected components:
+            Được cấu trúc thành ba thành phần liên kết chặt chẽ:
           </p>
           <div className="pl-[3%] pt-[10px]">
             <ul className="font-light" style={{ listStyle: "disc" }}>
-              <li>Operating not for profit-oriented goals.</li>
+              <li>Hoạt động không vì mục tiêu lợi nhuận.</li>
               <li className="pt-[5px]">
-                Having two private hospitals that meet the strictest safety
-                standards of JCI (Joint Commission International).
+                Có hai bệnh viện tư nhân đáp ứng các tiêu chuẩn an toàn nghiêm ngặt nhất 
+                của JCI (Joint Commission International).
               </li>
               <li className="pt-[5px]">
-                Investing significantly in research and technology to enhance
-                the quality of healthcare services.
+                Đầu tư đáng kể vào nghiên cứu và công nghệ để nâng cao chất lượng 
+                dịch vụ chăm sóc sức khỏe.
               </li>
             </ul>
           </div>
           <p className=" pt-[10px] font-light text-3xl">
-            In addition to developing a chain of hospitals, Clinicmate also
-            establishes and develops specialized research institutes.
+            Ngoài việc phát triển chuỗi bệnh viện, Clinicmate cũng thành lập và 
+            phát triển các viện nghiên cứu chuyên ngành.
           </p>
         </div>
         <div
@@ -84,17 +84,16 @@ function AboutContent() {
           <img src={imgAbout1}></img>
         </div>
         <div>
-          <h1 className=" font-semibold text-4xl">Vision</h1>
+          <h1 className=" font-semibold text-4xl">Tầm nhìn</h1>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            To become an internationally renowned academic healthcare system
-            with three pillars: groundbreaking research, excellent treatment
-            quality, and perfect care services.
+            Trở thành hệ thống chăm sóc sức khỏe học thuật nổi tiếng quốc tế với ba trụ cột: 
+            nghiên cứu đột phá, chất lượng điều trị xuất sắc và dịch vụ chăm sóc hoàn hảo.
           </p>
         </div>
-        <div className="pt-[5   px]">
-          <h1 className=" font-semibold pt-[15px] text-4xl">Mission</h1>
+        <div className="pt-[5px]">
+          <h1 className=" font-semibold pt-[15px] text-4xl">Sứ mệnh</h1>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            To provide care with talent, integrity, and empathy.
+            Cung cấp dịch vụ chăm sóc với tài năng, sự chính trực và sự đồng cảm.
           </p>
         </div>
         <div
@@ -104,99 +103,95 @@ function AboutContent() {
           <img src={imgAbout2}></img>
         </div>
         <div>
-          <h1 className=" font-semibold pt-[15px] text-4xl">Core Values</h1>
+          <h1 className=" font-semibold pt-[15px] text-4xl">Giá trị cốt lõi</h1>
           <p className="pt-[20px] text-3xl font-light leading-relaxed">
-            The four letters C-A-R-E represent the following meanings:
+            Bốn chữ cái C-A-R-E đại diện cho những ý nghĩa sau:
           </p>
           <div className="pl-[3%] pt-[5px]">
             <ul className="font-light" style={{ listStyle: "disc" }}>
               <li>
-                Creativity: Constantly innovate and bring forth innovative
-                solutions for patients.
+                Sáng tạo (Creativity): Không ngừng đổi mới và mang đến những giải pháp 
+                sáng tạo cho bệnh nhân.
               </li>
               <li>
-                Accountability: Take the highest responsibility towards patients
-                and their families in terms of integrity, skills, knowledge, and
-                professional standards at Vinmec.
+                Trách nhiệm (Accountability): Chịu trách nhiệm cao nhất đối với bệnh nhân 
+                và gia đình của họ về tính chính trực, kỹ năng, kiến thức và tiêu chuẩn 
+                chuyên môn tại Clinicmate.
               </li>
               <li>
-                Reliability: Commit to doing only what is best for patients and
-                provide the highest level of reliability to the community.
+                Đáng tin cậy (Reliability): Cam kết chỉ làm những gì tốt nhất cho bệnh nhân 
+                và cung cấp mức độ tin cậy cao nhất cho cộng đồng.
               </li>
               <li>
-                Excellence: Strive for the highest quality of service and
-                excellent healthcare processes.
+                Xuất sắc (Excellence): Phấn đấu để đạt được chất lượng dịch vụ cao nhất 
+                và quy trình chăm sóc sức khỏe xuất sắc.
               </li>
             </ul>
           </div>
         </div>
         <div className="pt-[3%]">
           <h1 className=" font-semibold pt-[15px] text-4xl">
-            Commitment to Customers
+            Cam kết với khách hàng
           </h1>
           <div className="pl-[3%] pt-[5px]">
             <ul className="font-light" style={{ listStyle: "disc" }}>
-              <li>Patients are examined by highly skilled experts.</li>
+              <li>Bệnh nhân được khám bởi các chuyên gia có trình độ cao.</li>
               <li>
-                Clinical practice is evidence-based, ensuring the quality of
-                patient care.
+                Thực hành lâm sàng dựa trên bằng chứng, đảm bảo chất lượng 
+                chăm sóc bệnh nhân.
               </li>
               <li>
-                Hospitals are operated with a priority on patient safety and
-                undergo regular evaluations and thorough analysis to improve
-                service quality.
+                Bệnh viện được vận hành với ưu tiên về an toàn bệnh nhân và 
+                trải qua các đánh giá định kỳ và phân tích kỹ lưỡng để cải thiện 
+                chất lượng dịch vụ.
               </li>
               <li>
-                Patient health status is continuously assessed before, during,
-                and after treatment.
+                Tình trạng sức khỏe của bệnh nhân được đánh giá liên tục trước, 
+                trong và sau điều trị.
               </li>
               <li>
-                Treatment protocols for patients are carefully selected to
-                ensure suitability and effectiveness for each case.
+                Các giao thức điều trị cho bệnh nhân được lựa chọn cẩn thận để 
+                đảm bảo phù hợp và hiệu quả cho từng trường hợp.
               </li>
               <li>
-                Patients and their families are educated and provided with
-                health care knowledge.
+                Bệnh nhân và gia đình được giáo dục và cung cấp kiến thức 
+                chăm sóc sức khỏe.
               </li>
               <li>
-                Patient rights are respected and emphasized, especially the
-                rights to privacy and information security, as well as
-                addressing psychological and cultural needs.
+                Quyền của bệnh nhân được tôn trọng và nhấn mạnh, đặc biệt là 
+                quyền riêng tư và bảo mật thông tin, cũng như đáp ứng nhu cầu 
+                tâm lý và văn hóa.
               </li>
               <li>
-                Adherence to hospital infection control procedures and
-                regulations to minimize the risk of hospital-acquired infections
-                for patients.
+                Tuân thủ các quy trình và quy định kiểm soát nhiễm trùng bệnh viện 
+                để giảm thiểu nguy cơ nhiễm trùng mắc phải tại bệnh viện cho bệnh nhân.
               </li>
               <li>
-                All staff members participate in emergency response training
-                courses to ensure patient safety.
+                Tất cả nhân viên tham gia các khóa đào tạo ứng phó khẩn cấp 
+                để đảm bảo an toàn cho bệnh nhân.
               </li>
             </ul>
           </div>
         </div>
         <div className="pt-[3%]  text-[#5365f7]">
           <h1 className=" font-semibold pt-[15px] text-4xl">
-            For more information:
+            Để biết thêm thông tin:
           </h1>
           <div className="pl-[3%] pt-[5px]">
             <ul className="font-semibold" style={{ listStyle: "disc" }}>
               <li>
                 <a href="#">
-                  Clinicmate creates a distinctive value in the healthcare
-                  sector in Vietnam.
+                  Clinicmate tạo ra giá trị đặc biệt trong lĩnh vực chăm sóc sức khỏe tại Việt Nam.
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Clinicmate has been honored as the "Most Progressive Hospital"
-                  and "Safe for Patients."
+                  Clinicmate đã được vinh danh là "Bệnh viện Tiến bộ Nhất" và "An toàn cho Bệnh nhân".
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Clinicmate successfully performed an artificial heart
-                  transplant to support end-stage heart failure patients.
+                  Clinicmate đã thực hiện thành công ca cấy ghép tim nhân tạo để hỗ trợ bệnh nhân suy tim giai đoạn cuối.
                 </a>
               </li>
             </ul>

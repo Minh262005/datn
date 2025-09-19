@@ -82,8 +82,8 @@ const CreatePortalPlace = ({
                 changePlaceList={changePlaceList}
                 listData={placeList}
                 handleClose={onClose}
-                header="Place list"
-                describe="Select a Place"
+                header="Danh sách cơ sở"
+                describe="Chọn cơ sở"
               ></PopupPlace>
             </div>
           </div>,

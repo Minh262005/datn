@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../components/Logo/Logo";
 import { NavLink, useNavigate } from "react-router-dom";
 import EnsignAnh from "../../Images/anh.png";
+import AvatarFallback from "../../Images/avatar.png";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AccountMenu from "../../Popper/menu/AccountMenu";
 import { CiLogin } from "react-icons/ci";
@@ -12,37 +13,37 @@ const HomeNav = [
   {
     id: 1,
     to: "/service",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 2,
     to: "/adminpages",
-    title: "Dashboard",
+    title: "Bảng điều khiển",
   },
   {
     id: 3,
     to: "/locations",
-    title: "Internal Information",
+    title: "Thông tin nội bộ",
   },
   {
     id: 4,
     to: "/internals",
-    title: "Accounts",
+    title: "Tài khoản",
   },
 ];
 
 const MENU_ITEMS = [
   {
-    title: "Profile",
+    title: "Hồ sơ",
   },
   {
-    title: "Private session",
+    title: "Phiên riêng tư",
   },
   {
-    title: "Setting",
+    title: "Cài đặt",
   },
   {
-    title: "Log out",
+    title: "Đăng xuất",
     icon: <CiLogin />,
     to: "/register",
   },
@@ -53,11 +54,12 @@ const HomeHeaderServiceAdmin = () => {
   const storedName = localStorage.getItem("token");
   const [role, setRole] = useState("");
   const [nameuser, setNameUser] = useState("");
-  const [viewer, setViewer] = useState();
+  const [viewer, setViewer] = useState(/** @type {any} */ (null));
   useEffect(() => {
     try {
-      const decoded = jwtDecode(storedName);
-      const role = decoded.roles[0].authority;
+      if (!storedName) return;
+      const decoded = /** @type {any} */ (jwtDecode(storedName));
+      const role = decoded.roles?.[0]?.authority;
       const mal = decoded.sub;
       setRole(role);
       const nameuser = decoded.nameInternal;
@@ -66,7 +68,7 @@ const HomeHeaderServiceAdmin = () => {
       const listApp = async () => {
         try {
           let response;
-          if (role == "USER") {
+          if (role === "USER") {
             response = await axios.get(
               publicPort + `patient/profile?email=${mal}`
             );
@@ -75,7 +77,6 @@ const HomeHeaderServiceAdmin = () => {
               publicPort + `api/internal-accounts/search-email?email=${mal}`
             );
           }
-          // console.log(response.data);
           setViewer(response.data);
         } catch (error) {
           console.log(error);
@@ -85,33 +86,8 @@ const HomeHeaderServiceAdmin = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [storedName]);
 
-  useEffect(() => {
-    const fetchImage = async () => {
-      if (viewer?.avatar) {
-        try {
-          const response = await axios.get(
-            publicPort + `images/${viewer.avatar}`,
-            {
-              responseType: "blob", // set thành kiểu blob
-            }
-          );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setImageData(reader.result);
-          };
-          reader.readAsDataURL(response.data);
-        } catch (error) {
-          console.error("Error fetching image:", error);
-        }
-      }
-    };
-
-    fetchImage();
-  }, [viewer?.avatar]);
   const [imageData, setImageData] = useState(null);
   useEffect(() => {
     const fetchImage = async () => {
@@ -120,11 +96,9 @@ const HomeHeaderServiceAdmin = () => {
           const response = await axios.get(
             publicPort + `images/${viewer.avatar}`,
             {
-              responseType: "blob", // set thành kiểu blob
+              responseType: "blob",
             }
           );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
           const reader = new FileReader();
           reader.onloadend = () => {
             setImageData(reader.result);
@@ -132,15 +106,17 @@ const HomeHeaderServiceAdmin = () => {
           reader.readAsDataURL(response.data);
         } catch (error) {
           console.error("Error fetching image:", error);
+          setImageData(null);
         }
+      } else {
+        setImageData(null);
       }
     };
-
     fetchImage();
-  }, [viewer]);
+  }, [viewer?.avatar]);
 
   return (
-    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px]">
+    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px] relative z-50">
       <div>
         <Logo></Logo>
       </div>
@@ -169,7 +145,8 @@ const HomeHeaderServiceAdmin = () => {
           >
             <img
               className=" absolute rounded-full w-[24px] h-[24px] top-[6px] left-[4px]"
-              src={imageData}
+              src={imageData || AvatarFallback}
+              alt="avatar"
             ></img>
             <div className="font-bold">{nameuser}</div>
             <div className="absolute top-[3px] left-[83%]">

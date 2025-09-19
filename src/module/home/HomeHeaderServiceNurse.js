@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../components/Logo/Logo";
 import { NavLink, useNavigate } from "react-router-dom";
 import EnsignAnh from "../../Images/anh.png";
+import AvatarFallback from "../../Images/avatar.png";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AccountMenu from "../../Popper/menu/AccountMenu";
 import { CiLogin } from "react-icons/ci";
@@ -12,37 +13,37 @@ const HomeNav = [
   {
     id: 1,
     to: "/service",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 2,
     to: "",
-    title: "Appointment",
+    title: "Lịch hẹn",
   },
   {
     id: 3,
     to: "",
-    title: "Check-in",
+    title: "Điểm danh",
   },
   {
     id: 4,
     to: "",
-    title: "Lookup",
+    title: "Tra cứu",
   },
 ];
 
 const MENU_ITEMS = [
   {
-    title: "Profile",
+    title: "Hồ sơ",
   },
   {
-    title: "Private session",
+    title: "Phiên riêng tư",
   },
   {
-    title: "Setting",
+    title: "Cài đặt",
   },
   {
-    title: "Log out",
+    title: "Đăng xuất",
     icon: <CiLogin />,
     to: "/register",
   },
@@ -66,7 +67,7 @@ const HomeHeaderServiceNurse = () => {
       const listApp = async () => {
         try {
           let response;
-          if (role == "USER") {
+          if (role === "USER") {
             response = await axios.get(
               publicPort + `patient/profile?email=${mal}`
             );
@@ -87,31 +88,6 @@ const HomeHeaderServiceNurse = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchImage = async () => {
-      if (viewer?.avatar) {
-        try {
-          const response = await axios.get(
-            publicPort + `images/${viewer.avatar}`,
-            {
-              responseType: "blob", // set thành kiểu blob
-            }
-          );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setImageData(reader.result);
-          };
-          reader.readAsDataURL(response.data);
-        } catch (error) {
-          console.error("Error fetching image:", error);
-        }
-      }
-    };
-
-    fetchImage();
-  }, [viewer?.avatar]);
   const [imageData, setImageData] = useState(null);
   useEffect(() => {
     const fetchImage = async () => {
@@ -120,11 +96,9 @@ const HomeHeaderServiceNurse = () => {
           const response = await axios.get(
             publicPort + `images/${viewer.avatar}`,
             {
-              responseType: "blob", // set thành kiểu blob
+              responseType: "blob",
             }
           );
-
-          // Đọc dữ liệu hình ảnh và chuyển đổi nó thành chuỗi base64
           const reader = new FileReader();
           reader.onloadend = () => {
             setImageData(reader.result);
@@ -132,12 +106,15 @@ const HomeHeaderServiceNurse = () => {
           reader.readAsDataURL(response.data);
         } catch (error) {
           console.error("Error fetching image:", error);
+          setImageData(null);
         }
+      } else {
+        setImageData(null);
       }
     };
 
     fetchImage();
-  }, [viewer]);
+  }, [viewer?.avatar]);
 
   const [visibleItem, setVisibleItem] = useState(null);
   const [visibleItem1, setVisibleItem1] = useState(null);
@@ -188,7 +165,7 @@ const HomeHeaderServiceNurse = () => {
   };
   const handleDoctors = () => {
     // navigate("/login-user");
-    window.location.href = "/listDoctorForAll";
+    window.location.href = "/listDoctor";
   };
   const handlePatients = () => {
     // navigate("/login-user");
@@ -199,7 +176,7 @@ const HomeHeaderServiceNurse = () => {
   };
 
   return (
-    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px]">
+    <header className="max-w-[1156px] gap-[46px] mx-auto flex items-center pt-[45px] relative z-50">
       <div>
         <Logo></Logo>
       </div>
@@ -215,13 +192,13 @@ const HomeHeaderServiceNurse = () => {
                       to={item.to}
                       onClick={() => {
                         switch (item.title) {
-                          case "Appointment":
+                          case "Lịch hẹn":
                             handleShow(index);
                             break;
-                          case "Lookup":
+                          case "Tra cứu":
                             handleShow1(index);
                             break;
-                          case "Check-in":
+                          case "Điểm danh":
                             handleShow2(index);
                             break;
 
@@ -230,11 +207,20 @@ const HomeHeaderServiceNurse = () => {
                         }
                       }}
                     >
-                      {item.title == "Lookup" ||
-                      item.title == "Appointment" ||
-                      item.title == "Check-in"
-                        ? item.title + " ▽"
-                        : item.title}
+                      {(() => {
+                        const displayMap = {
+                          "Trang chủ": "Trang chủ",
+                          "Lịch hẹn": "Lịch hẹn",
+                          "Điểm danh": "Điểm danh",
+                          "Tra cứu": "Tra cứu",
+                        };
+                        const base = displayMap[item.title] || item.title;
+                        const needsCaret =
+                          item.title === "Tra cứu" ||
+                          item.title === "Lịch hẹn" ||
+                          item.title === "Điểm danh";
+                        return needsCaret ? base + " ▽" : base;
+                      })()}
 
                       {visibleItem === index && (
                         <div
@@ -259,7 +245,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>List of Appointment</p>
+                            <p>Danh sách lịch hẹn</p>
                           </span>
 
                           <span
@@ -271,7 +257,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Book Appointment</p>
+                            <p>Đặt lịch hẹn</p>
                           </span>
                         </div>
                       )}
@@ -299,7 +285,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Doctor</p>
+                            <p>Bác sĩ</p>
                           </span>
                           <span
                             onClick={handlePatients}
@@ -310,7 +296,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Patient</p>
+                            <p>Bệnh nhân</p>
                           </span>
 
                           <span
@@ -322,7 +308,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>News</p>
+                            <p>Tin tức</p>
                           </span>
                         </div>
                       )}
@@ -351,7 +337,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>List of Examination</p>
+                            <p>Danh sách lượt khám</p>
                           </span>
 
                           <span
@@ -363,7 +349,7 @@ const HomeHeaderServiceNurse = () => {
                               margin: "1rem",
                             }}
                           >
-                            <p>Add check-in</p>
+                            <p>Thêm điểm danh</p>
                           </span>
                         </div>
                       )}
@@ -380,7 +366,8 @@ const HomeHeaderServiceNurse = () => {
           >
             <img
               className=" absolute rounded-full w-[24px] h-[24px] top-[6px] left-[4px]"
-              src={imageData}
+              src={imageData || AvatarFallback}
+              alt="avatar"
             ></img>
             <div className="font-bold">{nameInter}</div>
             <div className="absolute top-[3px] left-[83%]">

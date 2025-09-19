@@ -29,7 +29,7 @@ function RegisterEnterEmail() {
   const nextSendOTP = () => {
     console.log("next");
     if (email == "" || email == undefined) {
-      alert("Please enter email");
+      alert("Vui lòng nhập email");
     } else {
       navigate("/registerloginpassword", { state: { email } });
     }
@@ -37,7 +37,7 @@ function RegisterEnterEmail() {
   return (
     <div className="w-[100%] min-h-[1000px] bg-gradientLeft">
       <div className="w-[100%] h-[100px] flex justify-center items-center">
-        <h1 className="text-white text-[30px] ">Forgot Password</h1>
+        <h1 className="text-white text-[30px] ">Quên mật khẩu</h1>
       </div>
       <div className="w-[70%] min-h-[500px] bg-white rounded-3xl mx-auto flex">
         <div className="w-[50%] flex justify-center items-center">
@@ -46,13 +46,11 @@ function RegisterEnterEmail() {
         <div className="w-[50%] flex items-center">
           <div>
             <div className="w-[100%] min-h-[100px]">
-              <h1 className="font-bold text-[40px] w-[50%]">
-                Forgot Password ?
-              </h1>
+              <h1 className="font-bold text-[40px] w-[50%]">Quên mật khẩu?</h1>
             </div>
             <div className="w-[100%] min-h-[100px]">
               <p className="font-medium text-[#7f7f7f] text-[25px] w-[60%]">
-                Enter the email address associated with you account
+                Nhập địa chỉ email liên kết với tài khoản của bạn
               </p>
             </div>
             <div className="w-[100%] h-[100px]">
@@ -62,7 +60,7 @@ function RegisterEnterEmail() {
                   name="mail"
                   onChange={handleChangeEmail}
                   className="w-[90%] h-[40px]"
-                  placeholder="Enter Email Address"
+                  placeholder="Nhập địa chỉ email"
                 />
               </div>
             </div>
@@ -76,7 +74,7 @@ function RegisterEnterEmail() {
               <MdKeyboardArrowLeft className="text-5xl text-white" />
             </span>
             <span className="w-[80%] text-3xl text-white" onClick={backLogin}>
-              Back to Login
+              Quay lại Đăng nhập
             </span>
           </div>
           <div className="flex h-[40px] w-[17%] items-center bg-white justify-center rounded-[50px] ">
@@ -84,7 +82,7 @@ function RegisterEnterEmail() {
               className="w-[25%] text-3xl text-gradientLeft flex justify-end"
               onClick={nextSendOTP}
             >
-              Next
+              Tiếp theo
             </span>
             <span className="w-[10%]">
               <MdKeyboardArrowRight className="text-5xl text-gradientLeft" />
