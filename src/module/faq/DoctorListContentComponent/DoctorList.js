@@ -199,7 +199,7 @@ export default function DoctorList({
                     style={{ backgroundColor: "#3A8EF6" }}
                     onClick={() => book_appointment(data)}
                   >
-                    Book Appointment
+                      Đặt lịch hẹn
                   </button>
                 </div>
               </div>

@@ -82,7 +82,7 @@ function AppointmentDetailContent({ appointment }) {
     <div>
       <div className="flex w-[100%] items-center pb-[30px]">
         <div className=" w-[50%]  text-6xl font-bold">
-          <p style={{ fontSize: "3rem" }}>Appointment Details</p>
+          <p style={{ fontSize: "3rem" }}>Chi tiết lịch hẹn</p>
         </div>
         {role === "NURSE" || role === "DOCTOR" ? (
           appointment !== undefined && appointment.commandFlag === "0" ? (
@@ -95,7 +95,7 @@ function AppointmentDetailContent({ appointment }) {
                   <FaPencilAlt />
                 </span>
                 <span className="font-medium text-gradientLeft ">
-                  Edit appointment
+                  Sửa lịch hẹn
                 </span>
               </div>
             </div>
@@ -119,20 +119,20 @@ function AppointmentDetailContent({ appointment }) {
                     <p
                       className={`w-[10%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-warning"}`}
                     >
-                      Pending
+                      Chờ xác nhận
                     </p>
                   ) : appointment !== undefined &&
                     appointment.commandFlag === "1" ? (
                     <p
                       className={`w-[13.5%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-success"}`}
                     >
-                      Approved
+                        Đã xác nhận
                     </p>
                   ) : (
                     <p
                       className={`w-[11%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-error"}`}
                     >
-                      Canceled
+                      Đã hủy
                     </p>
                   )}
                 </span>
@@ -143,26 +143,26 @@ function AppointmentDetailContent({ appointment }) {
               <div className="pt-8 flex">
                 <span className="w-[35%]">Form of Service</span>
                 <span className="w-[65%]">
-                  Specialty examination at the hospital
+                  Khám chuyên khoa
                 </span>
               </div>
             </div>
             <div className="pt-6">
               <h1 className="text-[#4976f7] text-3xl font-semibold">Patient</h1>
               <div className="pt-8 flex">
-                <span className="w-[35%]">Customer</span>
+                <span className="w-[35%]">Khách hàng</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.patientName : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Date of Birth</span>
+                <span className="w-[35%]">Ngày sinh</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.birthday : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">ID Card</span>
+                <span className="w-[35%]">CMND</span>
                 <span className="w-[65%]">
                   {appointment !== undefined
                     ? appointment.patient != null
@@ -172,23 +172,23 @@ function AppointmentDetailContent({ appointment }) {
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Gender</span>
+                <span className="w-[35%]">Giới tính</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.gender : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Phone Number</span>
+                <span className="w-[35%]">Số điện thoại</span>
                 <span>{appointment !== undefined ? appointment.phone : ""}</span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Symptom</span>
+                <span className="w-[35%]">Triệu chứng</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.symptom : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Description</span>
+                <span className="w-[35%]">Mô tả</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.note : ""}
                 </span>
@@ -197,19 +197,19 @@ function AppointmentDetailContent({ appointment }) {
             <div className="pt-6">
               <h1 className="text-[#4976f7] text-3xl font-semibold">Doctor</h1>
               <div className="pt-6 flex">
-                <span className="w-[35%]">Doctor</span>
+                <span className="w-[35%]">Bác sĩ</span>
                 <span className="w-[65%]">
                   {appointment !== undefined ? appointment.doctorName : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Specialty</span>
+                <span className="w-[35%]">Chuyên khoa</span>
                 <span className="">
                   {appointment !== undefined ? appointment.speciatly : ""}
                 </span>
               </div>
               <div className="pt-3 flex">
-                <span className="w-[35%]">Examination Date</span>
+                <span className="w-[35%]">Ngày khám</span>
                 <span className="">
                   {appointment !== undefined ? appointment.examDate : ""}
                 </span>
@@ -257,14 +257,14 @@ function AppointmentDetailContent({ appointment }) {
                   style={{ color: "white" }}
                   onClick={() => handleshowConfirmCancel()}
                 >
-                  Cancel the appointment
+                  Hủy lịch hẹn
                 </button>
                 <button
                   className=" rounded-2xl h-[50px] pl-[30px] pr-[30px] w-[30%] mr-[35px] bg-success"
                   onClick={() => handleshowConfirmApprove()}
                   style={{ color: "white" }}
                 >
-                  Approve the appointment
+                  Xác nhận lịch hẹn
                 </button>
               </>
             ) : (
@@ -288,9 +288,9 @@ function AppointmentDetailContent({ appointment }) {
               <div className="w-[100%] h-[100px] flex justify-center items-center">
                 <div>
                   <h1 className="font-bold text-[18px] w-[100%] flex justify-center">
-                    Cancel Appointment
+                    Hủy lịch hẹn
                   </h1>
-                  <p>Do you want to cancel this appointment?</p>
+                  <p>Bạn có muốn hủy lịch hẹn này?</p>
                 </div>
               </div>
               <div className="w-[100%] h-[50px] flex justify-center">
@@ -300,7 +300,7 @@ function AppointmentDetailContent({ appointment }) {
                     onClick={handleUnshowConfirmCancel}
                   >
                     <button onClick={handleUnshowConfirmCancel}>
-                      No, close!
+                      Không, đóng!
                     </button>
                   </span>
                   <span
@@ -308,7 +308,7 @@ function AppointmentDetailContent({ appointment }) {
                     onClick={Cancel}
                     style={{ backgroundColor: "#eb5757" }}
                   >
-                    <button>Yes, completed!</button>
+                    <button>Đồng ý, đã khám!</button>
                   </span>
                 </div>
               </div>
@@ -329,9 +329,9 @@ function AppointmentDetailContent({ appointment }) {
               <div className="w-[100%] h-[100px] flex justify-center items-center">
                 <div>
                   <h1 className="font-bold text-[18px] w-[100%] flex justify-center">
-                    Approve Appointment
+                    Xác nhận lịch hẹn
                   </h1>
-                  <p>Do you want to approve this appointment?</p>
+                  <p>Bạn có muốn xác nhận lịch hẹn này?</p>
                 </div>
               </div>
               <div className="w-[100%] h-[50px] flex justify-center">
@@ -341,7 +341,7 @@ function AppointmentDetailContent({ appointment }) {
                     onClick={handleUnshowConfirmApprove}
                   >
                     <button onClick={handleUnshowConfirmApprove}>
-                      No, close!
+                      Không, đóng!
                     </button>
                   </span>
                   <span
@@ -349,7 +349,7 @@ function AppointmentDetailContent({ appointment }) {
                     onClick={Approve}
                     style={{ backgroundColor: "#27ae60" }}
                   >
-                    <button>Yes, completed!</button>
+                    <button>Đồng ý, đã khám!</button>
                   </span>
                 </div>
               </div>

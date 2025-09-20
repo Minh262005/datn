@@ -34,19 +34,15 @@ const HomeContentService = () => {
         <div className="flex flex-col w-[590px] h-[300px] ">
           <div>
             <span className="text-[32px] font-bold">
-              Book Appointments Online with Doctors for
-            </span>
+            Đặt lịch hẹn trực tuyến với bác sĩ cho              </span>
             <span className="text-[32px] mt-6 text-[#fff0] ml-[10px] font-bold bg-clip-text w-max bg-gradient-to-tr from-gradientLeft to-gradientRight">
               {type}
             </span>
           </div>
           <span className="mt-2 text-textColor2">
-            Top healthcare application for your family
-          </span>
+          Ứng dụng chăm sóc sức khỏe hàng đầu cho gia đình bạn          </span>
           <p className="mt-8 text-textColor2">
-            As a busy day passes by, we have grown neglectful of our most
-            valuable possession: Health. Let ClinicMate become the trusted
-            keeper of that asset for you and your family.
+          Khi một ngày bận rộn trôi qua, chúng ta dần lãng quên tài sản quý giá nhất của mình: Sức khỏe. Hãy để ClinicMate trở thành người giữ gìn tài sản đáng tin cậy đó cho bạn và gia đình.
           </p>
           <div
             style={{

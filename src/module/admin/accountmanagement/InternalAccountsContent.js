@@ -19,7 +19,7 @@ function InternalAccountsContent({ role, mail }) {
     },
     {
       id: 2,
-      title: "Staff Name",
+      title: "Staff Name",  
     },
     {
       id: 3,
@@ -289,9 +289,9 @@ function InternalAccountsContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 trang một lần</option> 
+            <option value="7">7 trang một lần</option>
+            <option value="10">10 trang một lần</option>
           </select>
         </div>
       </div>

@@ -16,19 +16,19 @@ function RolesContent({ role, mail }) {
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Name",
+      title: "Tên",
     },
     {
       id: 3,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 4,
-      title: "Action",
+      title: "Thao tác",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -132,25 +132,25 @@ function RolesContent({ role, mail }) {
           className={"ml-[50px] font-bold text-3xl mr-[100px] text-[#c5c4c4]  "}
           onClick={handleLocation}
         >
-          LOCATIONS
+          ĐỊA ĐIỂM
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleSpec}
         >
-          SPECIALTIES
+          CHUYÊN KHOA
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleSymptom}
         >
-          SYMPTOMS
+          TRIỆU CHỨNG
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-gradientLeft "}
           onClick={handleRole}
         >
-          ROLES
+          VAI TRÒ
         </span>
       </div>
       <div className="w-[100%] h-[50px] flex justify-between mb-[5rem]">
@@ -159,18 +159,18 @@ function RolesContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
         </div>
         <div className="h-[50px] w-[50%] flex justify-end items-center pt-[8rem]">
           <div
-            className="  w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
+            className=" w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
             onClick={handleAddNewRole}
           >
             <span className="font-medium underline text-success ">
-              Add new role
+              Thêm vai trò mới
             </span>
           </div>
         </div>
@@ -211,10 +211,10 @@ function RolesContent({ role, mail }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Active"
+                        ? "Hoạt động"
                         : listD.commandFlag == 1
                         ? ""
-                        : "Blocked"}
+                        : "Đã chặn"}
                     </p>
                   </td>
                   <td className="pb-[10px] pt-[10px]  w-[13%]">
@@ -243,7 +243,7 @@ function RolesContent({ role, mail }) {
                           <p>
                             <CiPen />
                           </p>
-                          <p>Edit</p>
+                          <p>Chỉnh sửa</p>
                         </span>
 
                         <span
@@ -258,7 +258,7 @@ function RolesContent({ role, mail }) {
                           <p>
                             <CiTrash />
                           </p>
-                          <p>Block</p>
+                          <p>Chặn</p>
                         </span>
                       </div>
                     )}
@@ -283,9 +283,9 @@ function RolesContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mục/trang</option>
+            <option value="7">7 mục/trang</option>
+            <option value="10">10 mục/trang</option>
           </select>
         </div>
       </div>

@@ -305,7 +305,7 @@ function CheckinListContent({ email, role }) {
                   <td className="w-[13%]">
                     <p className="ml-[20%]">
                       {listD != undefined && listD?.appointmentId
-                        ? "Yes"
+                        ? ""
                         : "No"}
                     </p>
                   </td>
@@ -323,12 +323,12 @@ function CheckinListContent({ email, role }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Checked-in"
+                        ? "Đã điểm danh"
                         : listD.commandFlag == 1
-                        ? "Examining"
+                        ? "Đang khám"
                         : listD.commandFlag == 2
-                        ? "Completed"
-                        : "Cancel"}
+                        ? "Đã khám"
+                        : "Đã hủy"}
                     </p>
                   </td>
                   <td className="pb-[10px] pt-[10px]  w-[13%]">

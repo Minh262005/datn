@@ -46,14 +46,14 @@ public class AppointmentService {
 		p = patientRepository.findByIDAndName(appointmentDTO.getIdC(), appointmentDTO.getName());
 		p = patientRepository.findByID(appointmentDTO.getIdC());
 		if (p == null) {
-			return ("cannot find patient");
+			return ("Không tìm thấy bệnh nhân");
 		}
 
 		// check appointment
 		appSearch = repository.findOne(p.getId(), appointmentDTO.getDoctorName(), appointmentDTO.getBookDate(),
 				appointmentDTO.getBookTime());
 		if (appSearch != null) {
-			return "You already book appointment at this time";
+			return "Bạn đã đặt lịch hẹn vào thời điểm này";
 		}
 
 		// check schedule
@@ -61,7 +61,7 @@ public class AppointmentService {
 				appointmentDTO.getBookTime());
 		System.out.println(s);
 		if (s != null) {
-			return "This doctor is busy at this time";
+			return "Bác sĩ này đang bận vào lúc này";
 		}
 
 		app = new Appointment(p, appointmentDTO.getDoctorName(), appointmentDTO.getBookDate(),
@@ -82,7 +82,7 @@ public class AppointmentService {
 				appointmentDTO.getBookTime());
 		System.out.println(s);
 		if (s != null) {
-			return "This doctor is busy at this time";
+			return "Bác sĩ này đang bận vào lúc này";
 		}
 
 		app = new Appointment(appointmentDTO.getDoctorName(), appointmentDTO.getBookDate(),
@@ -90,7 +90,7 @@ public class AppointmentService {
 				appointmentDTO.getSymtom(), appointmentDTO.getName(), appointmentDTO.getBirthday(),
 				appointmentDTO.getGender(), appointmentDTO.getPhone(), appointmentDTO.getBookPlace());
 		repository.save(app);
-		return "success";
+		return "Thành công";
 
 	}
 

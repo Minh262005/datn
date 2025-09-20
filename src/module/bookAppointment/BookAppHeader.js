@@ -6,12 +6,12 @@ const bookappointment = [
   {
     id: 1,
     to: "/service ",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 2,
-    to: "/book_appointment",
-    title: "Book Appointment",
+    to: "/book_appointment_guest",
+    title: "Đặt lịch hẹn  ",  
   },
 ];
 const BookAppHeader = ({ storedName }) => {

@@ -20,35 +20,35 @@ function AppointmentsContent({ role, mail }) {
   const listtitle = [
     {
       id: 1,
-      title: "App-No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Patient Name",
+      title: "Tên bệnh nhân",
     },
     {
       id: 3,
-      title: "Doctor Name",
+      title: "Tên bác sĩ",
     },
     {
       id: 4,
-      title: "Specialty",
+      title: "Chuyên khoa",
     },
     {
       id: 5,
-      title: "Date",
+      title: "Ngày",
     },
     {
       id: 6,
-      title: "Time",
+      title: "Thời gian",
     },
     {
       id: 7,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 8,
-      title: "View Details",
+      title: "Chi tiết",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -88,10 +88,8 @@ function AppointmentsContent({ role, mail }) {
           response1 = await axios.get(
             publicPort + `patient/profile?email=${m}`
           );
-          // console.log(response1.data);
           id = response1.data.id;
 
-          // console.log(id);
           response = await axios.get(
             publicPort + `appointment/listBypaintedId?painted_id=${id}`
           );
@@ -101,7 +99,6 @@ function AppointmentsContent({ role, mail }) {
           response = await axios.get(publicPort + "appointment/list");
           let data = Array.isArray(response.data) ? response.data : [];
           if (r === "DOCTOR" && doctorName) {
-            // Lọc theo tên bác sĩ trong token, bỏ tiền tố (BS., BS ) và dấu tiếng Việt, chấp nhận contains để tránh lệch định dạng
             const normalize = (s) =>
               String(s || "")
                 .toLowerCase()
@@ -116,15 +113,12 @@ function AppointmentsContent({ role, mail }) {
             });
           }
           const sortedData = data.sort((a, b) => {
-            // Convert commandFlag values to numbers for comparison (assuming they are strings).
             const commandFlagA = Number(a.commandFlag);
             const commandFlagB = Number(b.commandFlag);
 
             if (commandFlagA !== commandFlagB) {
-              // Sort by 'commandFlag' in ascending order.
               return commandFlagA - commandFlagB;
             } else {
-              // If 'commandFlag' is the same, sort by 'examDate' in ascending order.
               const examDateA = new Date(a.examDate);
               const examDateB = new Date(b.examDate);
               return examDateA - examDateB;
@@ -179,17 +173,17 @@ function AppointmentsContent({ role, mail }) {
     if (searchInput === "") {
       setListData(listOrigin);
     } else {
-      const filteredList = listOrigin.filter((item) => String(item.id) === String(searchInput));
+      const filteredList = listOrigin.filter(
+        (item) => String(item.id) === String(searchInput)
+      );
       setListData(filteredList);
     }
   };
 
   const handleDetail = (appointment) => {
-    // console.log(appointment);
     navigate("/appointmentdetailsfornurse", { state: { appointment } });
   };
   const handleCheckin = (appointment) => {
-    // console.log(appointment);
     navigate("/checkin", { state: { appointment } });
   };
   const handleAddNewAppointment = () => {
@@ -203,12 +197,10 @@ function AppointmentsContent({ role, mail }) {
           `appointment/commandFlag?appointmentId=${appointment.id}&command=approve`
       );
       if (response.data === "CommandFlag updated successfully.") {
-        // Cập nhật nhanh trên UI
         const updated = listOrigin.map((it) =>
           it.id === appointment.id ? { ...it, commandFlag: 1 } : it
         );
         setListOrigin(updated);
-        // áp dụng filter hiện tại
         if (statusFilter === "All") {
           setListData(updated.slice(indexOfFirstItem, indexOfLastItem));
         } else {
@@ -222,7 +214,7 @@ function AppointmentsContent({ role, mail }) {
       }
     } catch (e) {
       console.log(e);
-      alert("Approve failed. Please try again.");
+      alert("Phê duyệt thất bại. Vui lòng thử lại.");
     }
   };
 
@@ -233,12 +225,10 @@ function AppointmentsContent({ role, mail }) {
           `appointment/commandFlag?appointmentId=${appointment.id}&command=cancel`
       );
       if (response.data === "CommandFlag updated successfully.") {
-        // Cập nhật nhanh trên UI
         const updated = listOrigin.map((it) =>
           it.id === appointment.id ? { ...it, commandFlag: 2 } : it
         );
         setListOrigin(updated);
-        // áp dụng filter hiện tại
         if (statusFilter === "All") {
           setListData(updated.slice(indexOfFirstItem, indexOfLastItem));
         } else {
@@ -252,7 +242,7 @@ function AppointmentsContent({ role, mail }) {
       }
     } catch (e) {
       console.log(e);
-      alert("Cancel failed. Please try again.");
+      alert("Hủy lịch hẹn thất bại. Vui lòng thử lại.");
     }
   };
   return (
@@ -266,7 +256,7 @@ function AppointmentsContent({ role, mail }) {
           }
           onClick={() => handleFilter("All")}
         >
-          ALL
+          TẤT CẢ
         </span>
         <span
           className={
@@ -276,7 +266,7 @@ function AppointmentsContent({ role, mail }) {
           }
           onClick={() => handleFilter("0")}
         >
-          PENDING
+          ĐANG CHỜ
         </span>
         <span
           className={
@@ -286,7 +276,7 @@ function AppointmentsContent({ role, mail }) {
           }
           onClick={() => handleFilter("2")}
         >
-          CANCEL
+          ĐÃ HỦY
         </span>
         <span
           className={
@@ -296,7 +286,7 @@ function AppointmentsContent({ role, mail }) {
           }
           onClick={() => handleFilter("1")}
         >
-          APPROVED
+          ĐÃ PHÊ DUYỆT
         </span>
       </div>
       <div className="w-[100%] h-[50px] flex justify-between mb-[5rem]">
@@ -305,18 +295,18 @@ function AppointmentsContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
         </div>
         <div className="h-[50px] w-[50%] flex justify-end items-center pt-[8rem]">
           <div
-            className="  w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
+            className=" w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
             onClick={handleAddNewAppointment}
           >
             <span className="font-medium underline text-success ">
-              Add new appointment
+              Thêm lịch hẹn mới
             </span>
           </div>
         </div>
@@ -365,26 +355,27 @@ function AppointmentsContent({ role, mail }) {
                       }`}
                     >
                       {Number(listD.commandFlag) === 0
-                        ? "Pending"
+                        ? "Đang chờ"
                         : Number(listD.commandFlag) === 1
-                        ? "Approved"
-                        : "Cancel"}
+                        ? "Đã phê duyệt"
+                        : "Đã hủy"}
                     </p>
                   </td>
                   <td className="pb-[10px] pt-[10px]  w-[13%]">
-                    {Number(listD.commandFlag) === 0 && (role === "DOCTOR" || role === "NURSE") ? (
+                    {Number(listD.commandFlag) === 0 &&
+                    (role === "DOCTOR" || role === "NURSE") ? (
                       <div className="flex gap-2 justify-center">
                         <button
                           className="px-4 h-[40px] bg-success rounded-3xl text-white "
                           onClick={() => approveAppointment(listD)}
                         >
-                          Approve
+                          Phê duyệt
                         </button>
                         <button
                           className="px-4 h-[40px] bg-error rounded-3xl text-white "
                           onClick={() => cancelAppointment(listD)}
                         >
-                          Cancel
+                          Hủy
                         </button>
                       </div>
                     ) : role === "NURSE" && Number(listD.commandFlag) === 1 ? (
@@ -399,7 +390,7 @@ function AppointmentsContent({ role, mail }) {
                         className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white "
                         onClick={() => handleDetail(listD)}
                       >
-                        View
+                        Xem
                       </button>
                     )}
                   </td>
@@ -423,9 +414,9 @@ function AppointmentsContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mục/trang</option>
+            <option value="7">7 mục/trang</option>
+            <option value="10">10 mục/trang</option>
           </select>
         </div>
       </div>

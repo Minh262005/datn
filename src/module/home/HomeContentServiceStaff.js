@@ -81,28 +81,25 @@ const HomeContentServiceStaff = () => {
           ) : role == "DOCTOR" ? (
             <div>
               <span className="mt-3 font-bold text-[17px] text-black1">
-                Anesthesiology and Pain Management
+                Gây mê và Điều trị Đau
               </span>
               <p className="mt-8 text-textColor2">
-                Doctor Carlos has 23 years of experience in treating
-                cardiovascular diseases. Currently, he works as a Cardiologist
-                at the Department of Internal Medicine and Outpatient Clinic at
-                Clinicmate Clinic in Da Nang.
+                Bác sĩ có 23 năm kinh nghiệm trong việc điều trị các bệnh nội khoa. Hiện tại, ông làm việc tại Bệnh viện Nội Khoa và Khoa Ngoại tại Bệnh viện Clinicmate tại Đà Nẵng.
+                Bệnh tim mạch. Hiện tại, bác sĩ đang công tác tại Khoa Nội và Phòng khám Ngoại trú, Phòng khám Clinicmate Đà Nẵng.
+
               </p>
             </div>
           ) : (
             <div>
               <span className="mt-3 font-bold text-[17px] text-black1">
-                Instant and Future Appointment Booking
+                Lịch khám và Đặt lịch khám
               </span>
               <p className="mt-8 text-textColor2">
-                Doctor Carlos has 23 years of experience in treating
-                cardiovascular diseases. Instant Appointment Booking addresses
-                urgent medical requirements, ensuring prompt access to
-                healthcare services. On the other hand, Future Appointment
-                Booking supports planned medical visits and offers convenience
-                for patients who prefer to schedule appointments for a specific
-                date in the future.
+                Bác sĩ có 23 năm kinh nghiệm trong việc điều trị các bệnh tim mạch. Hiện tại, bác sĩ đang công tác tại Khoa Nội và Phòng khám Ngoại trú, Phòng khám Clinicmate Đà Nẵng.
+
+                Dịch:
+
+                **Bệnh tim mạch.** **Đặt lịch hẹn ngay lập tức** giải quyết các yêu cầu y tế khẩn cấp, đảm bảo tiếp cận các dịch vụ chăm sóc sức khỏe một cách kịp thời. Mặt khác, **Đặt lịch khám** hỗ trợ các chuyến thăm khám theo kế hoạch và mang lại sự thuận tiện cho những bệnh nhân thích sắp xếp các cuộc hẹn vào một ngày cụ thể trong tương lai.
               </p>
             </div>
           )}
@@ -145,7 +142,7 @@ const HomeContentServiceStaff = () => {
                   }}
                   onClick={handleSchedules}
                 >
-                  My Appointment
+                  Cuộc hẹn của tôi
                 </button>
                 <button
                   className="border-[3px] rounded-2xl h-[50px] pl-[30px] pr-[30px] w-[40%] mr-[35px]"
@@ -154,7 +151,7 @@ const HomeContentServiceStaff = () => {
                   }}
                   onClick={handleExamination}
                 >
-                  My Examination
+                  Đơn thăm khám của tôi
                 </button>
               </>
             ) : (
@@ -167,7 +164,7 @@ const HomeContentServiceStaff = () => {
                   }}
                   onClick={handleCheckin}
                 >
-                  Check-in
+                  Check-in của tôi
                 </button>
                 <button
                   className="border-[3px] rounded-2xl h-[50px] w-[40%] mr-[35px]"
@@ -176,7 +173,7 @@ const HomeContentServiceStaff = () => {
                   }}
                   onClick={handlebookappointment}
                 >
-                  Book Appointment
+                  Đặt lịch khám
                 </button>
               </>
             )}
@@ -206,13 +203,13 @@ const HomeContentServiceStaff = () => {
       <div className="max-w-[1156px] mx-auto pt-[70px]">
         <div>
           <h1 className="pb-[50px] font-bold" style={{ fontSize: "40px" }}>
-            Hot announcements
+            Tin nổi bật
           </h1>
           <FeaturedSeliderSevirce />
         </div>
         <div>
           <h1 className="pb-[50px] font-bold" style={{ fontSize: "40px" }}>
-            Information Catalogue
+            Thông tin cá nhân
           </h1>
           <InformationCatalogueService />
         </div>
@@ -221,7 +218,7 @@ const HomeContentServiceStaff = () => {
             className="font-bold pb-[30px]"
             style={{ fontSize: "40px", marginTop: "100px" }}
           >
-            Latest News
+            Tin tức mới nhất
           </h1>
           <LatestNewService />
         </div>

@@ -15,23 +15,23 @@ function LocationsContent({ role, mail }) {
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Name",
+      title: "Tên",
     },
     {
       id: 3,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 4,
-      title: "Description",
+      title: "Mô tả",
     },
     {
       id: 5,
-      title: "Action",
+      title: "Thao tác",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -137,25 +137,25 @@ function LocationsContent({ role, mail }) {
           }
           onClick={handleLocation}
         >
-          LOCATIONS
+          ĐỊA ĐIỂM
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleSpec}
         >
-          SPECIALTIES
+          CHUYÊN KHOA
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleSymptom}
         >
-          SYMPTOMS
+          TRIỆU CHỨNG
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleRole}
         >
-          ROLES
+          VAI TRÒ
         </span>
       </div>
       <div className="w-[100%] h-[50px] flex justify-between mb-[5rem]">
@@ -164,21 +164,21 @@ function LocationsContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
         </div>
         <div className="h-[50px] w-[50%] flex justify-end items-center pt-[8rem]">
           <div
-            className="  w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
+            className=" w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
             onClick={handleAddNewLocation}
           >
             {/* <span className="w-[10%] text-[30px] text-gradientLeft ]">
               <AiOutlinePlusCircle />
             </span> */}
             <span className="font-medium underline text-success ">
-              Add new location
+              Thêm địa điểm mới
             </span>
           </div>
         </div>
@@ -201,13 +201,13 @@ function LocationsContent({ role, mail }) {
             <tbody className="w-[100%] h-[200px]">
               {listData.map((listD, index) => (
                 <tr
-                  className={`text-center  ${
-                    listD.id % 2 === 0 ? "bg-white  " : "  bg-[#e2edff] "
+                  className={`text-center ${
+                    listD.id % 2 === 0 ? "bg-white " : " bg-[#e2edff] "
                   }`}
                   key={listD.id}
                 >
                   <td className="w-[10%]">{listD.id}</td>
-                  <td className="w-[15%]  ">{listD.name}</td>
+                  <td className="w-[15%] ">{listD.name}</td>
                   <td className="w-[12%]">
                     <p
                       className={`w-[70%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${
@@ -219,14 +219,14 @@ function LocationsContent({ role, mail }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Active"
+                        ? "Hoạt động"
                         : listD.commandFlag == 1
                         ? ""
-                        : "Blocked"}
+                        : "Đã chặn"}
                     </p>
                   </td>
-                  <td className="w-[15%]  ">{listD.description}</td>
-                  <td className="pb-[10px] pt-[10px]  w-[13%]">
+                  <td className="w-[15%] ">{listD.description}</td>
+                  <td className="pb-[10px] pt-[10px] w-[13%]">
                     <button onClick={() => handleShow(index)}>:</button>
                     {visibleItem === index && (
                       <div
@@ -253,7 +253,7 @@ function LocationsContent({ role, mail }) {
                           <p>
                             <CiPen />
                           </p>
-                          <p>Edit</p>
+                          <p>Chỉnh sửa</p>
                         </span>
 
                         <span
@@ -268,7 +268,7 @@ function LocationsContent({ role, mail }) {
                           <p>
                             <CiTrash />
                           </p>
-                          <p>Block</p>
+                          <p>Chặn</p>
                         </span>
                       </div>
                     )}
@@ -293,9 +293,9 @@ function LocationsContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mục/trang</option>
+            <option value="7">7 mục/trang</option>
+            <option value="10">10 mục/trang</option>
           </select>
         </div>
       </div>

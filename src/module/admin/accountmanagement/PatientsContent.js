@@ -212,9 +212,9 @@ function PatientsContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 trang một lần</option> 
+            <option value="7">7 trang một lần</option>
+            <option value="10">10 trang một lần</option>
           </select>
         </div>
       </div>

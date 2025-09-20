@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDyM64XgDCEVhDKxWE7Nuc8xG8om2WL67k",
   authDomain: "climates-48696-8553e.firebaseapp.com",
   projectId: "climates-48696-8553e",
-  storageBucket: "climates-48696-8553e.firebasestorage.app",
+  storageBucket: "climates-48696-8553e.appspot.com", // ✅ đúng
   messagingSenderId: "921958937260",
   appId: "1:921958937260:web:883d3c0841c99695b32509",
   measurementId: "G-VZ6CWQHMCD"

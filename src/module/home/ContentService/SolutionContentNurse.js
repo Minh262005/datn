@@ -23,7 +23,7 @@ function SolutionContentNurse() {
     <div className="w-[100%] min-h-[700px] flex items-center">
       <div>
         <div className="w-[100%] h-[100px] flex items-center text-[25px] font-bold">
-          <h1>Quick Solution For Scheduling</h1>
+          <h1>Giải pháp nhanh chóng cho việc lên lịch khám</h1>
         </div>
         <div className="w-[100%] min-h-[300px]  flex justify-between">
           <div
@@ -43,17 +43,17 @@ function SolutionContentNurse() {
                   </span>
                 </div>
                 <div className="w-[100%] h-[50px] flex items-center">
-                  <h1 className="text-[20px] font-bold">Find Doctor</h1>
+                  <h1 className="text-[20px] font-bold">Tìm bác sĩ</h1>
                 </div>
                 <div className="w-[100%] h-[130px] ">
                   <p className="text-[15px] w-[75%]">
-                    The search feature in the clinic management application
-                    allows users to search and select doctors based on specific
+                    Tìm bác sĩ trong ứng dụng quản lý phòng khám
+                    cho phép người dùng tìm kiếm và chọn bác sĩ dựa trên các tiêu chí cụ thể
                     criteria.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">
-                  <span className="text-gradientLeft">More</span>
+                  <span className="text-gradientLeft">Xem thêm</span>
                   <span className="text-[30px] text-gradientLeft">
                     <BsArrowRightShort />
                   </span>
@@ -78,17 +78,17 @@ function SolutionContentNurse() {
                   </span>
                 </div>
                 <div className="w-[100%] h-[50px] flex items-center">
-                  <h1 className="text-[20px] font-bold">Appointments</h1>
+                  <h1 className="text-[20px] font-bold">Lịch khám</h1>
                 </div>
                 <div className="w-[100%] h-[130px] ">
                   <p className="text-[15px] w-[75%]">
-                    The appointment management feature in the clinic management
+                    Quản lý lịch khám trong ứng dụng quản lý phòng khám
                     application allows users and staff to efficiently manage
                     appointments.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">
-                  <span className="text-gradientLeft">More</span>
+                  <span className="text-gradientLeft">Xem thêm</span>
                   <span className="text-[30px] text-gradientLeft">
                     <BsArrowRightShort />
                   </span>
@@ -113,17 +113,17 @@ function SolutionContentNurse() {
                   </span>
                 </div>
                 <div className="w-[100%] h-[50px] flex items-center">
-                  <h1 className="text-[20px] font-bold">Examinations</h1>
+                  <h1 className="text-[20px] font-bold">Đơn thăm khám</h1>
                 </div>
                 <div className="w-[100%] h-[130px] ">
                   <p className="text-[15px] w-[75%]">
-                    Sending requests in the clinic management application allows
+                    Gửi yêu cầu trong ứng dụng quản lý phòng khám
                     users and patients to send requests to staff or doctors
                     within the clinic.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">
-                  <span className="text-gradientLeft">More</span>
+                  <span className="text-gradientLeft">Xem thêm</span>
                   <span className="text-[30px] text-gradientLeft">
                     <BsArrowRightShort />
                   </span>

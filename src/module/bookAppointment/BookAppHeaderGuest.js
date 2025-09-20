@@ -6,22 +6,22 @@ const bookappointment = [
   {
     id: 1,
     to: "/",
-    title: "Home",
+    title: "Trang chủ",
   },
   {
     id: 2,
     to: "/book_appointment_guest",
-    title: "Book Appointment",
+    title: "Đặt lịch hẹn",
   },
   {
     id: 3,
     to: "/about",
-    title: "About",
+    title: "Giới thiệu",
   },
   {
     id: 4,
     to: "/faq",
-    title: "FAQ",
+    title: "Hỏi đáp",
   },
 ];
 const BookAppHeaderGuest = () => {

@@ -76,8 +76,7 @@ function AdminContentInfor() {
                 <div className="flex w-[100%]">
                   <div className="w-[50%]  flex justify-center">
                     <h5 className="text-[16px] font-light text-[#75a2cf]">
-                      Book appointment
-                    </h5>
+                    Đặt lịch hẹn                    </h5> 
                   </div>
                   <div className="w-[50%]  flex justify-center">
                     <h5 className="text-[16px] font-light text-[#75a2cf]">

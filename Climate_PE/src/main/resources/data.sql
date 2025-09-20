@@ -25,7 +25,6 @@ INSERT INTO role (NAME, COMMAND_FLAG) VALUES
 ('ADMIN', 0),
 ('DOCTOR', 0),
 ('NURSE', 0),
-('PATIENT', 0);
 
 -- Cơ sở (Location: dùng DESCRIPTION thay cho địa chỉ chi tiết)
 INSERT INTO location (NAME, DESCRIPTION, COMMAND_FLAG) VALUES

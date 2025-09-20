@@ -5,33 +5,32 @@ import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 function DoctorsContent({ role, mail }) {
-  const [sortedObjects, setSortedObjects] = useState([]);
+  const [listData, setListData] = useState([]);
+  const [listOrigin, setListOrigin] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [statusFilter, setStatusFilter] = useState("All");
-  const [listData, setListData] = useState([]);
-  const [listOrigin, setListOrigin] = useState([]);
   const navigate = useNavigate();
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Doctor Name",
+      title: "Tên bác sĩ",
     },
     {
       id: 3,
-      title: "Specialty",
+      title: "Chuyên khoa",
     },
     {
       id: 4,
-      title: "Location",
+      title: "Nơi làm việc",
     },
     {
       id: 5,
-      title: "View Details",
+      title: "Xem chi tiết",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -42,31 +41,19 @@ function DoctorsContent({ role, mail }) {
   useEffect(() => {
     const listApp = async () => {
       try {
-        let response;
-        let response1;
-        let id;
-
-        response = await axios.get(publicPort + "api/doctors");
+        const response = await axios.get(publicPort + "api/doctors");
         setListOrigin(response.data);
         setListData(response.data);
-        // console.log(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     listApp();
-  }, [mail, role]);
+  }, []); // Không cần dependency 'mail' và 'role' vì API lấy danh sách bác sĩ không phụ thuộc vào chúng
 
   useEffect(() => {
     setListData(listOrigin.slice(indexOfFirstItem, indexOfLastItem));
-  }, [itemsPerPage, currentPage]);
-
-  //   useEffect(() => {
-  //     const sorted = listOrigin.sort(
-  //       (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
-  //     );
-  //     setSortedObjects(sorted);
-  //   }, [listOrigin]);
+  }, [itemsPerPage, currentPage, listOrigin]); // Thêm listOrigin vào dependency array
 
   function handlePageClick(event, pageNumber) {
     event.preventDefault();
@@ -85,7 +72,6 @@ function DoctorsContent({ role, mail }) {
 
   const handleFilter = (status) => {
     setStatusFilter(status);
-
     if (status === "All") {
       setListData(listOrigin.slice(indexOfFirstItem, indexOfLastItem));
     } else {
@@ -109,19 +95,11 @@ function DoctorsContent({ role, mail }) {
     }
   };
 
-  const handleDetail = (appointment) => {
-    console.log(appointment);
-    // navigate("/appointmentdetailsfornurse", { state: { appointment } });
-  };
   const view_detail = (item) => {
     const id = item.id;
-    console.log(id);
     navigate("/doctorinformation", { state: { id } });
   };
-  const handleCheckin = (appointment) => {
-    console.log(appointment);
-    // navigate("/checkin", { state: { appointment } });
-  };
+
   return (
     <div className="bg-white p-5 rounded-2xl shadow-2xl w-[100%] min-h-[500px]">
       <div className="w-[100%] h-[50px]">
@@ -130,13 +108,13 @@ function DoctorsContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
-            className="w-[83%] h-[100%] "
+            placeholder="Tìm kiếm"
+            className="w-[83%] h-[100%]"
             onChange={handleSearchInputChange}
           />
         </div>
       </div>
-      <div className=" min-h-[550px]">
+      <div className="min-h-[550px]">
         <div>
           <table className="w-[100%]">
             <thead className="h-[100px]">
@@ -144,7 +122,7 @@ function DoctorsContent({ role, mail }) {
                 {listtitle.map((data) => (
                   <th
                     key={data.id}
-                    className=" text-[#8d8b8b] w-[1%] text-center"
+                    className="text-[#8d8b8b] w-[1%] text-center"
                   >
                     {data.title}
                   </th>
@@ -154,29 +132,27 @@ function DoctorsContent({ role, mail }) {
             <tbody className="w-[100%] h-[200px]">
               {listData.map((listD) => (
                 <tr
-                  className={`text-center  ${
-                    listD.id % 2 === 0 ? "bg-white  " : "  bg-[#e2edff] "
+                  className={`text-center ${
+                    listD.id % 2 === 0 ? "bg-white" : "bg-[#e2edff]"
                   }`}
                   key={listD.id}
                 >
                   <td className="w-[10%]">{listD.id}</td>
-                  <td className="w-[15%]  ">{listD.name}</td>
+                  <td className="w-[15%]">{listD.name}</td>
                   <td className="w-[12%]">
                     <p>{listD.specialty.name}</p>
                   </td>
                   <td className="w-[12%]">
                     <p>
-                      {listD.workingPlace.name} -{" "}
-                      {listD.workingPlace.description}
+                      {listD.workingPlace.name} - {listD.workingPlace.description}
                     </p>
                   </td>
-
-                  <td className="pb-[10px] pt-[10px]  w-[13%]">
+                  <td className="pb-[10px] pt-[10px] w-[13%]">
                     <button
-                      className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white "
+                      className="w-[80%] h-[40px] bg-gradientLeft rounded-3xl text-white"
                       onClick={() => view_detail(listD)}
                     >
-                      View
+                      Xem
                     </button>
                   </td>
                 </tr>
@@ -186,14 +162,6 @@ function DoctorsContent({ role, mail }) {
         </div>
       </div>
       <div className="" style={{ textAlign: "center" }}>
-        {/* <button className="button text-[30px] w-10 h-10 bg-gradientLeft mr-[30px]">
-          <MdKeyboardArrowLeft className="ml-[2px]" />
-        </button>
-
-        <button className="button text-[30px] w-10 h-10 bg-gradientLeft">
-          <MdKeyboardArrowRight className="ml-[3px]" />
-        </button> */}
-
         <div>
           {pageNumbers.map((pageNumber) => (
             <button
@@ -207,9 +175,9 @@ function DoctorsContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mục/trang</option>
+            <option value="7">7 mục/trang</option>
+            <option value="10">10 mục/trang</option>
           </select>
         </div>
       </div>

@@ -1,49 +1,121 @@
 import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+// ✅ Schema validation
+const schema = yup.object().shape({
+  agreedToTerms: yup
+    .boolean()
+    .oneOf([true], "Bạn phải đồng ý với Điều khoản và Điều kiện."),
+  agreedToMarketing: yup.boolean(),
+});
 
 const RegisterStep2 = () => {
+  // ✅ Khởi tạo react-hook-form
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      agreedToTerms: false,
+      agreedToMarketing: false,
+    },
+  });
+
+  // ✅ Xử lý submit
+  const onSubmit = (data) => {
+    console.log("Dữ liệu hợp lệ:", data);
+    // TODO: Gọi API hoặc chuyển sang bước tiếp theo
+  };
+
   return (
-    <div className="p-[40px_48px] text-textColor2">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="p-[40px_48px] text-textColor2"
+    >
       <p>
-        In a clinical setting, patients can receive a wide range of healthcare
-        services. Routine check-ups are important to monitor overall health and
-        catch any potential problems early on. Chronic conditions such as
-        diabetes, asthma, or heart disease require ongoing management to keep
-        symptoms under control.
+        Trong môi trường lâm sàng, bệnh nhân có thể nhận được nhiều dịch vụ chăm sóc sức khỏe
+        khác nhau. Khám sức khỏe định kỳ rất quan trọng để theo dõi sức khỏe tổng thể và
+        phát hiện sớm mọi vấn đề tiềm ẩn. Các bệnh mãn tính như tiểu đường, hen suyễn hoặc bệnh tim
+        cần được quản lý liên tục để kiểm soát các triệu chứng.
       </p>
       <br />
       <p>
-        Mental health concerns can be treated with therapy, counseling, or
-        medication. Acute illnesses such as the flu or a respiratory infection
-        can be managed with treatment to speed up recovery. Preventive care such
-        as screenings for cancer and vaccinations can help prevent illnesses
-        from developing. Patients with injuries may receive treatment such as
-        physical therapy to help them recover. Women's health services include
-        reproductive health care such as Pap smears and prenatal care. Children
-        may receive care for growth and development, while older adults may
-        receive care for age-related conditions such as dementia or arthritis.
+        Vấn đề sức khỏe tinh thần có thể được điều trị bằng bác sĩ, tư vấn, hoặc thuốc.
+        Các bệnh tật tức thời như cúm hoặc nhiễm trùng hô hấp có thể được quản lý bằng
+        điều trị để tăng tốc độ hồi phục. Chăm sóc phòng ngừa như các xét nghiệm ung thư
+        và tiêm phòng có thể giúp ngăn ngừa bệnh tật. Bệnh nhân bị chấn thương có thể
+        nhận được các phương pháp điều trị như vật lý trị liệu để giúp họ phục hồi.
+        Dịch vụ chăm sóc sức khỏe phụ nữ bao gồm chăm sóc sức khỏe sinh sản như
+        xét nghiệm sàng lọc và chăm sóc thai kỳ. Trẻ em có thể nhận được chăm sóc
+        để theo dõi sự phát triển, trong khi người lớn tuổi có thể nhận được chăm sóc
+        cho các bệnh lý liên quan đến tuổi tác như bệnh Alzheimer hoặc viêm khớp.
       </p>
       <br />
       <p>
-        Finally, urgent care is available for patients with immediate medical
-        needs. In a clinical setting, healthcare professionals work to provide
-        patients with the care they need to maintain and improve their health.
+        Cuối cùng, dịch vụ chăm sóc khẩn cấp có sẵn cho bệnh nhân có nhu cầu y tế ngay lập tức.
+        Trong môi trường lâm sàng, các chuyên gia chăm sóc sức khỏe làm việc để cung cấp cho
+        bệnh nhân dịch vụ chăm sóc mà họ cần để duy trì và cải thiện sức khỏe của họ.
       </p>
       <br />
+
+      {/* ✅ Checkbox Điều khoản & Điều kiện */}
       <div className="flex items-center gap-6">
-        <input type="checkbox" className="h-[29px] w-[29px]" />
-        <label>
-          I agree to the{" "}
-          <span className="text-textColor">Terms & Conditions(T&C)</span>{" "}
-        </label>
-      </div>{" "}
-      <div className="flex items-center gap-6 mt-2">
-        <input type="checkbox" className="h-[29px] w-[29px]" />
-        <label>
-          I agree to the use of my personal data for marketing and survey
-          purposes
+        <Controller
+          name="agreedToTerms"
+          control={control}
+          render={({ field }) => (
+            <input
+              type="checkbox"
+              id="termsAndConditions"
+              className="h-[29px] w-[29px]"
+              {...field}
+              checked={field.value}
+            />
+          )}
+        />
+        <label htmlFor="termsAndConditions">
+          Tôi đồng ý với{" "}
+          <span className="text-textColor">Điều khoản và điều kiện (T&C)</span>
         </label>
       </div>
-    </div>
+      {errors.agreedToTerms && (
+        <p className="text-red-500 text-sm mt-1">
+          {errors.agreedToTerms.message}
+        </p>
+      )}
+
+      {/* ✅ Checkbox Marketing */}
+      <div className="flex items-center gap-6 mt-2">
+        <Controller
+          name="agreedToMarketing"
+          control={control}
+          render={({ field }) => (
+            <input
+              type="checkbox"
+              id="marketingConsent"
+              className="h-[29px] w-[29px]"
+              {...field}
+              checked={field.value}
+            />
+          )}
+        />
+        <label htmlFor="marketingConsent">
+          Tôi đồng ý với việc sử dụng dữ liệu cá nhân của tôi cho mục đích tiếp thị và khảo sát.
+        </label>
+      </div>
+
+      {/* ✅ Submit button */}
+      <button
+        type="submit"
+        className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+      >
+        Tiếp tục
+      </button>
+    </form>
   );
 };
 

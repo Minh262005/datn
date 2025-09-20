@@ -3,10 +3,8 @@ import Slider from "react-slick";
 import sliderimg from "../../../Images/Group 9547.png";
 import sliderimg1 from "../../../Images/Group8.png";
 import sliderimg2 from "../../../Images/Group2.png";
-import {
-  ArrowNextSlider,
-  ArrowPrevSlider,
-} from "../../../components/ArrowSlider/ArrowSlider";
+import { ArrowSlider } from "../../../components/ArrowSlider/ArrowSlider"; // Correct import statement
+
 const arrSlider = [
   {
     url: sliderimg,
@@ -18,6 +16,7 @@ const arrSlider = [
     url: sliderimg2,
   },
 ];
+
 const HomeSlider = () => {
   const settings = {
     dots: false,
@@ -30,8 +29,9 @@ const HomeSlider = () => {
     adaptiveHeight: true,
     initialSlide: 0,
     autoplaySpeed: 4000,
-    nextArrow: <ArrowNextSlider />,
-    prevArrow: <ArrowPrevSlider />,
+    // Pass the direction prop to the single ArrowSlider component
+    nextArrow: <ArrowSlider direction="next" />,
+    prevArrow: <ArrowSlider direction="prev" />,
     responsive: [
       {
         breakpoint: 1024,
@@ -44,6 +44,7 @@ const HomeSlider = () => {
       },
     ],
   };
+
   return (
     <div className="home-slider">
       <Slider {...settings}>

@@ -14,23 +14,23 @@ function SpecialtiesContent({ role, mail }) {
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Name",
+      title: "Tên",
     },
     {
       id: 3,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 4,
-      title: "Description",
+      title: "Mô tả",
     },
     {
       id: 5,
-      title: "Action",
+      title: "Thao tác",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -41,7 +41,6 @@ function SpecialtiesContent({ role, mail }) {
     const listApp = async () => {
       try {
         let response;
-
         response = await axios.get(publicPort + "spec/listadmin");
         setListOrigin(response.data);
         setListData(response.data);
@@ -103,7 +102,6 @@ function SpecialtiesContent({ role, mail }) {
   const [visibleItem, setVisibleItem] = useState(null);
 
   const handleShow = (index) => {
-    // setshow(!show);
     if (visibleItem === index) {
       setVisibleItem(null);
     } else {
@@ -112,7 +110,6 @@ function SpecialtiesContent({ role, mail }) {
   };
 
   const handleDelete = async (id) => {
-    // navigate("/patients");
     console.log("delete " + id);
     const response = await axios.get(publicPort + `spec/block?id=${id}`);
     console.log(response.data);
@@ -135,25 +132,25 @@ function SpecialtiesContent({ role, mail }) {
           className={"ml-[50px] font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleLocation}
         >
-          LOCATIONS
+          ĐỊA ĐIỂM
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-gradientLeft "}
           onClick={handleSpec}
         >
-          SPECIALTIES
+          CHUYÊN KHOA
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleSymptom}
         >
-          SYMPTOMS
+          TRIỆU CHỨNG
         </span>
         <span
           className={"font-bold text-3xl mr-[100px] text-[#c5c4c4]"}
           onClick={handleRole}
         >
-          ROLES
+          VAI TRÒ
         </span>
       </div>
       <div className="w-[100%] h-[50px] flex justify-between mb-[5rem]">
@@ -162,18 +159,18 @@ function SpecialtiesContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
         </div>
         <div className="h-[50px] w-[50%] flex justify-end items-center pt-[8rem]">
           <div
-            className="  w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
+            className=" w-[40%] h-[40px] flex items-center justify-center rounded-3xl cursor-pointer"
             onClick={handleAddNewSpec}
           >
             <span className="font-medium underline text-success ">
-              Add new specialty
+              Thêm chuyên khoa mới
             </span>
           </div>
         </div>
@@ -214,10 +211,10 @@ function SpecialtiesContent({ role, mail }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Active"
+                        ? "Hoạt động"
                         : listD.commandFlag == 1
                         ? ""
-                        : "Blocked"}
+                        : "Đã chặn"}
                     </p>
                   </td>
                   <td className="w-[15%]  ">{listD.description}</td>
@@ -231,7 +228,6 @@ function SpecialtiesContent({ role, mail }) {
                           flexDirection: "column",
                           alignItems: "flex-start",
                           background: "#ececec",
-                          // fontSize:""
                           borderRadius: "1rem",
                           boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
                         }}
@@ -248,7 +244,7 @@ function SpecialtiesContent({ role, mail }) {
                           <p>
                             <CiPen />
                           </p>
-                          <p>Edit</p>
+                          <p>Chỉnh sửa</p>
                         </span>
 
                         <span
@@ -263,7 +259,7 @@ function SpecialtiesContent({ role, mail }) {
                           <p>
                             <CiTrash />
                           </p>
-                          <p>Block</p>
+                          <p>Chặn</p>
                         </span>
                       </div>
                     )}
@@ -288,9 +284,9 @@ function SpecialtiesContent({ role, mail }) {
         </div>
         <div>
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
+            <option value="3">3 mục/trang</option>
+            <option value="7">7 mục/trang</option>
+            <option value="10">10 mục/trang</option>
           </select>
         </div>
       </div>

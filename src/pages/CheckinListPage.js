@@ -41,7 +41,7 @@ const CheckinListPage = () => {
         )}
       </div>
       <div className="pt-[95px] pl-[190px] text-7xl font-bold py-[20px] bg-white ">
-        <h1>List of Examinations</h1>
+        <h1> Danh sách đã đăng ký khám</h1>
       </div>
       <div className="bg-white" style={{ padding: "5% 8%" }}>
         <CheckinListContent email={email} role={role}></CheckinListContent>

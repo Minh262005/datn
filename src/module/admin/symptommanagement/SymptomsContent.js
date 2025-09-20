@@ -291,11 +291,12 @@ function SymptomsContent({ role, mail }) {
           ))}
         </div>
         <div>
-          <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="3">3 per page</option>
-            <option value="7">7 per page</option>
-            <option value="10">10 per page</option>
-          </select>
+        <label htmlFor="itemsPerPage">Số mục mỗi trang:</label>
+<select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+  <option value="3">3</option>
+  <option value="7">7</option>
+  <option value="10">10</option>
+</select>
         </div>
       </div>
     </div>
