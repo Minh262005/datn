@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       // linear-gradient
       gradientLeft: "#3A8EF6",
+      
       gradientRight: "#6F3AFA",
       //state color
       secondary: "#E2EDFF",
