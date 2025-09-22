@@ -73,7 +73,7 @@ function AppointmentDetailsContent({ appointment }) {
     {
       id: 1,
       status: "Approved",
-      form: "Specialty examination at the hospital",
+      form: "Khám chuyên khoa",
       customer: "Nguyễn Quang Hưng",
       date: "10/06/1975",
       email: "hung@gmail.com",
@@ -81,10 +81,10 @@ function AppointmentDetailsContent({ appointment }) {
       phone: "0931936165",
       reason:
         "Lorem ipsum dolor sit amet consectetur. Cursus mauris vitae posuere id lacus. Ipsum elementum mi at mauris dui. Consequat suspendisse sit vitae nunc sed nec adipiscing.",
-      doctor: "Dr. Phan Nguyen Thanh Binh",
+      doctor: "Bác sĩ Nhi khoa",
       examinationtime: "08:00, 12/06/2023",
       location: "Clinicmate Da Nang",
-      specialty: "Nutrition",
+      specialty: "Nhi khoa",
     },
   ]);
   const handleCompletionOfExamination = async () => {

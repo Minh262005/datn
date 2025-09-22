@@ -19,7 +19,7 @@ import {
 } from "firebase/storage";
 import { storage } from "../../firebase-config";
 
-const tabButtons = ["DETAILED INFORMATION", "ASSESSMENT"];
+const tabButtons = ["THÔNG TIN CHI TIẾT", "ĐÁNH GIÁ"];
 
 function DoctorInformationContent({ docId }) {
   const [type, setType] = useState(tabButtons[0]);
@@ -109,7 +109,7 @@ function DoctorInformationContent({ docId }) {
           <span className="text-[60px]">
             <MdKeyboardArrowRight />
           </span>
-          <span className="font-bold mt-[6px]">Doctor</span>
+          <span className="font-bold mt-[6px]">Bác sĩ</span>
           <span className="text-[60px]">
             <MdKeyboardArrowRight />
           </span>
@@ -144,7 +144,7 @@ function DoctorInformationContent({ docId }) {
               className="bg-gradientLeft h-[50px] w-[120px] rounded-3xl text-secondary"
               onClick={() => book_appointment(doct)}
             >
-              Book
+              Đặt lịch khám
             </button>
           </div>
         </div>

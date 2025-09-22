@@ -46,7 +46,7 @@ function EditProfileDoctor() {
             )}
           </div>
           <div className="w-[100%] h-[200px] flex items-center">
-            <h1 className="text-[40px] font-bold"> Edit Profile</h1>
+            <h1 className="text-[40px] font-bold"> Chỉnh sửa hồ sơ</h1>
           </div>
           <div className="bg-white">
             <EditProfileContentForDoctor />

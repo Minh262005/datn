@@ -26,9 +26,9 @@ function Gender({ doct }) {
         </div>
         <div className="w-[60%] rounded-3xl h-[35px]">
           {isExpanded ? (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">Gender</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Giới tính</h1>
           ) : (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">Gender</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Giới tính</h1>
           )}
         </div>
         <div

@@ -26,8 +26,8 @@ function EditProfileContentForDoctor() {
       }
     }
   }, []);
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Save profile";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Lưu";
   // @ts-ignore
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
@@ -465,12 +465,12 @@ function EditProfileContentForDoctor() {
         <div className="w-[60%] ">
           <div className="w-[95%] h-[120px] mb-[10px] ">
             <div className="w-[90%] h-[50px]">
-              <h1 className=" text-[25px] font-bold">Full Name</h1>
+              <h1 className=" text-[25px] font-bold">Tên</h1>
             </div>
             <div className=" flex justify-start w-[100%]">
               <div className="h-[70px] w-[100%] border-[1px] rounded-2xl border-[#c5c4c4]">
                 <input
-                  placeholder="Full name"
+                  placeholder="Tên"
                   onChange={handleChangeName}
                   // @ts-ignore
                   value={fullName.fname}
@@ -483,7 +483,7 @@ function EditProfileContentForDoctor() {
           <div className="w-[100%] h-[120px] mb-[10px]">
             <div className="w-[100%] h-[50px]">
               <h1 className=" text-[25px] font-bold">
-                Email for communication
+                Email
               </h1>
             </div>
             <div className=" flex justify-start w-[100%]">
@@ -500,7 +500,7 @@ function EditProfileContentForDoctor() {
           </div>
           <div>
             <div className="w-[100%] h-[50px] ">
-              <h1 className=" text-[25px] font-bold">Date of Birth</h1>
+              <h1 className=" text-[25px] font-bold">Ngày sinh</h1>
             </div>
             <div className="flex w-[99%] mb-[15px] justify-between ">
               <div className="w-[27%]  flex">
@@ -520,7 +520,7 @@ function EditProfileContentForDoctor() {
               </div>
               <div className="h-[70px]  w-[28%] border-[1px] rounded-2xl border-[#c5c4c4]">
                 <input
-                  placeholder="Day"
+                  placeholder="Ngày"
                   onChange={handleChangeName}
                   name="bD"
                   // @ts-ignore
@@ -530,7 +530,7 @@ function EditProfileContentForDoctor() {
               </div>
               <div className="h-[70px] w-[28%]  border-[1px] rounded-2xl border-[#c5c4c4] mr-[25px]">
                 <input
-                  placeholder="Year"
+                  placeholder="Năm"
                   onChange={handleChangeName}
                   // @ts-ignore
                   value={year.bY}
@@ -541,12 +541,12 @@ function EditProfileContentForDoctor() {
             </div>
             <div className="w-[100%] h-[120px] mb-[14px]">
               <div className="w-[100%] h-[53px] mt-[2px]">
-                <h1 className=" text-[25px] font-bold">Contact Number</h1>
+                <h1 className=" text-[25px] font-bold">Số điện thoại</h1>
               </div>
               <div className=" flex justify-start w-[100%]">
                 <div className="h-[70px] w-[95%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
                   <input
-                    placeholder="0817411123"
+                    placeholder="Số điện thoại"
                     onChange={handleChangeName}
                     // @ts-ignore
                     value={phonee.pnum}
@@ -558,7 +558,7 @@ function EditProfileContentForDoctor() {
             </div>
             <div className="w-[100%] h-[120px] mb-[10px]">
               <div className="w-[100%] h-[60px]">
-                <h1 className=" text-[25px] font-bold">Location</h1>
+                <h1 className=" text-[25px] font-bold">Địa điểm làm việc</h1>
               </div>
               <div className=" flex justify-start w-[100%]">
                 <div className="h-[70px] w-[95%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -571,7 +571,7 @@ function EditProfileContentForDoctor() {
                       name="wpc"
                     >
                       <option selected={true} disabled={true}>
-                        -- Select Location --
+                        -- Chọn địa điểm làm việc --
                       </option>
                       {sysLocation != undefined &&
                         // @ts-ignore
@@ -588,7 +588,7 @@ function EditProfileContentForDoctor() {
                   ) : (
                     <div className="h-[70px] w-[100%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
                       <input
-                        placeholder="phone"
+                        placeholder="Số điện thoại"
                         disabled={true}
                         // @ts-ignore
                         value={workPlc.wpc}
@@ -605,7 +605,7 @@ function EditProfileContentForDoctor() {
         <div className="w-[40%] h-[40%]">
           <div className=" w-[100%] h-[250px]  mb-[10px] ">
             <div className="font-medium w-[100%] h-[150px]">
-              <h1 className="h-[48px] text-[20px] font-bold">Introduction</h1>
+              <h1 className="h-[48px] text-[20px] font-bold">Giới thiệu bản thân</h1>
               <div className="w-[100%] h-[200px] border-[1px] border-[#dddddd] rounded-3xl flex">
                 <div className="w-[1%]"></div>
                 <textarea
@@ -621,7 +621,7 @@ function EditProfileContentForDoctor() {
           <div className=" w-[100%] h-[150px] mb-[10px] ">
             <div className="font-medium w-[100%] h-[150px]">
               <h1 className="h-[48px] text-[20px] font-bold">
-                Education Background
+                Trình độ học vấn
               </h1>
               <div className="w-[100%] h-[100px] border-[1px] border-[#dddddd] rounded-3xl flex">
                 <div className="w-[1%]"></div>
@@ -637,7 +637,7 @@ function EditProfileContentForDoctor() {
           </div>
           <div className=" w-[100%] h-[120px] mb-[10px]  ">
             <div className="font-medium w-[100%] h-[150px]">
-              <h1 className="h-[48px] text-[20px] font-bold">Experience</h1>
+              <h1 className="h-[48px] text-[20px] font-bold">Kinh nghiệm</h1>
               <div className=" flex justify-start w-[100%]">
                 <div className="h-[60px] w-[100%] ">
                   <input
@@ -654,7 +654,7 @@ function EditProfileContentForDoctor() {
           </div>
           <div className="w-[95%] h-[120px] mb-[10px]">
             <div className="w-[90%] h-[30px] mb-[15px]">
-              <h1 className=" text-[20px] font-bold">Gender</h1>
+              <h1 className=" text-[20px] font-bold">Giới tính</h1>
             </div>
             <div className=" flex justify-start w-[100%]">
               <div className="h-[70px] w-[100%] ">
@@ -666,7 +666,7 @@ function EditProfileContentForDoctor() {
                   name="gd"
                 >
                   <option className="" selected={true} disabled={true}>
-                    -- Select gender --
+                    -- Chọn giới tính --
                   </option>
                   {males.map((male) => (
                     <option className="" key={male.id} value={male.id}>
@@ -682,7 +682,7 @@ function EditProfileContentForDoctor() {
       <div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Specialty</h1>
+            <h1 className=" text-[25px] font-bold">Chuyên khoa</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             {role == "ADMIN" ? (
@@ -694,7 +694,7 @@ function EditProfileContentForDoctor() {
                 name="splD"
               >
                 <option selected={true} disabled={true}>
-                  -- Select Specialty --
+                  -- Chọn chuyên khoa --
                 </option>
                 {sysSpec != undefined &&
                   // @ts-ignore
@@ -724,7 +724,7 @@ function EditProfileContentForDoctor() {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Roles and permissions</h1>
+            <h1 className=" text-[25px] font-bold">Vai trò và quyền hạn</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[98%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -737,7 +737,7 @@ function EditProfileContentForDoctor() {
                   onChange={handleChangeName}
                 >
                   <option selected={true} disabled={true}>
-                    -- Select Role --
+                    -- Chọn vai trò --
                   </option>
                   {sysRole != undefined &&
                     // @ts-ignore
@@ -765,7 +765,7 @@ function EditProfileContentForDoctor() {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Choose an image</h1>
+            <h1 className=" text-[25px] font-bold">Chọn ảnh</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[98%] border-[1px] rounded-2xl border-[#c5c4c4] flex">

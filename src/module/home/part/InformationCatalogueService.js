@@ -10,42 +10,42 @@ const listCmt = [
   {
     id: 1,
     comment:
-      "“Fast application, useful and secure linking feature to look up examination history”",
+      "“Ứng dụng nhanh chóng, tính năng liên kết hữu ích và an toàn để tra cứu lịch sử thi”",
     avatar: Vectorneurology,
-    fullname: "Neurology",
+    fullname: "Thần kinh học",
   },
   {
     id: 2,
-    comment: "“Easy appointment. Smart application and utility for users”",
+    comment: "“Đặt lịch hẹn dễ dàng. Ứng dụng thông minh và tiện ích cho người dùng”",
     avatar: MdChildCare,
-    fullname: "Peadiatric",
+    fullname: "Nhi khoa",
   },
   {
     id: 3,
-    comment: "“Very convenient. Save a lot of time. Simple but effective”",
+    comment: "“Rất tiện lợi. Tiết kiệm rất nhiều thời gian. Đơn giản nhưng hiệu quả”",
     avatar: GiBrokenBone,
-    fullname: "X-ray",
+    fullname: "Chụp X-quang",
   },
   {
     id: 4,
     comment:
-      "“Beautiful interface. Waiting for the next versions. Thanks ClinicMate”",
+      "“Giao diện đẹp. Chờ phiên bản tiếp theo. Cảm ơn ClinicMate”",
     avatar: FaTooth,
-    fullname: "Dental Care",
+    fullname: "Chăm sóc răng miệng",
   },
   {
     id: 5,
     comment:
-      "“Beautiful interface. Waiting for the next versions. Thanks ClinicMate”",
+      "“Giao diện đẹp. Chờ phiên bản tiếp theo. Cảm ơn ClinicMate”",
     avatar: FaMicroscope,
-    fullname: "Laboratory",
+    fullname: "Phòng xét nghiệm",
   },
   {
     id: 6,
     comment:
-      "“Beautiful interface. Waiting for the next versions. Thanks ClinicMate”",
+      "“Giao diện đẹp. Chờ phiên bản tiếp theo. Cảm ơn ClinicMate”",
     avatar: FaEye,
-    fullname: "Eye care",
+    fullname: "Chăm sóc mắt",
   },
 ];
 

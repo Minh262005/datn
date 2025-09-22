@@ -14,7 +14,7 @@ import Education from "./DetailedinfoContent/Education";
 const Listdata = [
   {
     id: 1,
-    name: "  Doctor Carlos has 23 years of experience in treating cardiovascular diseases. Currently, he works as a Cardiologist at the Department of Internal Medicine and Outpatient Clinic at Clinicmate Clinicl in Da Nang.",
+    name: "  Bác sĩ Carlos có 23 năm kinh nghiệm trong việc điều trị các bệnh tim mạch. Hiện tại, ông làm việc tại Bộ nội vụ và phòng khám tại Clinicmate Clinic trong Da Nang.",
   },
 ];
 function DetailedInformation({ doct }) {
@@ -41,11 +41,11 @@ function DetailedInformation({ doct }) {
               <div className="w-[60%] rounded-3xl h-[35px]">
                 {isExpanded ? (
                   <h1 className="p-3 ml-1 font-bold  text-[15px]">
-                    Introduction
+                    Giới thiệu
                   </h1>
                 ) : (
                   <h1 className="p-3 ml-1 font-bold  text-[15px]">
-                    Introduction
+                    Giới thiệu
                   </h1>
                 )}
               </div>

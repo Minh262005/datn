@@ -41,7 +41,7 @@ function DetailedInformation({ doct }) {
               <div className="w-[60%] rounded-3xl h-[35px]">
                 {isExpanded ? (
                   <h1 className="p-3 ml-1 font-bold  text-[15px]">
-                    FULL NAME
+                    Họ và tên
                   </h1>
                 ) : (
                   <h1 className="p-3 ml-1 font-bold  text-[15px]">

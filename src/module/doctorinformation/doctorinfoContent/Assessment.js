@@ -6,15 +6,15 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 const Listdata = [
   {
     id: 1,
-    name: "  The average level of customer satisfaction is displayed below, taken from independent customer experience surveys conducted by the Quality Management Department.",
+    name: "  Mức độ hài lòng trung bình của khách hàng được hiển thị dưới đây, lấy từ khảo sát trải nghiệm khách hàng độc lập được thực hiện bởi Bộ quản lý chất lượng.",
     name1:
-      ' The answers are measured on a scale of 1 to 5, with 5 being the best score equivalent to "Very Good."',
+      " Các câu trả lời được đo trên thang điểm từ 1 đến 5, với 5 là điểm cao nhất tương đương với 'Rất tốt.'",
     name2:
-      " The comments reflect the perspectives and objective opinions of the customers.",
+      " Các nhận xét phản ánh quan điểm và ý kiến chủ quan của khách hàng.",
   },
   {
     id: 2,
-    name4: " There are currently no reviews for this doctor.",
+    name4: " Hiện tại không có đánh giá cho bác sĩ này.",
   },
 ];
 function Assessment() {
@@ -27,7 +27,7 @@ function Assessment() {
           </div>
           <div className="w-[90%] rounded-3xl h-[35px]">
             <h1 className="p-3 font-bold text-[15px]">
-              Customer Reviews for Dr. Nguyen Thuy Dung: 0 ratings
+              Đánh giá khách hàng cho Dr. Nguyen Thuy Dung: 0 đánh giá
             </h1>
           </div>
         </div>
@@ -52,7 +52,7 @@ function Assessment() {
             <BsFillInfoCircleFill className="text-[18px] mt-[36%] ml-[40%] text-[#c5d7f4]" />
           </div>
           <div className="w-[90%] rounded-3xl h-[35px]">
-            <h1 className="p-3 font-bold text-[15px]">Number of reviews: 0 </h1>
+              <h1 className="p-3 font-bold text-[15px]">Số lượng đánh giá: 0 </h1>
           </div>
         </div>
         <hr className="w-[90%] ml-5 text-[rgb(212,212,212)]" />

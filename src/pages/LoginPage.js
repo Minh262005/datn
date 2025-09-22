@@ -66,7 +66,7 @@ const LoginPage = () => {
   };
 
   return (
-    <LayoutSign
+    <LayoutSign 
       header="Đăng nhập"
       childrenStyle="!max-w-[500px] rounded-3xl overflow-hidden"
     >
@@ -82,7 +82,7 @@ const LoginPage = () => {
               className="   text-[#a2a7af] flex items-center"
             >
               <input className="w-[20px] h-[20px]" type="radio" />
-              <p className="text-[20px] ml-[10px]">Dành cho người dùng!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho người dùng</p>
             </Link>
           </div>
           <div className=" flex items-center justify-center gap-1 w-[45%] h-[70px] rounded-2xl border-[#d8d7da] border-[1px]">
@@ -91,7 +91,7 @@ const LoginPage = () => {
               className="   text-textColor    flex items-center"
             >
               <input className="w-[20px] h-[20px]" type="radio" checked />
-              <p className="text-[20px] ml-[10px]">Dành cho nhân viên!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho nhân viên</p>
             </Link>
           </div>
         </div>
@@ -114,7 +114,7 @@ const LoginPage = () => {
             control={control}
           ></InputPassword>
           <div className="flex justify-between mt-[10px]"></div>
-          <Button className="mt-8" type="submit">
+          <Button className="mt-8" type="submit" onClick={() => {}}>
             Đăng nhập
           </Button>
         </form>

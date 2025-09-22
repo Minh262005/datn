@@ -10,7 +10,7 @@ import axios from "axios";
 import { localPort, publicPort } from "../../../components/url/link";
 import { useEffect } from "react";
 
-const tabButtons = ["DETAILED INFORMATION", "SCHEDULE", "MEDICAL HISTORY"];
+const tabButtons = ["THÔNG TIN CHI TIẾT", "LỊCH SỬ BỆNH ÁN"];
 
 function DoctorInformationContent({ docId, role }) {
   const [type, setType] = useState(tabButtons[0]);
@@ -99,7 +99,7 @@ function DoctorInformationContent({ docId, role }) {
           <span className="text-[60px]">
             <MdKeyboardArrowRight />
           </span>
-          <span className="font-bold mt-[6px]">Doctor</span>
+          <span className="font-bold mt-[6px]">Bác sĩ</span>
           <span className="text-[60px]">
             <MdKeyboardArrowRight />
           </span>

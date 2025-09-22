@@ -49,7 +49,7 @@ function SolutionContentNurse() {
                   <p className="text-[15px] w-[75%]">
                     Tìm bác sĩ trong ứng dụng quản lý phòng khám
                     cho phép người dùng tìm kiếm và chọn bác sĩ dựa trên các tiêu chí cụ thể
-                    criteria.
+                    tiêu chí.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">
@@ -83,8 +83,8 @@ function SolutionContentNurse() {
                 <div className="w-[100%] h-[130px] ">
                   <p className="text-[15px] w-[75%]">
                     Quản lý lịch khám trong ứng dụng quản lý phòng khám
-                    application allows users and staff to efficiently manage
-                    appointments.
+                    cho phép người dùng và nhân viên quản lý lịch khám một cách hiệu quả
+                    lịch khám.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">
@@ -118,8 +118,8 @@ function SolutionContentNurse() {
                 <div className="w-[100%] h-[130px] ">
                   <p className="text-[15px] w-[75%]">
                     Gửi yêu cầu trong ứng dụng quản lý phòng khám
-                    users and patients to send requests to staff or doctors
-                    within the clinic.
+                    cho phép người dùng và bệnh nhân gửi yêu cầu đến nhân viên hoặc bác sĩ
+                    trong phòng khám.
                   </p>
                 </div>
                 <div className="w-[100%] h-[30px] flex items-center">

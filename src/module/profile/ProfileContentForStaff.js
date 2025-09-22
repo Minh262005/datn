@@ -69,25 +69,25 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="flex w-[100%] min-h-[10px] mb-[15px]">
-                <span className="w-[50%]">Date of Birth</span>
+                <span className="w-[50%]">Ngày sinh</span>
                 <span className="w-[50%] flex justify-end">
                   <p>{infor != undefined ? infor.birthDate : ""} </p>
                 </span>
               </div>
               <div className="flex w-[100%] min-h-[10px] mb-[15px]">
-                <span className="w-[50%]">Phone number</span>
+                <span className="w-[50%]">Số điện thoại</span>
                 <span className="w-[50%] flex justify-end">
                   <p>{infor != undefined ? infor.phone : ""} </p>
                 </span>
               </div>
               <div className="flex w-[100%]  min-h-[10px] mb-[10px]">
-                <span className="w-[50%]">Gender</span>
+                <span className="w-[50%]">Giới tính</span>
                 <span className="w-[50%] flex justify-end">
                   <p>Male </p>
                 </span>
               </div>
               <div className="w-[100%] flex justify-end">
-                <span className="text-gradientLeft cursor-pointer">More</span>
+                <span className="text-gradientLeft cursor-pointer">Thêm</span>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ function ProfileContentForStaff({ mail }) {
           <div className="w-[85%]">
             <div className="w-[100%] flex h-[50px]  items-center">
               <div className="w-[50%]">
-                <h1 className="text-[20px] font-bold">Recent Activities</h1>
+                <h1 className="text-[20px] font-bold">Hoạt động gần đây</h1>
               </div>
               <div className="w-[50%] flex justify-end">
                 <div className="flex w-[100%]">
@@ -157,7 +157,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[80%]">
-                <h1>Change password</h1>
+                <h1>Thay đổi mật khẩu</h1>
               </div>
               <div className="w-[10%] flex justify-end ">
                 <MdKeyboardArrowRight className=" text-[30px] text-[#a4a0a0] cursor-pointer" />
@@ -170,7 +170,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[60%]">
-                <h1>Language</h1>
+                <h1>Ngôn ngữ</h1>
               </div>
               <div className="w-[30%] flex justify-end ">
                 <div className="flex items-center w-[100%]">
@@ -188,7 +188,7 @@ function ProfileContentForStaff({ mail }) {
                 </div>
               </div>
               <div className="w-[60%]">
-                <h1>Security</h1>
+                <h1>Bảo mật</h1>
               </div>
               <div className="w-[30%] flex justify-end ">
                 <div className="flex items-center w-[100%]">
@@ -210,7 +210,7 @@ function ProfileContentForStaff({ mail }) {
         <div className="w-[100%] h-[300px]  flex justify-center rounded-[20px] shadow-lg mb-[20px]">
           <div className="w-[85%]">
             <div className="w-[100%] h-[50px] flex items-center ">
-              <h1 className="text-[20px] font-bold">Settings</h1>
+              <h1 className="text-[20px] font-bold">Cài đặt</h1>
             </div>
             <div className="flex w-[100%] h-[40px] items-center mb-[10px] mt-[10px]">
               <div className="w-[10%] ">
@@ -219,7 +219,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[80%]">
-                <h1>Terms of use</h1>
+                <h1>Điều khoản sử dụng</h1>
               </div>
               <div className="w-[10%] flex justify-end ">
                 <MdKeyboardArrowRight className=" text-[30px] text-[#a4a0a0] cursor-pointer" />
@@ -232,7 +232,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[80%]">
-                <h1>Complaints and Dispute resolution policy</h1>
+                <h1>Chính sách khiếu nại và giải quyết tranh chấp</h1>
               </div>
               <div className="w-[10%] flex justify-end ">
                 <MdKeyboardArrowRight className=" text-[30px] text-[#a4a0a0] cursor-pointer" />
@@ -245,7 +245,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[80%]">
-                <h1>Privacy Policy</h1>
+                <h1>Chính sách bảo mật</h1>
               </div>
               <div className="w-[10%] flex justify-end ">
                 <MdKeyboardArrowRight className=" text-[30px] text-[#a4a0a0] cursor-pointer" />
@@ -258,7 +258,7 @@ function ProfileContentForStaff({ mail }) {
                 </span>
               </div>
               <div className="w-[80%]">
-                <h1>Requirement Managament</h1>
+                <h1>Quản lý yêu cầu</h1>
               </div>
               <div className="w-[10%] flex justify-end ">
                 <MdKeyboardArrowRight className=" text-[30px] text-[#a4a0a0] cursor-pointer" />

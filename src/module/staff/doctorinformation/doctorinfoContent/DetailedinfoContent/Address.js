@@ -30,9 +30,9 @@ function Address({ doct }) {
         </div>
         <div className="w-[60%] rounded-3xl h-[35px]">
           {isExpanded ? (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">Address</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Địa chỉ</h1>
           ) : (
-            <h1 className="p-3 ml-1 font-bold text-[15px]   ">Address</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]   ">Địa chỉ</h1>
           )}
         </div>
         <div

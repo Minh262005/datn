@@ -8,7 +8,7 @@ import { publicPort } from "../../../components/url/link";
 import { useEffect } from "react";
 import DetailedInformationForPatient from "./doctorinfoContent/DetailedInformationForPatient";
 
-const tabButtons = ["DETAILED INFORMATION", "MEDICAL HISTORY"];
+const tabButtons = ["THÔNG TIN CHI TIẾT", "LỊCH SỬ BỆNH ÁN"];
 
 function PatientInformationContent({ docId }) {
   const [type, setType] = useState(tabButtons[0]);
@@ -95,7 +95,7 @@ function PatientInformationContent({ docId }) {
           <span className="text-[60px]">
             <MdKeyboardArrowRight />
           </span>
-          <span className="font-bold mt-[6px]">Patient</span>
+          <span className="font-bold mt-[6px]">Bệnh nhân</span>
         </div>
         <div className="absolute top-[40%] left-[20%] ">
           <h1 className="text-gradientLeft text-4xl font-bold">{doct.name}</h1>

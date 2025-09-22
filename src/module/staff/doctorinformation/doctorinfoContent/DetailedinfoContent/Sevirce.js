@@ -5,11 +5,11 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 const Listdata = [
   {
     id: 1,
-    name: " Diagnosis and treatment of cardiovascular diseases such as coronary artery disease",
+    name: " Chẩn đoán và điều trị các bệnh tim mạch như bệnh mạch vành và tăng huyết áp",
     name1:
-      " Evaluation and treatment of hypertension, arrhythmias, congenital heart diseases in children, and acute cardiovascular emergencies like acute coronary syndrome",
+      " Đánh giá và điều trị bất thường nhịp tim, bệnh tim mạch ở trẻ em và các cơn cấp cứu tim mạch như bệnh mạch vành",
     name2:
-      " Emergency treatment of hypertension, syncope/unconsciousness syndrome",
+      " Điều trị cấp cứu tăng huyết áp, tắc nghẽn/mất ý thức",
   },
 ];
 function Sevirce() {
@@ -31,11 +31,11 @@ function Sevirce() {
         <div className="w-[60%] rounded-3xl h-[35px]">
           {isExpanded ? (
             <h1 className="p-3 ml-1 font-bold text-[15px]">
-              EDUCATION BACKGROUND
+              Trình độ học vấn
             </h1>
           ) : (
             <h1 className="p-3 ml-1 font-bold text-[15px]">
-              EDUCATION BACKGROUND
+              Trình độ học vấn
             </h1>
           )}
         </div>

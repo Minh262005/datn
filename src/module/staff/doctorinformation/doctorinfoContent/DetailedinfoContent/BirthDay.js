@@ -21,10 +21,10 @@ function BirthDay({ doct }) {
         <div className="w-[70%] rounded-3xl h-[35px]">
           {isExpanded ? (
             <h1 className="p-3 ml-1 font-bold text-[13px] w-[100%]">
-              BirthDate
+              Ngày sinh
             </h1>
           ) : (
-            <h1 className="p-3 ml-1 font-bold text-[13px]">BirthDate</h1>
+            <h1 className="p-3 ml-1 font-bold text-[13px]">Ngày sinh</h1>
           )}
         </div>
         <div

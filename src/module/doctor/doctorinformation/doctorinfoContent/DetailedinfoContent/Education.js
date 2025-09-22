@@ -28,11 +28,11 @@ function Education({ doct }) {
                 </div>
                 <div className="w-[70%] rounded-3xl h-[35px]">
                     {isExpanded ? (
-                        <h1 className="p-3 ml-1 font-bold text-[15px]">EDUCATION BACKGROUND</h1>
+                        <h1 className="p-3 ml-1 font-bold text-[15px]">Trình độ học vấn</h1>
                     )
                         :
                         (
-                            <h1 className="p-3 ml-1 font-bold text-[15px]">EDUCATION BACKGROUND</h1>
+                            <h1 className="p-3 ml-1 font-bold text-[15px]">Trình độ học vấn</h1>
                         )
                     }
                 </div>

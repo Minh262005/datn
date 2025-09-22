@@ -9,8 +9,8 @@ import { publicPort } from "../../../components/url/link";
 
 function AdminContentInfor() {
 
-  const tabButtons1 = "Doctor";
-  const tabButtons2 = "Specialty";
+  const tabButtons1 = "Bác sĩ";
+  const tabButtons2 = "Chuyên khoa";
   const [showList1, setShowList1] = useState(true);
   const [showList2, setShowList2] = useState(false);
 
@@ -22,9 +22,19 @@ function AdminContentInfor() {
         const response = await axios.get(
           publicPort + "api/countByDoctorOfApointment"
         );
-        setListOrigin(response.data);
+        // Validate response data
+        if (response.data && Array.isArray(response.data)) {
+          setListOrigin(response.data);
+        } else {
+          console.warn("Invalid API response format");
+          setListOrigin([]);
+        }
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching appointment data:", error);
+        if (error.response?.status === 500) {
+          console.error("Server error - API endpoint may have issues");
+        }
+        setListOrigin([]);
       }
     };
     listDoctor();
@@ -69,7 +79,7 @@ function AdminContentInfor() {
                   <h5 className="text-[#75a2cf]">ID</h5>
                 </div>
                 <div className="w-[55%]">
-                  <h5 className="text-[16px] font-light text-[#75a2cf]">Name</h5>
+                  <h5 className="text-[16px] font-light text-[#75a2cf]">Tên</h5>
                 </div>
               </div>
               <div className="w-[40%]">
@@ -80,7 +90,7 @@ function AdminContentInfor() {
                   </div>
                   <div className="w-[50%]  flex justify-center">
                     <h5 className="text-[16px] font-light text-[#75a2cf]">
-                      Completed
+                      Hoàn thành
                     </h5>
                   </div>
                 </div>
@@ -92,50 +102,62 @@ function AdminContentInfor() {
       <hr className="w-[90%] ml-5 text-[#d4d4d4]" />
       <div className="overflow-y-scroll h-[340px] w-[100%] flex justify-center">
         <div className="w-[90%]">
-          {showList1 && listOrigin.map((data) => (
-            <div className="flex w-[100%] h-[28px]" key={data.id}>
-              <div className="w-[80%] flex">
-                <div className="w-[30%] flex justify-center">
-                  <h5>{data.id}</h5>
-                </div>
-                <div className="w-[70%]">
-                  <h5 className="text-[16px] font-light">{data.nameDoctor}</h5>
-                </div>
-              </div>
-              <div className="w-[40%]">
-                <div className="flex w-[100%]">
-                  <div className="w-[50%] flex justify-center">
-                    <h5 className="text-[18px]">{data.online}</h5>
-                  </div>
-                  <div className="w-[50%] flex justify-end">
-                    <h5 className="text-[18px]">{data.examination}</h5>
-                  </div>
-                </div>
+          {listOrigin.length === 0 ? (
+            <div className="flex justify-center items-center h-[200px]">
+              <div className="text-center">
+                <div className="text-gray-400 text-4xl mb-2">📊</div>
+                  <p className="text-gray-600">Không có dữ liệu</p>
+                <p className="text-gray-500 text-sm">Hiện tại chưa có thông tin thống kê</p>
               </div>
             </div>
-          ))}
-          {showList2 && listOrigin.map((data) => (
-            <div className="flex w-[100%] h-[28px]" key={data.idspe}>
-              <div className="w-[80%] flex">
-                <div className="w-[30%] flex justify-center">
-                  <h5>{data.idspe}</h5>
-                </div>
-                <div className="w-[70%]">
-                  <h5 className="text-[16px] font-light">{data.nameSepcial}</h5>
-                </div>
-              </div>
-              <div className="w-[40%]">
-                <div className="flex w-[100%]">
-                  <div className="w-[50%] flex justify-center">
-                    <h5 className="text-[18px]">{data.online}</h5>
+          ) : (
+            <>
+              {showList1 && listOrigin.map((data, index) => (
+                <div className="flex w-[100%] h-[28px]" key={data.id || `doctor-${index}`}>
+                  <div className="w-[80%] flex">
+                    <div className="w-[30%] flex justify-center">
+                      <h5>{data.id || 'N/A'}</h5>
+                    </div>
+                    <div className="w-[70%]">
+                      <h5 className="text-[16px] font-light">{data.nameDoctor || 'Bác sĩ'}</h5>
+                    </div>
                   </div>
-                  <div className="w-[50%] flex justify-end">
-                    <h5 className="text-[18px]">{data.examination}</h5>
+                  <div className="w-[40%]">
+                    <div className="flex w-[100%]">
+                      <div className="w-[50%] flex justify-center">
+                        <h5 className="text-[18px]">{data.online || 0}</h5>
+                      </div>
+                      <div className="w-[50%] flex justify-end">
+                        <h5 className="text-[18px]">{data.examination || 0}</h5>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+              {showList2 && listOrigin.map((data, index) => (
+                <div className="flex w-[100%] h-[28px]" key={data.idspe || `specialty-${index}`}>
+                  <div className="w-[80%] flex">
+                    <div className="w-[30%] flex justify-center">
+                      <h5>{data.idspe || 'N/A'}</h5>
+                    </div>
+                    <div className="w-[70%]">
+                      <h5 className="text-[16px] font-light">{data.nameSepcial || 'Chuyên khoa'}</h5>
+                    </div>
+                  </div>
+                  <div className="w-[40%]">
+                    <div className="flex w-[100%]">
+                      <div className="w-[50%] flex justify-center">
+                        <h5 className="text-[18px]">{data.online || 0}</h5>
+                      </div>
+                      <div className="w-[50%] flex justify-end">
+                        <h5 className="text-[18px]">{data.examination || 0}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>

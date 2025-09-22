@@ -7,32 +7,32 @@ const listCmt = [
   {
     id: 1,
     comment:
-      "As the first member to enter into operation and mark the presence of the Clinicmate Healthcare brand, Clinicmate plays a uniquely important role in the system's development. Each...",
+      "Là thành viên đầu tiên đi vào hoạt động và đánh dấu sự hiện diện của thương hiệu Chăm sóc Sức khỏe Clinicmate, Clinicmate đóng vai trò quan trọng đặc biệt trong sự phát triển của hệ thống. Mỗi...",
     photo:
       imgAbout3,
     fullname:
-      "Clinicmate's Birthday: Breakthroughs with Special Professional Milestones",
-    title: "read more",
+      "Sinh nhật Clinicmate: Thành tựu đặc biệt với các đánh dấu chuyên môn",
+    title: "đọc thêm",
   },
   {
     id: 2,
     comment:
-      "Clinicmate collaborates with the International Liver Cancer Epidemiology Consortium (ILCEC) and the Asian Coordinating Council for Epidemiology (ACC) to organize the annual conference...",
+      "Clinicmate hợp tác với Hiệp hội Dịch tễ học Ung thư Gan Quốc tế (ILCEC) và Hội đồng Điều phối Dịch tễ học Châu Á (ACC) để tổ chức hội nghị thường niên...",
     photo:
       imgAbout4,
     fullname:
-      "Clinicmate shares numerous scientific studies at the ACC & ILCEC Conference",
-    title: "read more",
+      "Clinicmate chia sẻ nhiều nghiên cứu khoa học tại Hội nghị ACC & ILCEC",
+    title: "đọc thêm",
   },
   {
     id: 3,
     comment:
-      "Each year, over 9.6 million people die from cancer worldwide, surpassing the number of deaths from HIV/AIDS, malaria, and tuberculosis combined. It is estimated that by 2030, the number of deaths from cancer...",
+      "Mỗi năm, hơn 9,6 triệu người tử vong do ung thư trên toàn thế giới, vượt quá số ca tử vong do HIV/AIDS, sốt rét và lao phổi cộng lại. Ước tính đến năm 2030, số ca tử vong do ung thư...",
     photo:
       imgAbout5,
     fullname:
-      "World Cancer Day on February 4th: Clinicmate commits to providing differentiated and effective care for cancer patients in Vietnam",
-    title: "read more",
+      "Ngày Ung thư Thế giới 4/2: Clinicmate cam kết cung cấp dịch vụ chăm sóc khác biệt và hiệu quả cho bệnh nhân ung thư tại Việt Nam",
+      title: "đọc thêm",
   },
 ];
 const LatestNewService = () => {

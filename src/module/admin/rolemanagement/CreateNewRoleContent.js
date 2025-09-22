@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateNewRoleContent() {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Create role";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Tạo vai trò";
   const navigate = useNavigate();
 
   const [Name, setName] = useState([
@@ -36,7 +36,7 @@ function CreateNewRoleContent() {
 
     console.log(objectSave);
     if (objectSave.name == "" || objectSave.name == undefined) {
-      alert("Please fill name");
+        alert("Vui lòng điền tên");
     } else {
       const response = await axios.post(publicPort + `role/save`, objectSave);
       console.log(response);
@@ -54,12 +54,12 @@ function CreateNewRoleContent() {
     <div className="w-[100%] min-h-[1000px] bg-white">
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Name</h1>
+          <h1 className=" text-[25px] font-bold">Tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
-              placeholder="Name"
+              placeholder="Tên"
               onChange={handleChangeName}
               name="name"
               className="w-[90%] h-[100%] ml-[10px] text-[20px] "

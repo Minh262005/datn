@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateNewSymptomContent() {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Create symptom";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Tạo triệu chứng";
   const navigate = useNavigate();
 
   const [Name, setName] = useState([
@@ -108,12 +108,12 @@ function CreateNewSymptomContent() {
     <div className="w-[100%] min-h-[1000px] bg-white">
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Name</h1>
+          <h1 className=" text-[25px] font-bold">Tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
-              placeholder="Name"
+              placeholder="Tên"
               onChange={handleChangeName}
               name="name"
               className="w-[90%] h-[100%] ml-[10px] text-[20px] "
@@ -123,13 +123,13 @@ function CreateNewSymptomContent() {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Description</h1>
+          <h1 className=" text-[25px] font-bold">Mô tả</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
             <input
               onChange={handleChangeName}
-              placeholder="Description"
+              placeholder="Mô tả"
               name="des"
               className="w-[80%] h-[100%] ml-[10px] text-[20px] "
             />
@@ -138,7 +138,7 @@ function CreateNewSymptomContent() {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Specialty</h1>
+          <h1 className=" text-[25px] font-bold">Triệu chứng</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[60px] w-[22%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -149,10 +149,10 @@ function CreateNewSymptomContent() {
               onChange={handleChangeName}
             >
               <option selected={true} disabled={true}>
-                -- Choose Specialty --
+                -- Chọn chuyên khoa --
               </option>
               {listSymptom != undefined &&
-                listSymptom.map((staff) => (
+                  listSymptom.map((staff) => (
                   <option className="" key={staff.id} value={staff.id}>
                     {staff.name}
                   </option>

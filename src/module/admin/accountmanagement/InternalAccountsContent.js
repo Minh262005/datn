@@ -15,31 +15,31 @@ function InternalAccountsContent({ role, mail }) {
   const listtitle = [
     {
       id: 1,
-      title: "No",
+      title: "STT",
     },
     {
       id: 2,
-      title: "Staff Name",  
+      title: "Tên nội bộ",  
     },
     {
       id: 3,
-      title: "Email",
+      title: "Email để liên hệ",
     },
     {
       id: 4,
-      title: "Specialty",
+      title: "Chuyên khoa",
     },
     {
       id: 5,
-      title: "Role",
+      title: "Vai trò",
     },
     {
       id: 6,
-      title: "Status",
+      title: "Trạng thái",
     },
     {
       id: 7,
-      title: "Action",
+      title: "Thao tác",
     },
   ];
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -155,7 +155,7 @@ function InternalAccountsContent({ role, mail }) {
             <BiSearch className="text-[25px] ml-[13px] text-[#c5c4c4]" />
           </button>
           <input
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             className="w-[83%] h-[100%] "
             onChange={handleSearchInputChange}
           />
@@ -166,7 +166,7 @@ function InternalAccountsContent({ role, mail }) {
             onClick={handleAddNewAccount}
           >
             <span className="font-medium underline text-success ">
-              Add new account
+              Thêm tài khoản mới
             </span>
           </div>
         </div>
@@ -216,15 +216,15 @@ function InternalAccountsContent({ role, mail }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Active"
+                        ? "Hoạt động"
                         : listD.commandFlag == 1
-                        ? "Busy"
-                        : "Blocked"}
+                        ? "Bận"
+                        : "Khóa"}
                     </p>
                   </td>
 
                   <td className="pb-[10px] pt-[10px]  w-[13%]">
-                    <button onClick={() => handleShow(index)}>:</button>
+                    <button onClick={() => handleShow(index)}>...</button>
                     {visibleItem === index && (
                       <div
                         className="ml-[6.5rem] w-[45%] "
@@ -250,7 +250,7 @@ function InternalAccountsContent({ role, mail }) {
                           <p>
                             <CiPen />
                           </p>
-                          <p>Edit</p>
+                          <p>Sửa</p>
                         </span>
                         <span
                           onClick={() => handleDelete(listD.id)}
@@ -264,7 +264,7 @@ function InternalAccountsContent({ role, mail }) {
                           <p>
                             <CiTrash />
                           </p>
-                          <p>Block</p>
+                          <p>Khóa</p>
                         </span>
                       </div>
                     )}

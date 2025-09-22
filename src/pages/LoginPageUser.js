@@ -126,7 +126,7 @@ const LoginPageUser = () => {
                 checked 
                 onChange={() => {}} 
               />
-              <p className="text-[20px] ml-[10px]">Dành cho người dùng!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho người dùng</p>
             </Link>
           </div>
           <div className=" flex items-center justify-center gap-1 w-[45%] h-[70px] rounded-2xl border-[#d8d7da] border-[1px]">
@@ -136,7 +136,7 @@ const LoginPageUser = () => {
                 type="radio"
                 onChange={() => {}}
               />
-              <p className="text-[20px] ml-[10px]">Dành cho nhân viên!</p>
+              <p className="text-[20px] ml-[10px]">Dành cho nhân viên</p>
             </Link>
           </div>
         </div>

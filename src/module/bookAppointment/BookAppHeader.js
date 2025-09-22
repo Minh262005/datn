@@ -10,7 +10,7 @@ const bookappointment = [
   },
   {
     id: 2,
-    to: "/book_appointment_guest",
+    to: "/book_appointment",
     title: "Đặt lịch hẹn  ",  
   },
 ];

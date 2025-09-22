@@ -5,10 +5,10 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 const Listdata = [
   {
     id: 1,
-    name: " Emergency Intensive Care Unit - Public Hospital",
-    name1: " Family Medical International Clinic, Ho Chi Minh City ",
-    name2: " Gregorio Maranon Hospital, Madrid, Spain",
-    name3: " Vinmec International General Hospital - Phu Quoc branch",
+    name: " Đơn vị Cấp cứu nội khoa - Bệnh viện công",
+    name1: " Bệnh viện Y tế Quốc tế, Thành phố Hồ Chí Minh ",
+    name2: " Bệnh viện Gregorio Maranon, Madrid, Tây Ban Nha",
+    name3: " Vinmec International General Hospital - Chi nhánh Phú Quốc",
   },
 ];
 function Experience({ doct }) {
@@ -29,9 +29,9 @@ function Experience({ doct }) {
         </div>
         <div className="w-[60%] rounded-3xl h-[35px]">
           {isExpanded ? (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">EXPERIENCE</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Kinh nghiệm</h1>
           ) : (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">EXPERIENCE</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Kinh nghiệm</h1>
           )}
         </div>
         <div
@@ -48,7 +48,7 @@ function Experience({ doct }) {
             className=" text-[14px] justify-around w-[100%] ml-2 font-light p-[12px]"
             style={{ lineHeight: "40px" }}
           >
-            {doct.yearOfExp} years
+            {doct.yearOfExp} năm
             {/* <hr className="w-[100%] text-[rgb(212,212,212)]" /> */}
           </div>
         }

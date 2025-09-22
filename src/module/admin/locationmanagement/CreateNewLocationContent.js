@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateNewLocationContent() {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Create location";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Tạo cơ sở";
   const navigate = useNavigate();
 
   const [Name, setName] = useState([
@@ -56,7 +56,7 @@ function CreateNewLocationContent() {
       objectSave.description == "" ||
       objectSave.description == undefined
     ) {
-      alert("Please fill all fields");
+      alert("Vui lòng điền đầy đủ các trường");
     } else {
       const response = await axios.post(
         publicPort + `location/save`,
@@ -77,12 +77,12 @@ function CreateNewLocationContent() {
     <div className="w-[100%] min-h-[1000px] bg-white">
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Name</h1>
+          <h1 className=" text-[25px] font-bold">Tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
-              placeholder="Name"
+              placeholder="Tên"
               onChange={handleChangeName}
               name="name"
               className="w-[90%] h-[100%] ml-[10px] text-[20px] "
@@ -92,13 +92,13 @@ function CreateNewLocationContent() {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Description</h1>
+          <h1 className=" text-[25px] font-bold">Mô tả</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
             <input
               onChange={handleChangeName}
-              placeholder="Description"
+              placeholder="Mô tả"
               name="des"
               className="w-[80%] h-[100%] ml-[10px] text-[20px] "
             />

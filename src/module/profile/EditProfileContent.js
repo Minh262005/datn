@@ -7,32 +7,32 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function EditProfileContent() {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Save profile";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Lưu";
   // @ts-ignore
   const [active, setActive] = useState(false);
   // @ts-ignore
   const [selectedStaff, setSelectedStaff] = useState(null);
   const navigate = useNavigate();
   const [staffs] = useState([
-    { id: 1, month: "January" },
-    { id: 2, month: "February" },
-    { id: 3, month: "March" },
-    { id: 4, month: "April" },
-    { id: 5, month: "May" },
-    { id: 6, month: "June" },
-    { id: 7, month: "July" },
-    { id: 8, month: "August" },
-    { id: 9, month: "September" },
-    { id: 10, month: "October" },
-    { id: 11, month: "November" },
-    { id: 12, month: "December" },
+    { id: 1, month: "Tháng 1" },
+    { id: 2, month: "Tháng 2" },
+    { id: 3, month: "Tháng 3" },  
+    { id: 4, month: "Tháng 4" },
+    { id: 5, month: "Tháng 5" },
+    { id: 6, month: "Tháng 6" },
+    { id: 7, month: "Tháng 7" },
+    { id: 8, month: "Tháng 8" },
+    { id: 9, month: "Tháng 9" },
+    { id: 10, month: "Tháng 10" },
+    { id: 11, month: "Tháng 11" },
+    { id: 12, month: "Tháng 12" },
   ]);
 
   const [males] = useState([
-    { id: "male", maless: "male" },
-    { id: "female", maless: "female" },
-    { id: "other", maless: "other" },
+    { id: "male", maless: "Nam" },
+    { id: "female", maless: "Nữ" },
+    { id: "other", maless: "Khác" },
   ]);
 
   const [idCard, setIdCard] = useState([
@@ -333,12 +333,12 @@ function EditProfileContent() {
     <div className="w-[100%] min-h-[1000px] bg-white">
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Full Name</h1>
+          <h1 className=" text-[25px] font-bold">Tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
-              placeholder="Full name"
+              placeholder="Tên"
               onChange={handleChangeName}
               // @ts-ignore
               value={fullName.fname}
@@ -350,7 +350,7 @@ function EditProfileContent() {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Email for communication</h1>
+          <h1 className=" text-[25px] font-bold">Email</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -367,7 +367,7 @@ function EditProfileContent() {
       </div>
       <div>
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Date of Birth</h1>
+          <h1 className=" text-[25px] font-bold">Ngày sinh</h1>
         </div>
         <div className="flex w-[100%] mb-[15px]">
           <div className="w-[15%] ">
@@ -387,7 +387,7 @@ function EditProfileContent() {
           </div>
           <div className="h-[70px] w-[10%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
-              placeholder="Day"
+              placeholder="Ngày"
               onChange={handleChangeName}
               name="bD"
               // @ts-ignore
@@ -397,7 +397,7 @@ function EditProfileContent() {
           </div>
           <div className="h-[70px] w-[10%] border-[1px] rounded-2xl border-[#c5c4c4] ml-[20px]">
             <input
-              placeholder="Year"
+              placeholder="Năm"
               onChange={handleChangeName}
               // @ts-ignore
               value={year.bY}
@@ -414,7 +414,7 @@ function EditProfileContent() {
               name="gd"
             >
               <option className="" selected={true} disabled={true}>
-                -- Select gender --
+                -- Chọn giới tính --
               </option>
               {males.map((male) => (
                 <option className="" key={male.id} value={male.maless}>
@@ -426,12 +426,12 @@ function EditProfileContent() {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Phone Number</h1>
+            <h1 className=" text-[25px] font-bold">Số điện thoại</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
               <input
-                placeholder="Phone number"
+                placeholder="Số điện thoại"
                 onChange={handleChangeName}
                 // @ts-ignore
                 value={phonee.pnum}
@@ -443,12 +443,12 @@ function EditProfileContent() {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Address</h1>
+              <h1 className=" text-[25px] font-bold">Địa chỉ</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
               <input
-                placeholder="Address"
+                placeholder="Địa chỉ"
                 onChange={handleChangeName}
                 // @ts-ignore
                 value={addresss.adr}
@@ -461,14 +461,14 @@ function EditProfileContent() {
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
             <h1 className=" text-[25px] font-bold">
-              Identity card/Citizenship card
+              Căn cước công dân/Chứng minh nhân dân
             </h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
               <input
                 disabled={true}
-                placeholder="ID Card"
+                placeholder="Căn cước công dân/Chứng minh nhân dân"
                 onChange={handleChangeName}
                 // @ts-ignore
                 value={idCard.idC}
@@ -480,12 +480,12 @@ function EditProfileContent() {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Avatar</h1>
+            <h1 className=" text-[25px] font-bold">Ảnh đại diện</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
               <input
-                type="file"
+                type="file" 
                 accept="image/*"
                 onChange={handleFileChange}
                 className="w-[80%] pt-[1.5rem] h-[100%] ml-[10px] text-[20px] "

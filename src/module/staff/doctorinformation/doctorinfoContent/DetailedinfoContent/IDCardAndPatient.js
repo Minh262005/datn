@@ -29,9 +29,9 @@ function IDCardAndPatient({ doct }) {
         </div>
         <div className="w-[70%] rounded-3xl h-[35px]">
           {isExpanded ? (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">Identity Number</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Căn cước công dân/Chứng minh nhân dân</h1> 
           ) : (
-            <h1 className="p-3 ml-1 font-bold text-[15px]">Identity Number</h1>
+            <h1 className="p-3 ml-1 font-bold text-[15px]">Căn cước công dân/Chứng minh nhân dân</h1>
           )}
         </div>
         <div

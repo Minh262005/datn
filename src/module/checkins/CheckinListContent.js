@@ -323,7 +323,7 @@ function CheckinListContent({ email, role }) {
                       }`}
                     >
                       {listD.commandFlag == 0
-                        ? "Đã điểm danh"
+                        ? "Đã có mặt"
                         : listD.commandFlag == 1
                         ? "Đang khám"
                         : listD.commandFlag == 2

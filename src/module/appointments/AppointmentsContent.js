@@ -187,7 +187,7 @@ function AppointmentsContent({ role, mail }) {
     navigate("/checkin", { state: { appointment } });
   };
   const handleAddNewAppointment = () => {
-    navigate("/book_appointment");
+    navigate("/book_appointment_guest");
   };
 
   const approveAppointment = async (appointment) => {

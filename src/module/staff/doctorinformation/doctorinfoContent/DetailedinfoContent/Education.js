@@ -5,11 +5,11 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 const Listdata = [
   {
     id: 1,
-    name: " 1991: Graduated in Medicine from Buenos Aires University, Argentina",
+    name: " 1991: Tốt nghiệp trong ngành Y tế tại Đại học Buenos Aires, Argentina",
     name1:
-      " Received training in Emergency Intensive Care at La Plata University (Buenos Aires, Argentina)",
+      " Nhận đào tạo trong ngành Cấp cứu tại Đại học La Plata (Buenos Aires, Argentina)",
     name2:
-      " Cardiology Specialist Certification from the Ministry of Health, Argentina",
+      " Chứng chỉ chuyên ngành Tim mạch tại Bộ Y tế, Argentina",
   },
 ];
 function Education({ doct }) {
@@ -31,11 +31,11 @@ function Education({ doct }) {
         <div className="w-[70%] rounded-3xl h-[35px]">
           {isExpanded ? (
             <h1 className="p-3 ml-1 font-bold text-[15px]">
-              EDUCATION BACKGROUND
+              Trình độ học vấn
             </h1>
           ) : (
             <h1 className="p-3 ml-1 font-bold text-[15px]">
-              EDUCATION BACKGROUND
+              Trình độ học vấn
             </h1>
           )}
         </div>

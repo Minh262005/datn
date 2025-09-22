@@ -73,13 +73,8 @@ const AdminContentRow = () => {
         };
       },
     },
-    // Thêm animation
-    animation: {
-      appear: {
-        animation: 'grow-in-y',
-        duration: 1000,
-      },
-    },
+    // Disable animation to prevent errors
+    animation: false,
   };
 
   // Loading state

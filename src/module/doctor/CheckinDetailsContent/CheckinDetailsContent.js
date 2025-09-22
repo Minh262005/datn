@@ -138,7 +138,7 @@ function CheckinDetailsContent({ checkin, role }) {
     {
       id: 1,
       status: "Approved",
-      form: "Specialty examination at the hospital",
+      form: "Khám chuyên khoa",
       customer: "Nguyễn Quang Hưng",
       date: "10/06/1975",
       email: "hung@gmail.com",
@@ -146,10 +146,10 @@ function CheckinDetailsContent({ checkin, role }) {
       phone: "0931936165",
       reason:
         "Lorem ipsum dolor sit amet consectetur. Cursus mauris vitae posuere id lacus. Ipsum elementum mi at mauris dui. Consequat suspendisse sit vitae nunc sed nec adipiscing.",
-      doctor: "Dr. Phan Nguyen Thanh Binh",
+      doctor: "Bác sĩ Nhi khoa",
       examinationtime: "08:00, 12/06/2023",
       location: "Clinicmate Da Nang",
-      specialty: "Nutrition",
+      specialty: "Nhi khoa",
     },
   ]);
   const handleCompletionOfExamination = async () => {
@@ -253,7 +253,7 @@ function CheckinDetailsContent({ checkin, role }) {
                     <p
                       className={`w-[14%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-[#9747ff]"}`}
                     >
-                      Đã điểm danh
+                      Đã có mặt
                     </p>
                   ) : checkin != undefined && checkin.commandFlag == "1" ? (
                     <p
@@ -282,7 +282,7 @@ function CheckinDetailsContent({ checkin, role }) {
               <div className="pt-8 flex">
                 <span className="w-[35%]">Hình thức dịch vụ</span>
                 <span className="w-[65%]">
-                  Specialty examination at the hospital
+                  Khám chuyên khoa
                 </span>
               </div>
               <div className="pt-3 flex">
@@ -479,14 +479,14 @@ function CheckinDetailsContent({ checkin, role }) {
                   style={{ color: "white" }}
                   onClick={() => handleshowConfirmCancel()}
                 >
-                  Cancel the Check-in
+                  Hủy điểm danh
                 </button>
                 <button
                   className=" rounded-2xl h-[50px] pl-[30px] pr-[30px] w-[30%] mr-[35px] bg-success"
                   onClick={() => handleshowConfirmApprove()}
                   style={{ color: "white" }}
                 >
-                  Start examining
+                  Bắt đầu khám
                 </button>
               </>
             ) : (
@@ -508,9 +508,9 @@ function CheckinDetailsContent({ checkin, role }) {
                   <div className="w-[100%] h-[100px] flex justify-center items-center">
                     <div>
                       <h1 className="font-bold text-[18px] w-[100%] flex justify-center">
-                        Check-in
+                        Điểm danh
                       </h1>
-                      <p>Do you want to cancel this check-in?</p>
+                      <p>Bạn có muốn hủy điểm danh này?</p>
                     </div>
                   </div>
                   <div className="w-[100%] h-[50px] flex justify-center">
@@ -549,9 +549,9 @@ function CheckinDetailsContent({ checkin, role }) {
                   <div className="w-[100%] h-[100px] flex justify-center items-center">
                     <div>
                       <h1 className="font-bold text-[18px] w-[100%] flex justify-center">
-                        Bắt đầu khám
+                          Điểm danh
                       </h1>
-                      <p>Bạn có muốn bắt đầu khám?</p>
+                      <p>Bạn có muốn điểm danh này?</p>
                     </div>
                   </div>
                   <div className="w-[100%] h-[50px] flex justify-center">

@@ -10,14 +10,14 @@ import axios from "axios";
 import { localPort, publicPort } from "../../../components/url/link";
 import { useEffect } from "react";
 
-const tabButtons = ["DETAILED INFORMATION", "MEDICAL HISTORY"];
+const tabButtons = ["THÔNG TIN CHI TIẾT", "LỊCH SỬ BỆNH ÁN"];
 
 function DoctorInformationContent({ docId }) {
   const [type, setType] = useState(tabButtons[0]);
   const [showComponentC, setShowComponentC] = useState(true);
   const [showComponentE, setShowComponentE] = useState(false);
   const [doct, setDoct] = useState({});
-  console.log("doc info conteint: " + docId);
+  console.log("Thông tin chi tiết nhà khoa học: " + docId);
   const response = axios.get(publicPort + `api/1`);
   console.log(response.data);
 
@@ -41,12 +41,12 @@ function DoctorInformationContent({ docId }) {
             <AiFillMail />
           </span>
           <span className="font-bold mt-[6px]">
-            Mehrabbozorgi.business@gmail.com
+            thuyduong190603@gmail.com
           </span>
         </div>
         <div className="absolute top-[40%] left-[20%] ">
           <h1 className="text-gradientLeft text-4xl font-bold">
-            Dr. Nguyen Thuy Dung
+            Dr. Thuy Dung
           </h1>
         </div>
         <div className="flex absolute top-[70%] left-[50%] w-[80%]">

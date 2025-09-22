@@ -285,29 +285,43 @@ public class InternalController {
 	}
 	@GetMapping("/countByDoctorOfApointment")
 	public List<CheckinDataDtoSpeAndDocTor> countByDoctorOfApointment() {
-		List<Object[]> countCheckinsByDoctor = checkinService.countCheckinsByDoctorAndSpecial();
-		List<CheckinDataDtoSpeAndDocTor> checkinDataList = new ArrayList<>();
+		try {
+			List<Object[]> countCheckinsByDoctor = checkinService.countCheckinsByDoctorAndSpecial();
+			List<CheckinDataDtoSpeAndDocTor> checkinDataList = new ArrayList<>();
 
-		// Converting the list of arrays to a list of CheckinData objects
-		for (Object[] objArray : countCheckinsByDoctor) {
-			CheckinDataDtoSpeAndDocTor checkinData = new CheckinDataDtoSpeAndDocTor();
-			String doctorIdStr = (String) objArray[0];
-			String special =(String) objArray[2];
-			// Parse the doctorId as an Integer
-			Integer doctorId = Integer.parseInt(doctorIdStr);
-			String doctorName = internalService.findByIdUsingName(doctorId);
-			Long countcomplete = medicalRecordService.countOccurrencesByDoctorId(doctorIdStr);
-			Long appoiment = checkinService.countAppointmentByDoctor(doctorIdStr);
-			String specialId = speciatlyService.findByName(special);
-			checkinData.setNameDoctor(doctorName);
-			checkinData.setExamination(countcomplete);
-			checkinData.setId(doctorIdStr);
-			checkinData.setNameSepcial(special);
-			checkinData.setOnline(appoiment);
-			checkinData.setIdspe(specialId);
-			checkinDataList.add(checkinData);
+			// Converting the list of arrays to a list of CheckinData objects
+			for (Object[] objArray : countCheckinsByDoctor) {
+				if (objArray != null && objArray.length >= 3) {
+					CheckinDataDtoSpeAndDocTor checkinData = new CheckinDataDtoSpeAndDocTor();
+					String doctorIdStr = objArray[0] != null ? objArray[0].toString() : "0";
+					String special = objArray[2] != null ? objArray[2].toString() : "Unknown";
+					
+					try {
+						// Parse the doctorId as an Integer
+						Integer doctorId = Integer.parseInt(doctorIdStr);
+						String doctorName = internalService.findByIdUsingName(doctorId);
+						Long countcomplete = medicalRecordService.countOccurrencesByDoctorId(doctorIdStr);
+						Long appoiment = checkinService.countAppointmentByDoctor(doctorIdStr);
+						String specialId = speciatlyService.findByName(special);
+						
+						checkinData.setNameDoctor(doctorName != null ? doctorName : "Unknown Doctor");
+						checkinData.setExamination(countcomplete != null ? countcomplete : 0L);
+						checkinData.setId(doctorIdStr);
+						checkinData.setNameSepcial(special);
+						checkinData.setOnline(appoiment != null ? appoiment : 0L);
+						checkinData.setIdspe(specialId != null ? specialId : "0");
+						checkinDataList.add(checkinData);
+					} catch (NumberFormatException e) {
+						System.err.println("Error parsing doctorId: " + doctorIdStr);
+						// Skip this record
+					}
+				}
+			}
+			return checkinDataList;
+		} catch (Exception e) {
+			System.err.println("Error in countByDoctorOfApointment: " + e.getMessage());
+			e.printStackTrace();
+			return new ArrayList<>(); // Return empty list on error
 		}
-		return checkinDataList;
-
 	}
 }

@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function EditSymptomContent({ item }) {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Update symptom";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Cập nhật triệu chứng";
   const navigate = useNavigate();
 
   const [idLo, setIdLo] = useState([
@@ -124,8 +124,8 @@ function EditSymptomContent({ item }) {
     }
   };
   const [flags] = useState([
-    { id: "0", value: "Active" },
-    { id: "2", value: "Block" },
+    { id: "0", value: "Hoạt động" },
+    { id: "2", value: "Khóa" },
   ]);
   const goBack = () => {
     navigate("/symptoms");
@@ -143,13 +143,13 @@ function EditSymptomContent({ item }) {
     <div className="w-[100%] min-h-[1000px] bg-white">
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">ID</h1>
+          <h1 className=" text-[25px] font-bold">Mã</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
               disabled={true}
-              placeholder="ID"
+              placeholder="Mã"
               onChange={handleChangeName}
               value={idLo.idL}
               name="idL"
@@ -160,13 +160,13 @@ function EditSymptomContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Name</h1>
+          <h1 className=" text-[25px] font-bold">Tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
             <input
               onChange={handleChangeName}
-              placeholder="Name"
+              placeholder="Tên"
               value={Name.name}
               name="name"
               className="w-[80%] h-[100%] ml-[10px] text-[20px] "
@@ -176,13 +176,13 @@ function EditSymptomContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Description</h1>
+          <h1 className=" text-[25px] font-bold">Mô tả</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
             <input
               onChange={handleChangeName}
-              placeholder="Description"
+              placeholder="Mô tả"
               value={desciption.des}
               name="des"
               className="w-[80%] h-[100%] ml-[10px] text-[20px] "
@@ -192,7 +192,7 @@ function EditSymptomContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Specialty</h1>
+          <h1 className=" text-[25px] font-bold">Chuyên khoa</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[60px] w-[22%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -203,7 +203,7 @@ function EditSymptomContent({ item }) {
               onChange={handleChangeName}
             >
               <option selected={true} disabled={true}>
-                -- Choose Specialty --
+                -- Chọn chuyên khoa --
               </option>
               {listSymptom != undefined &&
                 listSymptom.map((staff) => (
@@ -217,7 +217,7 @@ function EditSymptomContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Status</h1>
+          <h1 className=" text-[25px] font-bold">Trạng thái</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[60px] w-[20%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -228,7 +228,7 @@ function EditSymptomContent({ item }) {
               onChange={handleChangeName}
             >
               <option selected={true} disabled={true}>
-                -- Choose Status --
+                -- Chọn trạng thái --
               </option>
               {flags.map((staff) => (
                 <option className="" key={staff.id} value={staff.id}>

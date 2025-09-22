@@ -63,7 +63,7 @@ function MedicalRecordDetailsContent({ checkin, role }) {
                     <p
                       className={`w-[14%] h-[30px] rounded-2xl ml-[14%] pt-[3px] text-white ${"bg-[#9747ff]"}`}
                     >
-                      Đã điểm danh
+                      Đã có mặt
                     </p>
                   ) : checkin != undefined &&
                     checkin.checkin.commandFlag == "1" ? (
@@ -94,7 +94,7 @@ function MedicalRecordDetailsContent({ checkin, role }) {
               <div className="pt-8 flex">
                 <span className="w-[35%]">Hình thức dịch vụ</span>
                 <span className="w-[65%]">
-                  Specialty examination at the hospital
+                  Khám chuyên khoa
                 </span>
               </div>
               <div className="pt-3 flex">

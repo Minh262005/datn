@@ -564,7 +564,7 @@ const BAContentGuest = () => {
               </span>
               <span className="text-gradient font-bold text-[1.8rem]">
                 {!place ? (
-                  <> chọn cơ sở</>
+                  <> Chọn cơ sở</>
                 ) : (
                   <>
                     {place.description} - {place.name}

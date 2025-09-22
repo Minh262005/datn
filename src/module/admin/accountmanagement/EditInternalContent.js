@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateNewInternalContent({ item }) {
-  const tabButtons1 = "Cancel ";
-  const tabButtons2 = "Save account";
+  const tabButtons1 = "Hủy";
+  const tabButtons2 = "Cập nhật tài khoản";
   const [active, setActive] = useState([
     { id: 0, month: "ACTIVE" },
     { id: 2, month: "BLOCK" },
@@ -15,18 +15,18 @@ function CreateNewInternalContent({ item }) {
   const [selectedStaff, setSelectedStaff] = useState(null);
   const navigate = useNavigate();
   const [staffs] = useState([
-    { id: 1, month: "January" },
-    { id: 2, month: "February" },
-    { id: 3, month: "March" },
-    { id: 4, month: "April" },
-    { id: 5, month: "May" },
-    { id: 6, month: "June" },
-    { id: 7, month: "July" },
-    { id: 8, month: "August" },
-    { id: 9, month: "September" },
-    { id: 10, month: "October" },
-    { id: 11, month: "November" },
-    { id: 12, month: "December" },
+    { id: 1, month: "Tháng 1" },  
+    { id: 2, month: "Tháng 2" },
+    { id: 3, month: "Tháng 3" },
+    { id: 4, month: "Tháng 4" },
+    { id: 5, month: "Tháng 5" },
+    { id: 6, month: "Tháng 6" },
+    { id: 7, month: "Tháng 7" },
+    { id: 8, month: "Tháng 8" },
+    { id: 9, month: "Tháng 9" },
+    { id: 10, month: "Tháng 10" },
+    { id: 11, month: "Tháng 11" },
+    { id: 12, month: "Tháng 12" },
   ]);
 
   const handleCancel = () => {
@@ -35,9 +35,9 @@ function CreateNewInternalContent({ item }) {
   };
 
   const [males] = useState([
-    { id: "male", maless: "male" },
-    { id: "female", maless: "female" },
-    { id: "other", maless: "other" },
+    { id: "male", maless: "Nam" },
+    { id: "female", maless: "Nữ" },
+    { id: "other", maless: "Khác" },
   ]);
 
   const [sysRole, setSysRole] = useState();
@@ -265,13 +265,13 @@ function CreateNewInternalContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Full Name</h1>
+          <h1 className=" text-[25px] font-bold">Họ và tên</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4]">
             <input
               disabled={true}
-              placeholder="Full name"
+              placeholder="Họ và tên"
               value={item.name}
               className="w-[90%] h-[100%] ml-[10px] text-[20px] "
             />
@@ -280,7 +280,7 @@ function CreateNewInternalContent({ item }) {
       </div>
       <div className="w-[100%] h-[120px] mb-[10px]">
         <div className="w-[100%] h-[50px]">
-          <h1 className=" text-[25px] font-bold">Email</h1>
+          <h1 className=" text-[25px] font-bold">Email để liên hệ</h1>
         </div>
         <div className=" flex justify-start w-[100%]">
           <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -297,7 +297,7 @@ function CreateNewInternalContent({ item }) {
         <div className="flex w-[100%] mb-[60px]">
           <div className="h-[70px] w-[40%] bg-white text-[20px] mr-[6rem]">
             <div className="w-[100%] h-[50px]">
-              <h1 className=" text-[25px] font-bold">Roles and permissions</h1>
+              <h1 className=" text-[25px] font-bold">Vai trò và quyền hạn</h1>
             </div>
             <div className="w-[100%] ">
               <select
@@ -307,7 +307,7 @@ function CreateNewInternalContent({ item }) {
                 value={roleI.rlI}
               >
                 <option selected={true} disabled={true}>
-                  -- Select Role --
+                  -- Chọn vai trò --
                 </option>
                 {sysRole != undefined &&
                   sysRole.map((role) => (
@@ -320,7 +320,7 @@ function CreateNewInternalContent({ item }) {
           </div>
           <div className="h-[70px] w-[100%] pl-[20px] bg-white text-[20px] ">
             <div className="w-[100%] pl-[20px] h-[50px]">
-              <h1 className=" text-[25px] font-bold">Specialty</h1>
+              <h1 className=" text-[25px] font-bold">Chuyên khoa</h1>
             </div>
             <div className="w-[98%] ml-[20px] ">
               <select
@@ -330,7 +330,7 @@ function CreateNewInternalContent({ item }) {
                 value={specialtyD.splD}
               >
                 <option selected={true} disabled={true}>
-                  -- Select Specialty --
+                  -- Chọn chuyên khoa --
                 </option>
                 {sysSpec != undefined &&
                   sysSpec.map((specialty) => (
@@ -349,7 +349,7 @@ function CreateNewInternalContent({ item }) {
 
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Work location</h1>
+            <h1 className=" text-[25px] font-bold">Địa điểm làm việc</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[70px] w-[80%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -360,7 +360,7 @@ function CreateNewInternalContent({ item }) {
                 value={workPlc?.wpc?.id}
               >
                 <option selected={true} disabled={true}>
-                  -- Select Location --
+                  -- Chọn địa điểm làm việc --
                 </option>
                 {sysLocation != undefined &&
                   sysLocation.map((location) => (
@@ -378,7 +378,7 @@ function CreateNewInternalContent({ item }) {
         </div>
         <div className="w-[100%] h-[120px] mb-[10px]">
           <div className="w-[100%] h-[50px]">
-            <h1 className=" text-[25px] font-bold">Status</h1>
+            <h1 className=" text-[25px] font-bold">Trạng thái</h1>
           </div>
           <div className=" flex justify-start w-[100%]">
             <div className="h-[60px] w-[20%] border-[1px] rounded-2xl border-[#c5c4c4] flex">
@@ -389,7 +389,7 @@ function CreateNewInternalContent({ item }) {
                 onChange={handleChangeName}
               >
                 <option selected={true} disabled={true}>
-                  -- Choose Status --
+                    -- Chọn trạng thái --
                 </option>
                 {flags.map((active) => (
                   <option className="" key={active.id} value={active.id}>

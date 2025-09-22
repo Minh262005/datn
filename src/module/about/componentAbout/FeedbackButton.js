@@ -37,7 +37,7 @@ function FeedbackButton() {
           <GrDislike />
         </button>
       </div>
-      <p>Is the article helpful?</p>
+      <p> Có hữu ích không?</p>
     </div>
   );
 }
